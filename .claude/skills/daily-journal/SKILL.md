@@ -24,7 +24,8 @@ Ask one at a time. Keep it short — this should take under a minute.
    - Don't overwrite an entry that may already have notes in it
 2. Find yesterday's entry at `journal/<year>/<yesterday's date>.md` (mind month/year boundaries)
    - Pull anything from its "Open questions" section as candidate carry-forwards
-3. Create `journal/<year>/YYYY-MM-DD.md` (today's date) using `journal/_template.md` as the structure
+3. Create `journal/<year>/YYYY-MM-DD.md` (today's date) using `journal/_template.md` as the
+   structure
 4. Populate
    - `## Focus` — from questions 1 and 2 combined
    - `## Notes` — leave empty, user fills in through the day
