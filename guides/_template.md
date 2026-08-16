@@ -36,12 +36,10 @@ Brief one-line description of what this is and when to use it.
    ```
 
 4. Add scripts to `package.json` (if any)
-5. Verify it works
-   - Command to run / what success looks like
 
-   ```sh
-   <verify command>
-   ```
+## Verification
+
+- [ ] Check that proves the setup worked
 
 ## Environment variables
 

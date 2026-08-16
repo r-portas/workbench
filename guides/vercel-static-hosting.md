@@ -44,10 +44,12 @@ Vercel.
 
 3. Wire into project
    - No separate integration code needed — this is build/deploy config only
-4. Verify it works
-   - Run `bun run build` locally and confirm `dist/client` contains prerendered HTML for each route
-   - Deploy to Vercel and check that pages load without a server round-trip and that asset responses
-     carry the immutable cache header
+
+## Verification
+
+- [ ] Run `bun run build` locally and confirm `dist/client` contains prerendered HTML for each route
+- [ ] Deploy to Vercel and confirm pages load without a server round-trip and that asset responses
+      carry the immutable cache header
 
 ## Gotchas
 

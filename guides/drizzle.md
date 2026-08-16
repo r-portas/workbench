@@ -20,7 +20,7 @@ validation and `src/lib` conventions.
    bun add -d drizzle-kit@rc5
    ```
 
-   `drizzle-kit` is the CLI for schema pushes, migrations, and Drizzle Studio — dev dependency only.
+   `drizzle-kit` is the CLI for schema pushes, migrations and Drizzle Studio — dev dependency only.
 
 2. Add scripts to `package.json`
    - The `bun --bun` prefix is required so drizzle-kit resolves the SQLite driver through Bun's
@@ -64,9 +64,7 @@ validation and `src/lib` conventions.
    ```
 
 4. Create `drizzle.config.ts` at the project root
-   - Reads `process.env` directly rather than `@/lib/env.server` — drizzle-kit runs outside the app
-     and can't resolve the `@/` path alias. Bun loads `.env` automatically, so `DATABASE_URL` is
-     populated when the `bun --bun drizzle-kit` scripts run
+   - Reads `process.env` directly rather than `@/lib/env.server` as drizzle-kit runs outside the app
 
    ```ts
    // drizzle.config.ts
@@ -101,7 +99,7 @@ validation and `src/lib` conventions.
 
 6. Wire into project
    - Create the client in `src/lib/db.server.ts`, using `drizzle-orm/bun-sqlite` (the Bun-native
-     driver, not the generic sqlite adapter)
+     driver)
 
    ```ts
    // src/lib/db.server.ts
@@ -112,12 +110,6 @@ validation and `src/lib` conventions.
 
    export const db = drizzle(env.DATABASE_URL, { schema });
    ```
-
-   - `env.server.ts` uses a default export, so this is `import env from`, not `import { env } from`
-   - Passing `schema` enables relational queries via `db.query`; omit it if only using the query
-     builder
-   - `db.server.ts` is server-only — import it from other `*.server.ts` modules and expose results
-     through server functions, following the `src/lib` domain convention
 
    ```ts
    // src/lib/notes.server.ts
@@ -138,16 +130,16 @@ validation and `src/lib` conventions.
    export const listNotesFn = createServerFn().handler(() => listNotes());
    ```
 
-7. Verify it works
+7. Push the schema
 
    ```sh
    bun db:push
    ```
 
-   - For dev this is the fast path — no migration files, just push and query. For production, use
-     `drizzle-kit generate` to produce tracked SQL migration files, then `drizzle-kit migrate` to
-     apply them
-   - Browse the database with `bun db:studio`
+## Verification
+
+- [ ] `local.db` was created after running `bun db:push`
+- [ ] `bun db:studio` opens and shows the `notes` table
 
 ## Environment variables
 
@@ -157,8 +149,6 @@ validation and `src/lib` conventions.
 
 - Must install `drizzle-orm@rc5` / `drizzle-kit@rc5` — plain `bun add drizzle-orm` pulls a version
   that doesn't match this setup
-- `drizzle.config.ts` reads `process.env.DATABASE_URL` directly, not through `@/lib/env.server`,
-  since drizzle-kit can't resolve the `@/` alias
 
 ## References
 
