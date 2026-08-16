@@ -53,7 +53,3 @@ Brief one-line description of what this is and when to use it.
 
 - [Library/tool docs](https://example.com) — official documentation
 - [Relevant guide or RFC](https://example.com) — why it's relevant
-
----
-
-See `conventions/<tool>.md` for naming/pattern rules once this is running.

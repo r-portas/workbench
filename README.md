@@ -23,8 +23,8 @@ cd ~/workshop
 ## Conventions
 
 - One topic per file, split rather than append a second topic to an existing note
-- Directories nest one level deep at most (`notes/react/suspense.md`, not
-  `notes/frontend/react/hooks/suspense.md`)
+- Directories nest one level deep at most (`conventions/react/suspense.md`, not
+  `conventions/frontend/react/hooks/suspense.md`)
 
 ### Templates
 

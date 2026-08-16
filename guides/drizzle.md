@@ -152,6 +152,5 @@ validation and `src/lib` conventions.
 
 ## References
 
-- [Drizzle ORM docs](https://orm.drizzle.team) — official documentation
-- [templates.royportas.com/addons/drizzle.md](https://templates.royportas.com/addons/drizzle.md) —
-  source doc this guide was based on
+- [Drizzle ORM docs](https://orm.drizzle.team)
+- [Drizzle ORM llms.txt](https://orm.drizzle.team/llms.txt)

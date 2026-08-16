@@ -81,4 +81,3 @@ Deploy config for hosting a Bun + TanStack Start app on Cloudflare Workers.
 ## References
 
 - [Cloudflare TanStack Start guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)
-  — official framework guide

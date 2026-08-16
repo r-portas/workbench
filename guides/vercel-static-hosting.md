@@ -58,5 +58,5 @@ Vercel.
 
 ## References
 
-- [templates.royportas.com/addons/vercel-static-hosting.md](https://templates.royportas.com/addons/vercel-static-hosting.md)
-  — source doc this guide was based on
+- [`vercel.json` documentation](https://vercel.com/docs/project-configuration/vercel-json)
+  - [`vercel.json` documentation as markdown](https://vercel.com/docs/project-configuration/vercel-json.md)
