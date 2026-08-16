@@ -1,0 +1,11 @@
+{
+  "name": "workshop",
+  "private": true,
+  "scripts": {
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.63.0"
+  }
+}

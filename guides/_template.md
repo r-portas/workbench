@@ -3,9 +3,11 @@
 Brief one-line description of what this is and when to use it.
 
 ## Prerequisites
+
 - Anything that must exist before starting (accounts, other tools installed, env vars)
 
 ## Steps
+
 1. Install
    - `bun add <package>`
 2. Configure
@@ -17,10 +19,13 @@ Brief one-line description of what this is and when to use it.
    - Command to run / what success looks like
 
 ## Environment variables
+
 - `VAR_NAME` — what it's for, where to get it
 
 ## Gotchas
+
 - Anything non-obvious that will bite you first time through
 
 ---
+
 See `conventions/<tool>.md` for naming/pattern rules once this is running.

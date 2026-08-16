@@ -1,15 +1,16 @@
 # workshop
 
-My personal engineering workspace. Notes, conventions, project templates, agent skills and machine config all in one place.
+My personal engineering workspace. Notes, conventions, project templates, agent skills and machine
+config all in one place.
 
 ## Layout
- 
-| Folder | Contents |
-|---|---|
+
+| Folder         | Contents                                                            |
+| -------------- | ------------------------------------------------------------------- |
 | `conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts) |
-| `guides/` | Step-by-step zero-to-working setup instructions, one per tool |
-| `templates/` | Scaffoldable project templates (e.g. `app-template`) |
-| `journal/` | Dated notes |
+| `guides/`      | Step-by-step zero-to-working setup instructions, one per tool       |
+| `templates/`   | Scaffoldable project templates (e.g. `app-template`)                |
+| `journal/`     | Dated notes                                                         |
 
 ## Setup
 
@@ -20,13 +21,15 @@ cd ~/workshop
 ```
 
 ## Conventions
+
 - One topic per file, split rather than append a second topic to an existing note
-- Directories nest one level deep at most (`notes/react/suspense.md`, not `notes/frontend/react/hooks/suspense.md`)
- 
+- Directories nest one level deep at most (`notes/react/suspense.md`, not
+  `notes/frontend/react/hooks/suspense.md`)
+
 ### Templates
- 
+
 Pull a template into a new project with:
- 
+
 ```sh
 bunx gitpick r-portas/workshop/tree/main/templates/<name> <destination>
 ```
