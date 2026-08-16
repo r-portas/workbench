@@ -3,9 +3,11 @@
   "private": true,
   "scripts": {
     "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check"
+    "fmt:check": "oxfmt --check",
+    "new:journal": "bun scripts/new-journal.ts"
   },
   "devDependencies": {
+    "@types/bun": "^1.3.14",
     "oxfmt": "^0.63.0"
   }
 }

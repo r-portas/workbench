@@ -10,7 +10,7 @@ config all in one place.
 | `conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts) |
 | `guides/`      | Step-by-step zero-to-working setup instructions, one per tool       |
 | `templates/`   | Scaffoldable project templates (e.g. `app-template`)                |
-| `journal/`     | Dated notes                                                         |
+| `journal/`     | Dated notes, one folder per year (`journal/2026/2026-08-17.md`)    |
 
 ## Setup
 
