@@ -1,0 +1,9 @@
+# OS
+.DS_Store
+
+# Local scratch files
+scratch
+*.scratch.md
+
+# Node modules
+node_modules
