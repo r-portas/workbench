@@ -18,7 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        template: [tss]
+        # Add new templates here to build them in CI
+        template:
+          - tss
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
