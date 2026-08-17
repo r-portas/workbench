@@ -16,8 +16,8 @@ config all in one place.
 
 Pull a template into a new project with `degit`:
 
-| Template | Description                                          | Command                                                          |
-| -------- | ---------------------------------------------------- | ---------------------------------------------------------------- |
+| Template | Description                                          | Command                                                           |
+| -------- | ---------------------------------------------------- | ----------------------------------------------------------------- |
 | `tss`    | TanStack Start app with shadcn/ui, oxlint, and oxfmt | `bunx --bun degit r-portas/workbench/templates/tss <destination>` |
 
 ### Testing templates on a branch
@@ -33,7 +33,7 @@ bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 ```bash
 gh repo clone r-portas/workbench ~/workbench
 cd ~/workbench
-./bootstrap.sh
+# ./bootstrap.sh (future)
 ```
 
 ## Conventions
