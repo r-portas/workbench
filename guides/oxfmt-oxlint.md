@@ -69,7 +69,7 @@ with near-instant runtimes.
      "scripts": {
        "fmt": "oxfmt .",
        "fmt:check": "oxfmt --check .",
-       "build": "vite build && tsc --noEmit && oxlint .",
+       "build": "bun --bun vite build && tsc --noEmit && oxlint .",
      },
    }
    ```

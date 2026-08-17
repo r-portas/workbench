@@ -4,7 +4,7 @@ TanStack Start app with shadcn/ui, oxlint, and oxfmt pre-configured.
 
 ## Quick Start
 
-```bash
+```sh
 # Install dependencies
 bun install
 

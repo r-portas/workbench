@@ -11,7 +11,7 @@ One-sentence description of what this does and who it's for.
 
 ## Quick Start
 
-```bash
+```sh
 # Short instructions for getting started, e.g. `bun install` and `bun dev`
 # Each command should be on its own line and have a brief one line comment above it
 

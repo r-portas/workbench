@@ -5,13 +5,13 @@
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
     "types": ["bun"],
 
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
+    "erasableSyntaxOnly": true,
     "noEmit": true,
 
     // Best practices
@@ -19,6 +19,11 @@
     "skipLibCheck": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true
-  }
+    "noImplicitOverride": true,
+    "exactOptionalPropertyTypes": true
+  },
+
+  // Templates are standalone projects with their own tsconfig — without this they get pulled into
+  // the root program and fail to resolve their own dependencies
+  "include": ["scripts"]
 }
