@@ -101,11 +101,11 @@ Configures TypeScript 7 in a Bun project.
 4. Add scripts to `package.json`
    - The bundler emits the JavaScript, so `tsc` only ever type-checks
 
-   ```jsonc
+   ```json
    {
      "scripts": {
-       "build": "vite build && tsc --noEmit && oxlint .",
-     },
+       "build": "bun --bun vite build && tsc --noEmit && oxlint ."
+     }
    }
    ```
 

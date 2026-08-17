@@ -12,10 +12,7 @@
     // Bundler mode
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    // TanStack Start keeps server code out of the client bundle by relying on TypeScript erasing
-    // type-only imports. verbatimModuleSyntax preserves them instead, which leaks server modules
-    // into the client bundle, so it must stay off. The
-    // typescript/consistent-type-imports rule in .oxlintrc.jsonc enforces `import type` instead
+    // Enabling this in a TanStack Start app can result in the server bundles leaking into client bundles
     "verbatimModuleSyntax": false,
     // verbatimModuleSyntax would normally imply isolatedModules, so it has to be set directly
     "isolatedModules": true,
