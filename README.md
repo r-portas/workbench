@@ -30,6 +30,6 @@ cd ~/workshop
 
 Pull a template into a new project with `degit`:
 
-| Template | Description                                          | Command                                                     |
-| -------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| Template | Description                                          | Command                                                    |
+| -------- | ---------------------------------------------------- | ---------------------------------------------------------- |
 | `tss`    | TanStack Start app with shadcn/ui, oxlint, and oxfmt | `bunx degit r-portas/workshop/templates/tss <destination>` |
