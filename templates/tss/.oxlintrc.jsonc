@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["eslint", "typescript", "oxc", "jsdoc", "react", "react-perf", "unicorn"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    // Prefer undefined over null
+    "unicorn/no-null": "error",
+    // Not needed for React 17+
+    "react/react-in-jsx-scope": "off"
+  },
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "remarks": "remarks"
+      }
+    }
+  }
+}
