@@ -1,5 +1,5 @@
 {
-  "name": "workshop",
+  "name": "workbench",
   "private": true,
   "scripts": {
     "fmt": "oxfmt",
