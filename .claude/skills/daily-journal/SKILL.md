@@ -27,9 +27,7 @@ Ask one at a time. Keep it short — this should take under a minute.
 3. Create `journal/<year>/YYYY-MM-DD.md` (today's date) using `journal/_template.md` as the
    structure
 4. Populate
-   - `## Focus` — from questions 1 and 2 combined
-   - `## Notes` — leave empty, user fills in through the day
-   - `## Decisions` — leave empty
+   - `## Todo` — one checkbox per task from questions 1 and 2
+   - `## Log` — leave empty, user fills in through the day
    - `## Open questions` — seed with carry-forwards found above
-   - `## Links` — leave empty
 5. Confirm the file path back to the user, don't print the whole entry unless asked

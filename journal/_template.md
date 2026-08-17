@@ -1,22 +1,14 @@
 # YYYY-MM-DD
 
-## Focus
+## Todo
 
-- What today was mainly about
+- [ ] Today's tasks
 
-## Notes
+## Log
 
-- Free-form log entries
-  - Timestamp inline if useful (`14:30 —`)
-
-## Decisions
-
-- Anything decided, with brief why
+- `HH:MM` — What happened, decided, or shipped
+  - Nest decisions/links/context under the entry they belong to
 
 ## Open questions
 
 - Things left unresolved, to revisit
-
-## Links
-
-- Related conventions/guides/PRs touched today

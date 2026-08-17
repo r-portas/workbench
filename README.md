@@ -28,8 +28,8 @@ cd ~/workshop
 
 ### Templates
 
-Pull a template into a new project with:
+Pull a template into a new project with `degit`:
 
-```sh
-bunx gitpick r-portas/workshop/tree/main/templates/<name> <destination>
-```
+| Template | Description                                          | Command                                                    |
+| -------- | ---------------------------------------------------- | ---------------------------------------------------------- |
+| `tss`    | TanStack Start app with shadcn/ui, oxlint, and oxfmt | `bunx degit r-portas/workshop/templates/tss <destination>` |
