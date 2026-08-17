@@ -5,6 +5,6 @@
   "sortImports": true,
   "sortTailwindcss": {
     "stylesheet": "./src/styles.css",
-    "functions": ["cn"]
-  }
+    "functions": ["cn"],
+  },
 }

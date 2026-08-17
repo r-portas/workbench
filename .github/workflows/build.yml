@@ -13,3 +13,20 @@ jobs:
         run: bun install --frozen-lockfile
       - name: Check formatting
         run: bun run fmt:check
+
+  build-templates:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template: [tss]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        working-directory: templates/${{ matrix.template }}
+        run: bun install --frozen-lockfile
+      - name: Build
+        working-directory: templates/${{ matrix.template }}
+        run: bun run build

@@ -3,19 +3,19 @@
   "plugins": ["eslint", "typescript", "oxc", "jsdoc", "react", "react-perf", "unicorn"],
   "categories": {
     "correctness": "error",
-    "suspicious": "error"
+    "suspicious": "error",
   },
   "rules": {
     // Prefer undefined over null
     "unicorn/no-null": "error",
     // Not needed for React 17+
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
   },
   "settings": {
     "jsdoc": {
       "tagNamePreference": {
-        "remarks": "remarks"
-      }
-    }
-  }
+        "remarks": "remarks",
+      },
+    },
+  },
 }
