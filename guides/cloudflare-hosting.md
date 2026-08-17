@@ -11,7 +11,7 @@ Deploy config for hosting a Bun + TanStack Start app on Cloudflare Workers.
 
 1. Install
 
-   ```bash
+   ```sh
    bun add -D @cloudflare/vite-plugin wrangler
    ```
 
