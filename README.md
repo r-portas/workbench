@@ -24,13 +24,13 @@ Pull a template into a new project with `degit`:
 
 Append `#<branch>` to the `degit` command to pull from a branch:
 
-```bash
+```sh
 bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 ```
 
 ## Setup
 
-```bash
+```sh
 gh repo clone r-portas/workbench ~/workbench
 cd ~/workbench
 # ./bootstrap.sh (future)
