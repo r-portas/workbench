@@ -23,6 +23,9 @@ function useWorkbenchSearch() {
     setIsIndexLoading(true);
     listSearchIndexFn()
       .then(setSearchIndex)
+      .catch(() => {
+        setSearchIndex([]);
+      })
       .finally(() => setIsIndexLoading(false));
   };
 
