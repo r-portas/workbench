@@ -15,6 +15,7 @@
     "@tanstack/markdown": "^0.0.13",
     "@tanstack/react-router": "^1.170.29",
     "@tanstack/react-start": "^1.168.46",
+    "@tanstack/start-static-server-functions": "1.167.29",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.31.0",
