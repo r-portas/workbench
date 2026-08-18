@@ -14,6 +14,20 @@ jobs:
       - name: Check formatting
         run: bun run fmt:check
 
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        working-directory: web
+        run: bun install --frozen-lockfile
+      - name: Build
+        working-directory: web
+        run: bun run build
+
   build-templates:
     runs-on: ubuntu-latest
     strategy:
