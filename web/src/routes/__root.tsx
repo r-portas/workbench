@@ -1,13 +1,18 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
-import { AppLayout } from "@/components/app-layout";
+import { Layout } from "@/components/layout";
 import { Providers } from "@/components/providers";
 import { APP_NAME } from "@/lib/app-config";
 import { highlightCss } from "@/lib/markdown";
+import { listSearchIndexFn } from "@/lib/search.functions";
 
 import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
+  // Kick off the index without awaiting so the rest of the page can render.
+  loader: () => ({
+    searchIndex: listSearchIndexFn(),
+  }),
   head: () => ({
     meta: [
       {
@@ -37,6 +42,8 @@ export const Route = createRootRoute({
 });
 
 function RootDocument() {
+  const { searchIndex } = Route.useLoaderData();
+
   return (
     <html lang="en">
       <head>
@@ -44,7 +51,7 @@ function RootDocument() {
       </head>
       <body>
         <Providers>
-          <AppLayout />
+          <Layout searchIndex={searchIndex} />
         </Providers>
         <Scripts />
       </body>
