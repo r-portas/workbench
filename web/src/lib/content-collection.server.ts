@@ -42,6 +42,9 @@ export class ContentCollection {
    * Throws if no matching markdown file exists in the collection's directory.
    */
   public async get(slug: string) {
+    if (slug.includes("/") || slug.includes("\\") || slug.includes("..")) {
+      throw new Error("Invalid slug");
+    }
     const text = await readFile(`${this.path}/${slug}.md`, "utf-8");
     return parseMarkdown(text);
   }
