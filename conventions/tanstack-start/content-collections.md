@@ -1,3 +1,25 @@
+# Content Collections
+
+Pattern for grouping related markdown content files (guides, posts, docs) under a single directory,
+can be copied into a `CLAUDE.md`/`AGENTS.md` file for agents to follow.
+
+## Structure
+
+- A `ContentCollection` class wraps one directory of markdown files, one instance per content type
+  (e.g. `guides`, `posts`).
+- `get(slug)` reads and parses a single item by filename, where `slug` is the filename without the
+  `.md` extension. Throws if no matching file exists.
+- `list()` returns lightweight `{ slug, title }` summaries for every item, for building
+  index/listing pages without parsing full content. Skips files prefixed with `_` and any non-`.md`
+  files.
+- Title is extracted from the file's first `# ` heading rather than stored separately in
+  frontmatter. Throws if no `# ` heading is found.
+- Lives at `src/lib/<name>.server.ts` (e.g. `content-collection.server.ts`), following the
+  [project structure](./project-structure.md) `*.server.ts` convention since it does filesystem I/O.
+
+## Implementation
+
+```ts
 import { readdir, readFile } from "fs/promises";
 
 import { parseMarkdown } from "@tanstack/markdown";
@@ -5,7 +27,7 @@ import { parseMarkdown } from "@tanstack/markdown";
 const TITLE_REGEX = /^#\s+(.+)$/m;
 const MARKDOWN_EXTENSION_REGEX = /\.md$/;
 
-export interface ItemSummary {
+interface ItemSummary {
   slug: string;
   title: string;
 }
@@ -81,3 +103,17 @@ export class ContentCollection {
     return match[1].trim();
   }
 }
+```
+
+## Usage
+
+```ts
+// src/lib/guides.server.ts
+export const guides = new ContentCollection("./content/guides/");
+```
+
+```ts
+// route loader
+const items = await guides.list();
+const guide = await guides.get(params.slug);
+```

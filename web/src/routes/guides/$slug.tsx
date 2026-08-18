@@ -13,13 +13,13 @@ export const Route = createFileRoute("/guides/$slug")({
 function RouteComponent() {
   const { guide } = Route.useLoaderData();
   return (
-    <article className="max-w-2xl">
+    <div className="mx-auto max-w-3xl">
       <Link to="/" className="text-sm text-muted-foreground">
         &larr; Back to guides
       </Link>
       <div className="mt-4">
         <Article>{guide}</Article>
       </div>
-    </article>
+    </div>
   );
 }
