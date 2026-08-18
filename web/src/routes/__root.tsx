@@ -3,6 +3,7 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { AppLayout } from "@/components/app-layout";
 import { Providers } from "@/components/providers";
 import { APP_NAME } from "@/lib/app-config";
+import { highlightCss } from "@/lib/markdown";
 
 import appCss from "@/styles.css?url";
 
@@ -24,6 +25,11 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: appCss,
+      },
+    ],
+    styles: [
+      {
+        children: highlightCss,
       },
     ],
   }),
