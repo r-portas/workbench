@@ -12,14 +12,11 @@ can be copied into a `CLAUDE.md`/`AGENTS.md` file for agents to follow.
 - `list()` returns lightweight `{ slug, title }` summaries for every item, for building
   index/listing pages without parsing full content. Skips files prefixed with `_` and any non-`.md`
   files.
-- Title is extracted from the file's first `# ` heading rather than stored separately in
-  frontmatter. Throws if no `# ` heading is found.
-- Lives at `src/lib/<name>.server.ts` (e.g. `content-collection.server.ts`), following the
-  [project structure](./project-structure.md) `*.server.ts` convention since it does filesystem I/O.
 
 ## Implementation
 
-```ts
+````ts
+// src/lib/content-collection.server.ts
 import { readdir, readFile } from "fs/promises";
 
 import { parseMarkdown } from "@tanstack/markdown";
@@ -103,7 +100,7 @@ export class ContentCollection {
     return match[1].trim();
   }
 }
-```
+````
 
 ## Usage
 
