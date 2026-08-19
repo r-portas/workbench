@@ -14,8 +14,8 @@ interface NavbarProps {
  */
 function Navbar({ searchIndex }: NavbarProps) {
   return (
-    <header className="flex items-center justify-between gap-4 border-b border-border px-6 py-3">
-      <Link to="/" className="text-lg font-semibold">
+    <header className="flex items-center justify-between gap-4 border-b border-border bg-card px-3 py-1">
+      <Link to="/" className="text-md font-semibold">
         {APP_NAME}
       </Link>
       <WorkbenchSearch searchIndex={searchIndex} />
