@@ -1,13 +1,17 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import Article from "@/components/article";
 import { getGuideFn } from "@/lib/guides.functions";
 
-export const Route = createFileRoute("/guides/$slug")({
+export const Route = createFileRoute("/guides/$")({
   component: RouteComponent,
-  loader: async ({ params }) => ({
-    guide: await getGuideFn({ data: params.slug }),
-  }),
+  loader: async ({ params }) => {
+    const slug = params._splat;
+    if (!slug) throw notFound();
+    return {
+      guide: await getGuideFn({ data: slug }),
+    };
+  },
 });
 
 function RouteComponent() {

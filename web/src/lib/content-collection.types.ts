@@ -5,3 +5,14 @@ export interface ItemSummary {
   slug: string;
   title: string;
 }
+
+/** Which collection a search result belongs to. */
+export type ContentKind = "guide" | "convention";
+
+/**
+ * A content listing tagged with its collection, for cross-collection search.
+ */
+export interface SearchItem extends ItemSummary {
+  /** Collection the item came from, used to pick the detail route. */
+  kind: ContentKind;
+}

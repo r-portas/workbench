@@ -9,7 +9,7 @@ const MARKDOWN_EXTENSION_REGEX = /\.md$/;
 
 /**
  * A content collection is a group of related content files,
- * stored in the same directory.
+ * stored in the same directory tree.
  *
  * @example
  * ```ts
@@ -33,35 +33,38 @@ export class ContentCollection {
   /**
    * Reads and parses a single content item by its slug.
    *
-   * @param slug - The item's filename without the `.md` extension
+   * @param slug - The item's path relative to the collection, without the `.md` extension
    *
    * @remarks
-   * Throws if no matching markdown file exists in the collection's directory.
+   * Nested files use `/`-separated slugs, e.g. `tanstack-start/thing`.
+   * Throws if the slug is unsafe or no matching markdown file exists.
    */
   public async get(slug: string) {
-    if (slug.includes("/") || slug.includes("\\") || slug.includes("..")) {
-      throw new Error("Invalid slug");
-    }
+    this.assertSafeSlug(slug);
     const text = await readFile(`${this.path}/${slug}.md`, "utf-8");
     return parseMarkdown(text);
   }
 
   /**
-   * Lists all content items in the collection.
+   * Lists all content items in the collection, including nested directories.
    *
    * @remarks
-   * Skips files whose names start with `_`, and files that don't end in `.md`.
+   * Skips files whose path has a `_`-prefixed segment, and files that don't end in `.md`.
+   * Sorted by slug.
    */
   public async list(): Promise<ItemSummary[]> {
-    const files = await readdir(this.path);
-    const markdownFiles = files.filter((file) => file.endsWith(".md") && !file.startsWith("_"));
-    return Promise.all(
+    const files = await readdir(this.path, { recursive: true });
+    const markdownFiles = files
+      .map((file) => file.replaceAll("\\", "/"))
+      .filter(this.isMarkdownFile);
+    const items = await Promise.all(
       markdownFiles.map(async (file) => {
         const slug = file.replace(MARKDOWN_EXTENSION_REGEX, "");
         const title = await this.getMarkdownTitle(`${this.path}/${slug}.md`);
         return { slug, title };
       }),
     );
+    return items.toSorted((a, b) => a.slug.localeCompare(b.slug));
   }
 
   /**
@@ -79,5 +82,36 @@ export class ContentCollection {
       throw new Error(`No title found in markdown file: ${filePath}`);
     }
     return match[1].trim();
+  }
+
+  /**
+   * Checks if a file is a valid markdown file.
+   *
+   * @param filePath - The path to the file to check
+   * @returns True if the file is a markdown file, false otherwise
+   */
+  private isMarkdownFile(filePath: string): boolean {
+    if (!filePath.endsWith(".md")) return false;
+    const segments = filePath.split("/");
+    return segments.every((segment) => segment.length > 0 && !segment.startsWith("_"));
+  }
+
+  /**
+   * Checks if a slug is safe to use (e.g. checking for path traversal)
+   *
+   * @param slug - The slug to check
+   * @throws If the slug is invalid
+   */
+  private assertSafeSlug(slug: string): void {
+    if (slug.includes("\\") || slug.includes("\0")) {
+      throw new Error("Invalid slug");
+    }
+    const segments = slug.split("/");
+    if (
+      segments.length === 0 ||
+      segments.some((segment) => segment === "" || segment === "." || segment === "..")
+    ) {
+      throw new Error("Invalid slug");
+    }
   }
 }

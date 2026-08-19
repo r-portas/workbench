@@ -15,13 +15,13 @@ can be copied into a `CLAUDE.md`/`AGENTS.md` file for agents to follow.
 
 ## Implementation
 
-````ts
+```ts
 // src/lib/content-collection.types.ts
 export interface ItemSummary {
   slug: string;
   title: string;
 }
-````
+```
 
 ````ts
 // src/lib/content-collection.server.ts

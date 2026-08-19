@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 
 import { cn } from "@/lib/utils";
 
+type CatalogTo = "/guides/$" | "/conventions/$";
+
 // #region CatalogSection
 interface CatalogItem {
   /** Filename slug, shown as the row title. */
@@ -15,6 +17,8 @@ interface CatalogSectionProps {
   label: string;
   /** Items listed under the heading. */
   items: CatalogItem[];
+  /** Splat route the row links to. */
+  to: CatalogTo;
   /** Extra Tailwind classes forwarded to the root element. */
   className?: string;
 }
@@ -22,7 +26,7 @@ interface CatalogSectionProps {
 /**
  * A labeled catalog list of content items with a hairline rule and count.
  */
-export default function CatalogSection({ label, items, className }: CatalogSectionProps) {
+export default function CatalogSection({ label, items, to, className }: CatalogSectionProps) {
   return (
     <section className={cn(className)}>
       <header className="flex items-center gap-3">
@@ -35,7 +39,7 @@ export default function CatalogSection({ label, items, className }: CatalogSecti
       <ul className="mt-1">
         {items.map((item) => (
           <li key={item.slug}>
-            <CatalogRow item={item} />
+            <CatalogRow item={item} to={to} />
           </li>
         ))}
       </ul>
@@ -48,15 +52,17 @@ export default function CatalogSection({ label, items, className }: CatalogSecti
 interface CatalogRowProps {
   /** The catalog item to render. */
   item: CatalogItem;
+  /** Splat route the row links to. */
+  to: CatalogTo;
   /** Extra Tailwind classes forwarded to the link. */
   className?: string;
 }
 
-function CatalogRow({ item, className }: CatalogRowProps) {
+function CatalogRow({ item, to, className }: CatalogRowProps) {
   return (
     <Link
-      to="/guides/$slug"
-      params={{ slug: item.slug }}
+      to={to}
+      params={{ _splat: item.slug }}
       className={cn(
         "grid grid-cols-1 items-baseline gap-x-8 rounded-md px-3 py-2 transition-colors hover:bg-accent/50 sm:grid-cols-[minmax(0,15rem)_1fr]",
         className,

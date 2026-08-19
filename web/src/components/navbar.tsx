@@ -2,11 +2,11 @@ import { Link } from "@tanstack/react-router";
 
 import { WorkbenchSearch } from "@/components/workbench-search";
 import { APP_NAME } from "@/lib/app-config";
-import type { ItemSummary } from "@/lib/content-collection.types";
+import type { SearchItem } from "@/lib/content-collection.types";
 
 interface NavbarProps {
   /** Deferred search index passed through to workbench search. */
-  searchIndex: Promise<ItemSummary[]>;
+  searchIndex: Promise<SearchItem[]>;
 }
 
 /**

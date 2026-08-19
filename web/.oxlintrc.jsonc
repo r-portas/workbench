@@ -12,6 +12,8 @@
     "unicorn/no-null": "error",
     // Not needed for React 17+
     "react/react-in-jsx-scope": "off",
+    // TanStack splat routes capture the rest of the path as `_splat`
+    "eslint/no-underscore-dangle": ["error", { "allow": ["_splat"] }],
   },
   "settings": {
     "jsdoc": {

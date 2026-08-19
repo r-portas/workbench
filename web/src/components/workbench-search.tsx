@@ -3,11 +3,11 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
-import type { ItemSummary } from "@/lib/content-collection.types";
+import type { SearchItem } from "@/lib/content-collection.types";
 
 const BROWSE_RESULT_LIMIT = 5;
 
-function filterSearchItems(items: ItemSummary[], query: string): ItemSummary[] {
+function filterSearchItems(items: SearchItem[], query: string): SearchItem[] {
   const trimmedTerm = query.trim().toLowerCase();
   if (!trimmedTerm) return items.slice(0, BROWSE_RESULT_LIMIT);
   return items.filter((item) => item.title.toLowerCase().includes(trimmedTerm));
@@ -16,7 +16,7 @@ function filterSearchItems(items: ItemSummary[], query: string): ItemSummary[] {
 // #region WorkbenchSearch
 interface WorkbenchSearchProps {
   /** Deferred search index from the root loader. */
-  searchIndex: Promise<ItemSummary[]>;
+  searchIndex: Promise<SearchItem[]>;
 }
 
 /**
@@ -76,9 +76,13 @@ interface SearchResultsProps {
   /** Current search text, used to pick the loading label. */
   query: string;
   /** Matches to render. Omitted while the index is still loading. */
-  results?: ItemSummary[];
+  results?: SearchItem[];
   /** Clears the query and closes the list after navigating to a result. */
   onSelect?: () => void;
+}
+
+function searchItemTo(kind: SearchItem["kind"]): "/guides/$" | "/conventions/$" {
+  return kind === "convention" ? "/conventions/$" : "/guides/$";
 }
 
 function SearchResults({ query, results, onSelect }: SearchResultsProps) {
@@ -92,10 +96,10 @@ function SearchResults({ query, results, onSelect }: SearchResultsProps) {
         </li>
       ) : (
         results.map((item) => (
-          <li key={item.slug}>
+          <li key={`${item.kind}:${item.slug}`}>
             <Link
-              to="/guides/$slug"
-              params={{ slug: item.slug }}
+              to={searchItemTo(item.kind)}
+              params={{ _splat: item.slug }}
               onClick={onSelect}
               className="block rounded-md px-2.5 py-1.5 text-sm text-popover-foreground hover:bg-accent/50"
             >

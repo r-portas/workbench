@@ -10,43 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as GuidesSlugRouteImport } from './routes/guides/$slug'
+import { Route as ConventionsSplatRouteImport } from './routes/conventions/$'
+import { Route as GuidesSplatRouteImport } from './routes/guides/$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GuidesSlugRoute = GuidesSlugRouteImport.update({
-  id: '/guides/$slug',
-  path: '/guides/$slug',
+const ConventionsSplatRoute = ConventionsSplatRouteImport.update({
+  id: '/conventions/$',
+  path: '/conventions/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSplatRoute = GuidesSplatRouteImport.update({
+  id: '/guides/$',
+  path: '/guides/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/guides/$slug': typeof GuidesSlugRoute
+  '/conventions/$': typeof ConventionsSplatRoute
+  '/guides/$': typeof GuidesSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/guides/$slug': typeof GuidesSlugRoute
+  '/conventions/$': typeof ConventionsSplatRoute
+  '/guides/$': typeof GuidesSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/guides/$slug': typeof GuidesSlugRoute
+  '/conventions/$': typeof ConventionsSplatRoute
+  '/guides/$': typeof GuidesSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/guides/$slug'
+  fullPaths: '/' | '/conventions/$' | '/guides/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/guides/$slug'
-  id: '__root__' | '/' | '/guides/$slug'
+  to: '/' | '/conventions/$' | '/guides/$'
+  id: '__root__' | '/' | '/conventions/$' | '/guides/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  GuidesSlugRoute: typeof GuidesSlugRoute
+  ConventionsSplatRoute: typeof ConventionsSplatRoute
+  GuidesSplatRoute: typeof GuidesSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,11 +68,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/guides/$slug': {
-      id: '/guides/$slug'
-      path: '/guides/$slug'
-      fullPath: '/guides/$slug'
-      preLoaderRoute: typeof GuidesSlugRouteImport
+    '/conventions/$': {
+      id: '/conventions/$'
+      path: '/conventions/$'
+      fullPath: '/conventions/$'
+      preLoaderRoute: typeof ConventionsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$': {
+      id: '/guides/$'
+      path: '/guides/$'
+      fullPath: '/guides/$'
+      preLoaderRoute: typeof GuidesSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -70,7 +87,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  GuidesSlugRoute: GuidesSlugRoute,
+  ConventionsSplatRoute: ConventionsSplatRoute,
+  GuidesSplatRoute: GuidesSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
