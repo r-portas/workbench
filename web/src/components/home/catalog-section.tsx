@@ -68,7 +68,7 @@ function CatalogRow({ item, to, className }: CatalogRowProps) {
         className,
       )}
     >
-      <span className="truncate text-sm font-medium">{item.slug}</span>
+      <span className="truncate font-mono text-sm font-medium">{item.slug}</span>
       <span className="hidden min-w-0 truncate text-sm text-muted-foreground sm:block">
         {item.title}
       </span>
