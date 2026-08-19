@@ -16,18 +16,23 @@ can be copied into a `CLAUDE.md`/`AGENTS.md` file for agents to follow.
 ## Implementation
 
 ````ts
+// src/lib/content-collection.types.ts
+export interface ItemSummary {
+  slug: string;
+  title: string;
+}
+````
+
+````ts
 // src/lib/content-collection.server.ts
 import { readdir, readFile } from "fs/promises";
 
 import { parseMarkdown } from "@tanstack/markdown";
 
+import type { ItemSummary } from "./content-collection.types";
+
 const TITLE_REGEX = /^#\s+(.+)$/m;
 const MARKDOWN_EXTENSION_REGEX = /\.md$/;
-
-interface ItemSummary {
-  slug: string;
-  title: string;
-}
 
 /**
  * A content collection is a group of related content files,

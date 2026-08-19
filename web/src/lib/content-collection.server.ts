@@ -2,13 +2,10 @@ import { readdir, readFile } from "fs/promises";
 
 import { parseMarkdown } from "@tanstack/markdown";
 
+import type { ItemSummary } from "./content-collection.types";
+
 const TITLE_REGEX = /^#\s+(.+)$/m;
 const MARKDOWN_EXTENSION_REGEX = /\.md$/;
-
-export interface ItemSummary {
-  slug: string;
-  title: string;
-}
 
 /**
  * A content collection is a group of related content files,

@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@/components/ui/input-group";
-import type { ItemSummary } from "@/lib/content-collection.server";
+import type { ItemSummary } from "@/lib/content-collection.types";
 
 const BROWSE_RESULT_LIMIT = 5;
 
