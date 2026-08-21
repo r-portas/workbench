@@ -40,7 +40,7 @@ function WorkbenchSearch({ searchIndex }: WorkbenchSearchProps) {
   };
 
   return (
-    <div className="relative w-full max-w-xs">
+    <div className="relative w-full">
       <InputGroup>
         <InputGroupAddon>
           <Search />

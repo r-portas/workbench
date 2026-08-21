@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 
 import Article from "@/components/article";
 import ViewAsMarkdown from "@/components/view-as-markdown";
@@ -20,10 +20,7 @@ function RouteComponent() {
   const { guide, slug } = Route.useLoaderData();
   return (
     <>
-      <div className="flex items-center justify-between gap-4">
-        <Link to="/" className="text-sm text-muted-foreground">
-          &larr; Back to guides
-        </Link>
+      <div className="flex justify-end">
         <ViewAsMarkdown collection="guides" slug={slug} />
       </div>
       <div className="mt-4">
