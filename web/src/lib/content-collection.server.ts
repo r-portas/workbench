@@ -2,7 +2,7 @@ import { readdir, readFile } from "fs/promises";
 
 import { parseMarkdown } from "@tanstack/markdown";
 
-import type { ItemSummary } from "./content-collection.types";
+import type { ContentCollectionName, ItemSummary } from "./content-collection.types";
 
 const TITLE_REGEX = /^#\s+(.+)$/m;
 const MARKDOWN_EXTENSION_REGEX = /\.md$/;
@@ -31,6 +31,20 @@ export class ContentCollection {
   }
 
   /**
+   * Reads the raw markdown source for a single content item by its slug.
+   *
+   * @param slug - The item's path relative to the collection, without the `.md` extension
+   *
+   * @remarks
+   * Nested files use `/`-separated slugs, e.g. `tanstack-start/thing`.
+   * Throws if the slug is unsafe or no matching markdown file exists.
+   */
+  public async getRaw(slug: string) {
+    this.assertSafeSlug(slug);
+    return await readFile(`${this.path}/${slug}.md`, "utf-8");
+  }
+
+  /**
    * Reads and parses a single content item by its slug.
    *
    * @param slug - The item's path relative to the collection, without the `.md` extension
@@ -40,8 +54,7 @@ export class ContentCollection {
    * Throws if the slug is unsafe or no matching markdown file exists.
    */
   public async get(slug: string) {
-    this.assertSafeSlug(slug);
-    const text = await readFile(`${this.path}/${slug}.md`, "utf-8");
+    const text = await this.getRaw(slug);
     return parseMarkdown(text);
   }
 
@@ -113,5 +126,28 @@ export class ContentCollection {
     ) {
       throw new Error("Invalid slug");
     }
+  }
+}
+
+/** Named content collections used by the workbench app. */
+export const CONTENT_COLLECTIONS: Record<ContentCollectionName, ContentCollection> = {
+  guides: new ContentCollection("../guides"),
+  conventions: new ContentCollection("../conventions"),
+};
+
+/**
+ * Returns a `text/markdown` response for a content item, or 404 if missing/unsafe.
+ *
+ * @param collection - Which content collection to read from
+ * @param slug - The item's path relative to the collection, without the `.md` extension
+ */
+export async function rawMarkdownResponse(collection: ContentCollectionName, slug: string) {
+  try {
+    const text = await CONTENT_COLLECTIONS[collection].getRaw(slug);
+    return new Response(text, {
+      headers: { "Content-Type": "text/markdown; charset=utf-8" },
+    });
+  } catch {
+    return new Response("Not found", { status: 404 });
   }
 }

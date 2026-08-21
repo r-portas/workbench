@@ -85,6 +85,22 @@ describe("ContentCollection", () => {
     });
   });
 
+  describe("getRaw", () => {
+    test("returns the raw markdown source for a nested slug", async () => {
+      const text = await collection.getRaw("nested/thing");
+      expect(text).toBe("# Nested Thing\n");
+    });
+
+    test("returns the raw markdown source for a top-level slug", async () => {
+      const text = await collection.getRaw("code-style");
+      expect(text).toBe("# Code Style\n");
+    });
+
+    test("rejects a parent-directory segment", async () => {
+      await expect(collection.getRaw("nested/../code-style")).rejects.toThrow("Invalid slug");
+    });
+  });
+
   describe("get", () => {
     test("reads a nested item by its slash-separated slug", async () => {
       const item = await collection.get("nested/thing");

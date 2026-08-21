@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ConventionsSplatRouteImport } from './routes/conventions/$'
+import { Route as ConventionsChar123Char125DotmdRouteImport } from './routes/conventions/{$}[.]md'
 import { Route as GuidesSplatRouteImport } from './routes/guides/$'
+import { Route as GuidesChar123Char125DotmdRouteImport } from './routes/guides/{$}[.]md'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +25,76 @@ const ConventionsSplatRoute = ConventionsSplatRouteImport.update({
   path: '/conventions/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConventionsChar123Char125DotmdRoute =
+  ConventionsChar123Char125DotmdRouteImport.update({
+    id: '/conventions/{$}.md',
+    path: '/conventions/{$}.md',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuidesSplatRoute = GuidesSplatRouteImport.update({
   id: '/guides/$',
   path: '/guides/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuidesChar123Char125DotmdRoute =
+  GuidesChar123Char125DotmdRouteImport.update({
+    id: '/guides/{$}.md',
+    path: '/guides/{$}.md',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/conventions/$': typeof ConventionsSplatRoute
+  '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
   '/guides/$': typeof GuidesSplatRoute
+  '/guides/{$}.md': typeof GuidesChar123Char125DotmdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/conventions/$': typeof ConventionsSplatRoute
+  '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
   '/guides/$': typeof GuidesSplatRoute
+  '/guides/{$}.md': typeof GuidesChar123Char125DotmdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/conventions/$': typeof ConventionsSplatRoute
+  '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
   '/guides/$': typeof GuidesSplatRoute
+  '/guides/{$}.md': typeof GuidesChar123Char125DotmdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/conventions/$' | '/guides/$'
+  fullPaths:
+    | '/'
+    | '/conventions/$'
+    | '/conventions/{$}.md'
+    | '/guides/$'
+    | '/guides/{$}.md'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/conventions/$' | '/guides/$'
-  id: '__root__' | '/' | '/conventions/$' | '/guides/$'
+  to:
+    | '/'
+    | '/conventions/$'
+    | '/conventions/{$}.md'
+    | '/guides/$'
+    | '/guides/{$}.md'
+  id:
+    | '__root__'
+    | '/'
+    | '/conventions/$'
+    | '/conventions/{$}.md'
+    | '/guides/$'
+    | '/guides/{$}.md'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ConventionsSplatRoute: typeof ConventionsSplatRoute
+  ConventionsChar123Char125DotmdRoute: typeof ConventionsChar123Char125DotmdRoute
   GuidesSplatRoute: typeof GuidesSplatRoute
+  GuidesChar123Char125DotmdRoute: typeof GuidesChar123Char125DotmdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,11 +113,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConventionsSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conventions/{$}.md': {
+      id: '/conventions/{$}.md'
+      path: '/conventions/{$}.md'
+      fullPath: '/conventions/{$}.md'
+      preLoaderRoute: typeof ConventionsChar123Char125DotmdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/$': {
       id: '/guides/$'
       path: '/guides/$'
       fullPath: '/guides/$'
       preLoaderRoute: typeof GuidesSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/{$}.md': {
+      id: '/guides/{$}.md'
+      path: '/guides/{$}.md'
+      fullPath: '/guides/{$}.md'
+      preLoaderRoute: typeof GuidesChar123Char125DotmdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,7 +140,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ConventionsSplatRoute: ConventionsSplatRoute,
+  ConventionsChar123Char125DotmdRoute: ConventionsChar123Char125DotmdRoute,
   GuidesSplatRoute: GuidesSplatRoute,
+  GuidesChar123Char125DotmdRoute: GuidesChar123Char125DotmdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

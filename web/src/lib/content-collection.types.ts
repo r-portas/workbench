@@ -6,6 +6,9 @@ export interface ItemSummary {
   title: string;
 }
 
+/** Directory/API name for a markdown content collection. */
+export type ContentCollectionName = "guides" | "conventions";
+
 /** Which collection a search result belongs to. */
 export type ContentKind = "guide" | "convention";
 

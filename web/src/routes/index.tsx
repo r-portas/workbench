@@ -2,16 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import CatalogSection from "@/components/home/catalog-section";
 import TemplatesSection from "@/components/home/templates-section";
-import { listConventionsFn } from "@/lib/conventions.functions";
-import { listGuidesFn } from "@/lib/guides.functions";
+import { listContentFn } from "@/lib/content-collection.functions";
 import { listTemplatesFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
   loader: async () => {
     const [guides, conventions, templates] = await Promise.all([
-      listGuidesFn(),
-      listConventionsFn(),
+      listContentFn({ data: { collection: "guides" } }),
+      listContentFn({ data: { collection: "conventions" } }),
       listTemplatesFn(),
     ]);
     return { guides, conventions, templates };
