@@ -34,10 +34,7 @@ function Navbar({ searchIndex }: NavbarProps) {
             Back
           </ButtonLink>
         ) : (
-          <Link
-            to="/"
-            className="hidden items-center gap-2 text-base font-semibold md:flex"
-          >
+          <Link to="/" className="hidden items-center gap-2 text-base font-semibold md:flex">
             <WorkbenchIcon className="size-6" />
             {APP_NAME}
           </Link>
