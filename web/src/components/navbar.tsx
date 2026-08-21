@@ -22,7 +22,7 @@ function Navbar({ searchIndex }: NavbarProps) {
   return (
     <header className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-border bg-card px-4 py-2">
       <div className="flex min-w-0 items-center gap-1.5 justify-self-start">
-        {showBack && (
+        {showBack ? (
           <ButtonLink
             to="/"
             variant="ghost"
@@ -33,14 +33,15 @@ function Navbar({ searchIndex }: NavbarProps) {
             <ChevronLeft />
             Back
           </ButtonLink>
+        ) : (
+          <Link
+            to="/"
+            className="hidden items-center gap-2 text-base font-semibold md:flex"
+          >
+            <WorkbenchIcon className="size-6" />
+            {APP_NAME}
+          </Link>
         )}
-        <Link
-          to="/"
-          className="hidden items-center gap-2 text-base font-semibold md:flex"
-        >
-          <WorkbenchIcon className="size-6" />
-          {APP_NAME}
-        </Link>
       </div>
       <div className="w-[min(28rem,calc(100vw-14rem))] justify-self-center">
         <WorkbenchSearch searchIndex={searchIndex} />
