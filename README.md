@@ -5,12 +5,13 @@ config all in one place.
 
 ## Layout
 
-| Folder         | Contents                                                            |
-| -------------- | ------------------------------------------------------------------- |
-| `conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts) |
-| `guides/`      | Step-by-step zero-to-working setup instructions, one per tool       |
-| `templates/`   | Scaffoldable project templates (e.g. `app-template`)                |
-| `journal/`     | Dated notes, one folder per year (`journal/2026/2026-08-17.md`)     |
+| Folder         | Contents                                                                  |
+| -------------- | ------------------------------------------------------------------------- |
+| `conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
+| `guides/`      | Step-by-step zero-to-working setup instructions, one per tool             |
+| `templates/`   | Scaffoldable project templates (e.g. `tss`)                               |
+| `web/`         | Website that hosts this repo's content, bootstrapped from `templates/tss` |
+| `journal/`     | Dated notes, one folder per year (`journal/2026/2026-08-17.md`)           |
 
 ## Templates
 
