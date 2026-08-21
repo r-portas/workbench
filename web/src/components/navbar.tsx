@@ -20,26 +20,29 @@ function Navbar({ searchIndex }: NavbarProps) {
   const showBack = pathname !== "/";
 
   return (
-    <header className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-border bg-card px-3 py-1">
-      <div className="flex min-w-0 items-center gap-1 justify-self-start">
+    <header className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 border-b border-border bg-card px-4 py-2">
+      <div className="flex min-w-0 items-center gap-1.5 justify-self-start">
         {showBack && (
           <ButtonLink
             to="/"
             variant="ghost"
-            size="sm"
+            size="default"
             aria-label="Back to home"
-            className="text-muted-foreground motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-left-1 motion-safe:duration-200"
+            className="text-muted-foreground"
           >
             <ChevronLeft />
             Back
           </ButtonLink>
         )}
-        <Link to="/" className="flex items-center gap-2 text-md font-semibold">
-          <WorkbenchIcon className="size-5" />
+        <Link
+          to="/"
+          className="hidden items-center gap-2 text-base font-semibold md:flex"
+        >
+          <WorkbenchIcon className="size-6" />
           {APP_NAME}
         </Link>
       </div>
-      <div className="w-[min(24rem,calc(100vw-12rem))] justify-self-center">
+      <div className="w-[min(28rem,calc(100vw-14rem))] justify-self-center">
         <WorkbenchSearch searchIndex={searchIndex} />
       </div>
       <div aria-hidden className="justify-self-end" />

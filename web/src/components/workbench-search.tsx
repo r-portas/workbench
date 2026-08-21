@@ -41,8 +41,8 @@ function WorkbenchSearch({ searchIndex }: WorkbenchSearchProps) {
 
   return (
     <div className="relative w-full">
-      <InputGroup>
-        <InputGroupAddon>
+      <InputGroup className="h-10">
+        <InputGroupAddon className="pl-2.5 [&>svg]:size-5">
           <Search />
         </InputGroupAddon>
         <InputGroupInput
@@ -53,6 +53,7 @@ function WorkbenchSearch({ searchIndex }: WorkbenchSearchProps) {
           onFocus={() => setIsFocused(true)}
           // Delayed so a click on a result registers before the list unmounts.
           onBlur={() => setTimeout(closeResults, 150)}
+          className="text-sm"
         />
       </InputGroup>
       {showResults && (
