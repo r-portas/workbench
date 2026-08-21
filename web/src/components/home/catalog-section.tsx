@@ -88,7 +88,7 @@ function CatalogRow({ item, to, className }: CatalogRowProps) {
       <ViewAsMarkdownIcon
         collection={collection}
         slug={item.slug}
-        className="mr-2 opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100 [@media(hover:hover)]:group-focus-within:opacity-100"
+        className="mr-2 opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-focus-within:opacity-100 [@media(hover:hover)]:group-hover:opacity-100"
       />
     </div>
   );
