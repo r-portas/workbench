@@ -1,7 +1,7 @@
 import { Autocomplete } from "@base-ui/react/autocomplete";
 import { Await, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
-import { useState } from "react";
+import { type RefObject, useRef, useState } from "react";
 
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
 import type { SearchItem } from "@/lib/content-collection.types";
@@ -30,10 +30,12 @@ interface WorkbenchSearchProps {
  * `Await`, so prerender can serialize it without blocking the rest of the page.
  */
 function WorkbenchSearch({ searchIndex }: WorkbenchSearchProps) {
+  const anchorRef = useRef<HTMLDivElement>(null);
+
   return (
-    <div className="relative w-full">
+    <div ref={anchorRef} className="relative w-full">
       <Await promise={searchIndex} fallback={<SearchInputPlaceholder />}>
-        {(items) => <SearchAutocomplete items={items} />}
+        {(items) => <SearchAutocomplete items={items} anchorRef={anchorRef} />}
       </Await>
     </div>
   );
@@ -62,9 +64,11 @@ function SearchInputPlaceholder() {
 interface SearchAutocompleteProps {
   /** Full search index, already resolved. */
   items: SearchItem[];
+  /** Positions the popup against the full input group, not just the input. */
+  anchorRef: RefObject<HTMLDivElement | null>;
 }
 
-function SearchAutocomplete({ items }: SearchAutocompleteProps) {
+function SearchAutocomplete({ items, anchorRef }: SearchAutocompleteProps) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -100,7 +104,12 @@ function SearchAutocomplete({ items }: SearchAutocompleteProps) {
         />
       </InputGroup>
       <Autocomplete.Portal>
-        <Autocomplete.Positioner className="w-(--anchor-width) outline-none" align="start" sideOffset={4}>
+        <Autocomplete.Positioner
+          anchor={anchorRef}
+          className="w-(--anchor-width) outline-none"
+          align="start"
+          sideOffset={4}
+        >
           <Autocomplete.Popup className="max-h-[min(24rem,var(--available-height))] w-full origin-(--transform-origin) overflow-y-auto rounded-lg border border-border bg-popover p-1 shadow-md">
             <Autocomplete.Empty className="px-2.5 py-1.5 text-sm text-muted-foreground empty:m-0 empty:p-0">
               No results found.
