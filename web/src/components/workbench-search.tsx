@@ -1,7 +1,7 @@
 import { Autocomplete } from "@base-ui/react/autocomplete";
 import { Await, Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
-import { type RefObject, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
 import type { SearchItem } from "@/lib/content-collection.types";
@@ -30,14 +30,10 @@ interface WorkbenchSearchProps {
  * `Await`, so prerender can serialize it without blocking the rest of the page.
  */
 function WorkbenchSearch({ searchIndex }: WorkbenchSearchProps) {
-  const anchorRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div ref={anchorRef} className="relative w-full">
-      <Await promise={searchIndex} fallback={<SearchInputPlaceholder />}>
-        {(items) => <SearchAutocomplete items={items} anchorRef={anchorRef} />}
-      </Await>
-    </div>
+    <Await promise={searchIndex} fallback={<SearchInputPlaceholder />}>
+      {(items) => <SearchAutocomplete items={items} />}
+    </Await>
   );
 }
 // #endregion
@@ -64,11 +60,11 @@ function SearchInputPlaceholder() {
 interface SearchAutocompleteProps {
   /** Full search index, already resolved. */
   items: SearchItem[];
-  /** Positions the popup against the full input group, not just the input. */
-  anchorRef: RefObject<HTMLDivElement | null>;
 }
 
-function SearchAutocomplete({ items, anchorRef }: SearchAutocompleteProps) {
+function SearchAutocomplete({ items }: SearchAutocompleteProps) {
+  // Anchors the popup to the full input group, not just the input.
+  const anchorRef = useRef<HTMLDivElement>(null);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -90,7 +86,7 @@ function SearchAutocomplete({ items, anchorRef }: SearchAutocompleteProps) {
       onOpenChange={setOpen}
       autoHighlight
     >
-      <InputGroup className="h-10">
+      <InputGroup ref={anchorRef} className="h-10">
         <InputGroupAddon className="pl-2.5 [&>svg]:size-5">
           <Search />
         </InputGroupAddon>
