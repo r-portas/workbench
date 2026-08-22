@@ -14,6 +14,8 @@ Vercel.
 
    ```json
    {
+     "$schema": "https://openapi.vercel.sh/vercel.json",
+     "bunVersion": "1.4.x", // Note this should be updated when Bun is updated, or just set to "1.x"
      "installCommand": "bun install --frozen-lockfile",
      "buildCommand": "bun run build",
      "outputDirectory": "dist/client",
