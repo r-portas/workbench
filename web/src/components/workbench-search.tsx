@@ -8,10 +8,8 @@ import type { SearchItem } from "@/lib/content-collection.types";
 
 const BROWSE_RESULT_LIMIT = 5;
 
-function filterSearchItems(items: SearchItem[], query: string): SearchItem[] {
-  const trimmedTerm = query.trim().toLowerCase();
-  if (!trimmedTerm) return items.slice(0, BROWSE_RESULT_LIMIT);
-  return items.filter((item) => item.title.toLowerCase().includes(trimmedTerm));
+function itemToStringValue(item: SearchItem): string {
+  return item.title;
 }
 
 function searchItemTo(kind: SearchItem["kind"]): "/guides/$" | "/conventions/$" {
@@ -70,7 +68,6 @@ function SearchAutocomplete({ items }: SearchAutocompleteProps) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
 
-  const results = filterSearchItems(items, query);
   const closeResults = () => setOpen(false);
   const handleSelect = () => {
     setQuery("");
@@ -79,13 +76,13 @@ function SearchAutocomplete({ items }: SearchAutocompleteProps) {
 
   return (
     <Autocomplete.Root
-      items={results}
-      // `null` (not `undefined`) tells Autocomplete `results` is already filtered.
-      // eslint-disable-next-line unicorn/no-null
-      filter={null}
+      items={items}
+      itemToStringValue={itemToStringValue}
+      // Browsing (empty query) shows a short preview; a typed query shows every match.
+      limit={query.trim() ? -1 : BROWSE_RESULT_LIMIT}
       value={query}
       onValueChange={setQuery}
-      open={open && results.length > 0}
+      open={open}
       onOpenChange={setOpen}
       autoHighlight
     >
@@ -105,6 +102,9 @@ function SearchAutocomplete({ items }: SearchAutocompleteProps) {
       <Autocomplete.Portal>
         <Autocomplete.Positioner className="w-(--anchor-width) outline-none" align="start" sideOffset={4}>
           <Autocomplete.Popup className="max-h-[min(24rem,var(--available-height))] w-full origin-(--transform-origin) overflow-y-auto rounded-lg border border-border bg-popover p-1 shadow-md">
+            <Autocomplete.Empty className="px-2.5 py-1.5 text-sm text-muted-foreground empty:m-0 empty:p-0">
+              No results found.
+            </Autocomplete.Empty>
             <Autocomplete.List>
               {(item: SearchItem) => (
                 <Autocomplete.Item
