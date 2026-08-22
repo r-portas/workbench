@@ -6,7 +6,7 @@ import { tsx } from "@tanstack/highlight/languages/tsx";
 import { yaml } from "@tanstack/highlight/languages/yaml";
 import { createTanStackMarkdownHighlighter } from "@tanstack/highlight/markdown";
 import { createThemeCss } from "@tanstack/highlight/theme";
-import { draculaTheme } from "@tanstack/highlight/themes/dracula";
+import { oneDarkProTheme } from "@tanstack/highlight/themes/one-dark-pro";
 import type { CodeHighlighter } from "@tanstack/markdown";
 
 const highlighter = createHighlighter({
@@ -17,6 +17,6 @@ export const highlightMarkdownCode: CodeHighlighter =
   createTanStackMarkdownHighlighter(highlighter);
 
 export const highlightCss = createThemeCss({
-  dark: draculaTheme,
+  dark: oneDarkProTheme,
   darkSelector: ":root",
 });
