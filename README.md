@@ -36,6 +36,17 @@ cd ~/workbench
 # ./bootstrap.sh (future)
 ```
 
+## Common tasks
+
+### Updating packages
+
+Run `bun update:all` from the repo root to update dependencies to their latest versions across the
+root `package.json`, `web/`, and every template in `templates/`.
+
+```sh
+bun update:all
+```
+
 ## Conventions
 
 - One topic per file, split rather than append a second topic to an existing note

@@ -3,10 +3,12 @@
   "private": true,
   "scripts": {
     "fmt": "oxfmt",
-    "fmt:check": "oxfmt --check"
+    "fmt:check": "oxfmt --check",
+    "update": "bun update --interactive --latest",
+    "update:all": "for d in . web templates/*; do (cd \"$d\" && bun update --interactive --latest); done"
   },
   "devDependencies": {
-    "@types/bun": "^1.3.14",
-    "oxfmt": "^0.63.0"
+    "@types/bun": "^1.4.0",
+    "oxfmt": "^0.64.0"
   }
 }
