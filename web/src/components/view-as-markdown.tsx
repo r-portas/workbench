@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { FileTextIcon } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -21,8 +22,9 @@ interface ViewAsMarkdownProps {
  */
 export default function ViewAsMarkdown({ collection, slug, className }: ViewAsMarkdownProps) {
   return (
-    <a
-      href={markdownPagePath(collection, slug)}
+    <Link
+      reloadDocument
+      to={markdownPagePath(collection, slug)}
       className={cn(
         buttonVariants({ variant: "outline", size: "xs" }),
         "text-muted-foreground",
@@ -31,7 +33,7 @@ export default function ViewAsMarkdown({ collection, slug, className }: ViewAsMa
     >
       <FileTextIcon data-icon="inline-start" />
       View as markdown
-    </a>
+    </Link>
   );
 }
 // #endregion
@@ -54,8 +56,9 @@ export function ViewAsMarkdownIcon({ collection, slug, className }: ViewAsMarkdo
     <Tooltip>
       <TooltipTrigger
         render={
-          <a
-            href={markdownPagePath(collection, slug)}
+          <Link
+            reloadDocument
+            to={markdownPagePath(collection, slug)}
             aria-label="View as markdown"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon-xs" }),

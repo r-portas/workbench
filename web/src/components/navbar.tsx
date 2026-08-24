@@ -43,7 +43,11 @@ function Navbar({ searchIndex }: NavbarProps) {
       <div className="w-[min(28rem,calc(100vw-14rem))] justify-self-center">
         <WorkbenchSearch searchIndex={searchIndex} />
       </div>
-      <div aria-hidden className="justify-self-end" />
+      <div className="justify-self-end">
+        <ButtonLink variant="outline" reloadDocument to="/llms.txt">
+          llms.txt
+        </ButtonLink>
+      </div>
     </header>
   );
 }
