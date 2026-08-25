@@ -7,7 +7,7 @@ using [Happy DOM](https://github.com/capricorn86/happy-dom) as the DOM environme
 
 - Bun project with React
 - `tsconfig.json` already includes DOM libs (`"lib": ["ESNext", "DOM", "DOM.Iterable"]`) — see the
-  [TypeScript guide](./typescript.md) for the browser-app config
+  [TypeScript guide](/guides/typescript) for the browser-app config
 
 ## Steps
 
