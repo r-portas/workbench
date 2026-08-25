@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
+import { Route as CheatsheetsSplatRouteImport } from './routes/cheatsheets/$'
+import { Route as CheatsheetsChar123Char125DotmdRouteImport } from './routes/cheatsheets/{$}[.]md'
 import { Route as ConventionsSplatRouteImport } from './routes/conventions/$'
 import { Route as ConventionsChar123Char125DotmdRouteImport } from './routes/conventions/{$}[.]md'
 import { Route as GuidesSplatRouteImport } from './routes/guides/$'
@@ -26,6 +28,17 @@ const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CheatsheetsSplatRoute = CheatsheetsSplatRouteImport.update({
+  id: '/cheatsheets/$',
+  path: '/cheatsheets/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheatsheetsChar123Char125DotmdRoute =
+  CheatsheetsChar123Char125DotmdRouteImport.update({
+    id: '/cheatsheets/{$}.md',
+    path: '/cheatsheets/{$}.md',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ConventionsSplatRoute = ConventionsSplatRouteImport.update({
   id: '/conventions/$',
   path: '/conventions/$',
@@ -52,6 +65,8 @@ const GuidesChar123Char125DotmdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/cheatsheets/$': typeof CheatsheetsSplatRoute
+  '/cheatsheets/{$}.md': typeof CheatsheetsChar123Char125DotmdRoute
   '/conventions/$': typeof ConventionsSplatRoute
   '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
   '/guides/$': typeof GuidesSplatRoute
@@ -60,6 +75,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/cheatsheets/$': typeof CheatsheetsSplatRoute
+  '/cheatsheets/{$}.md': typeof CheatsheetsChar123Char125DotmdRoute
   '/conventions/$': typeof ConventionsSplatRoute
   '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
   '/guides/$': typeof GuidesSplatRoute
@@ -69,6 +86,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/llms.txt': typeof LlmsDottxtRoute
+  '/cheatsheets/$': typeof CheatsheetsSplatRoute
+  '/cheatsheets/{$}.md': typeof CheatsheetsChar123Char125DotmdRoute
   '/conventions/$': typeof ConventionsSplatRoute
   '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
   '/guides/$': typeof GuidesSplatRoute
@@ -79,6 +98,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/llms.txt'
+    | '/cheatsheets/$'
+    | '/cheatsheets/{$}.md'
     | '/conventions/$'
     | '/conventions/{$}.md'
     | '/guides/$'
@@ -87,6 +108,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/llms.txt'
+    | '/cheatsheets/$'
+    | '/cheatsheets/{$}.md'
     | '/conventions/$'
     | '/conventions/{$}.md'
     | '/guides/$'
@@ -95,6 +118,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/llms.txt'
+    | '/cheatsheets/$'
+    | '/cheatsheets/{$}.md'
     | '/conventions/$'
     | '/conventions/{$}.md'
     | '/guides/$'
@@ -104,6 +129,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
+  CheatsheetsSplatRoute: typeof CheatsheetsSplatRoute
+  CheatsheetsChar123Char125DotmdRoute: typeof CheatsheetsChar123Char125DotmdRoute
   ConventionsSplatRoute: typeof ConventionsSplatRoute
   ConventionsChar123Char125DotmdRoute: typeof ConventionsChar123Char125DotmdRoute
   GuidesSplatRoute: typeof GuidesSplatRoute
@@ -124,6 +151,20 @@ declare module '@tanstack/react-router' {
       path: '/llms.txt'
       fullPath: '/llms.txt'
       preLoaderRoute: typeof LlmsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cheatsheets/$': {
+      id: '/cheatsheets/$'
+      path: '/cheatsheets/$'
+      fullPath: '/cheatsheets/$'
+      preLoaderRoute: typeof CheatsheetsSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cheatsheets/{$}.md': {
+      id: '/cheatsheets/{$}.md'
+      path: '/cheatsheets/{$}.md'
+      fullPath: '/cheatsheets/{$}.md'
+      preLoaderRoute: typeof CheatsheetsChar123Char125DotmdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/conventions/$': {
@@ -160,6 +201,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
+  CheatsheetsSplatRoute: CheatsheetsSplatRoute,
+  CheatsheetsChar123Char125DotmdRoute: CheatsheetsChar123Char125DotmdRoute,
   ConventionsSplatRoute: ConventionsSplatRoute,
   ConventionsChar123Char125DotmdRoute: ConventionsChar123Char125DotmdRoute,
   GuidesSplatRoute: GuidesSplatRoute,

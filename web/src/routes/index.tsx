@@ -8,17 +8,18 @@ import { listTemplatesFn } from "@/lib/templates.functions";
 export const Route = createFileRoute("/")({
   component: RouteComponent,
   loader: async () => {
-    const [guides, conventions, templates] = await Promise.all([
+    const [guides, conventions, cheatsheets, templates] = await Promise.all([
       listContentFn({ data: { collection: "guides" } }),
       listContentFn({ data: { collection: "conventions" } }),
+      listContentFn({ data: { collection: "cheatsheets" } }),
       listTemplatesFn(),
     ]);
-    return { guides, conventions, templates };
+    return { guides, conventions, cheatsheets, templates };
   },
 });
 
 function RouteComponent() {
-  const { guides, conventions, templates } = Route.useLoaderData();
+  const { guides, conventions, cheatsheets, templates } = Route.useLoaderData();
   return (
     <>
       <TemplatesSection templates={templates} />
@@ -27,6 +28,12 @@ function RouteComponent() {
         label="Conventions"
         items={conventions}
         to="/conventions/$"
+        className="mt-10"
+      />
+      <CatalogSection
+        label="Cheatsheets"
+        items={cheatsheets}
+        to="/cheatsheets/$"
         className="mt-10"
       />
     </>

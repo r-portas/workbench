@@ -3,7 +3,7 @@ import { z } from "zod";
 
 import { CONTENT_COLLECTIONS } from "./content-collection.server";
 
-const collectionNameSchema = z.enum(["guides", "conventions"]);
+const collectionNameSchema = z.enum(["guides", "conventions", "cheatsheets"]);
 
 export const listContentFn = createServerFn()
   .validator(z.object({ collection: collectionNameSchema }))

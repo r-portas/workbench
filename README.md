@@ -7,6 +7,7 @@ config all in one place.
 
 | Folder         | Contents                                                                  |
 | -------------- | ------------------------------------------------------------------------- |
+| `cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)        |
 | `conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
 | `guides/`      | Step-by-step zero-to-working setup instructions, one per tool             |
 | `templates/`   | Scaffoldable project templates (e.g. `tss`)                               |
@@ -47,7 +48,7 @@ root `package.json`, `web/`, and every template in `templates/`.
 bun update:all
 ```
 
-## Conventions
+## Repo Conventions
 
 - One topic per file, split rather than append a second topic to an existing note
 - Directories nest one level deep at most (`conventions/react/suspense.md`, not

@@ -4,11 +4,12 @@ import { ViewAsMarkdownIcon } from "@/components/view-as-markdown";
 import type { ContentCollectionName } from "@/lib/content-collection.types";
 import { cn } from "@/lib/utils";
 
-type CatalogTo = "/guides/$" | "/conventions/$";
+type CatalogTo = "/guides/$" | "/conventions/$" | "/cheatsheets/$";
 
 const COLLECTION_BY_TO: Record<CatalogTo, ContentCollectionName> = {
   "/guides/$": "guides",
   "/conventions/$": "conventions",
+  "/cheatsheets/$": "cheatsheets",
 };
 
 // #region CatalogSection

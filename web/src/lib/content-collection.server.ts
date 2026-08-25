@@ -133,6 +133,7 @@ export class ContentCollection {
 export const CONTENT_COLLECTIONS: Record<ContentCollectionName, ContentCollection> = {
   guides: new ContentCollection("../guides"),
   conventions: new ContentCollection("../conventions"),
+  cheatsheets: new ContentCollection("../cheatsheets"),
 };
 
 /**
