@@ -12,8 +12,17 @@ function itemToStringValue(item: SearchItem): string {
   return item.title;
 }
 
-function searchItemTo(kind: SearchItem["kind"]): "/guides/$" | "/conventions/$" {
-  return kind === "convention" ? "/conventions/$" : "/guides/$";
+const SEARCH_ITEM_TO: Record<
+  SearchItem["kind"],
+  "/guides/$" | "/conventions/$" | "/cheatsheets/$"
+> = {
+  guide: "/guides/$",
+  convention: "/conventions/$",
+  cheatsheet: "/cheatsheets/$",
+};
+
+function searchItemTo(kind: SearchItem["kind"]) {
+  return SEARCH_ITEM_TO[kind];
 }
 
 // #region WorkbenchSearch

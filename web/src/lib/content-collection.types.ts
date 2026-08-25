@@ -7,10 +7,10 @@ export interface ItemSummary {
 }
 
 /** Directory/API name for a markdown content collection. */
-export type ContentCollectionName = "guides" | "conventions";
+export type ContentCollectionName = "guides" | "conventions" | "cheatsheets";
 
 /** Which collection a search result belongs to. */
-export type ContentKind = "guide" | "convention";
+export type ContentKind = "guide" | "convention" | "cheatsheet";
 
 /**
  * A content listing tagged with its collection, for cross-collection search.
