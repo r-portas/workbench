@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import Article from "@/components/article";
+import MarkdownArticle from "@/components/markdown-article";
 import ViewAsMarkdown from "@/components/view-as-markdown";
 import { getContentFn } from "@/lib/content-collection.functions";
 
@@ -24,7 +24,7 @@ function RouteComponent() {
         <ViewAsMarkdown collection="conventions" slug={slug} />
       </div>
       <div className="mt-4">
-        <Article>{convention}</Article>
+        <MarkdownArticle>{convention}</MarkdownArticle>
       </div>
     </>
   );

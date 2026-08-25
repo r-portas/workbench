@@ -4,7 +4,6 @@ import { FileTextIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import type { ContentCollectionName } from "@/lib/content-collection.types";
-import { markdownPagePath } from "@/lib/markdown-page";
 import { cn } from "@/lib/utils";
 
 // #region ViewAsMarkdown
@@ -24,7 +23,8 @@ export default function ViewAsMarkdown({ collection, slug, className }: ViewAsMa
   return (
     <Link
       reloadDocument
-      to={markdownPagePath(collection, slug)}
+      to={`/${collection}/{$}.md`}
+      params={{ _splat: slug }}
       className={cn(
         buttonVariants({ variant: "outline", size: "xs" }),
         "text-muted-foreground",
@@ -58,7 +58,8 @@ export function ViewAsMarkdownIcon({ collection, slug, className }: ViewAsMarkdo
         render={
           <Link
             reloadDocument
-            to={markdownPagePath(collection, slug)}
+            to={`/${collection}/{$}.md`}
+            params={{ _splat: slug }}
             aria-label="View as markdown"
             className={cn(
               buttonVariants({ variant: "ghost", size: "icon-xs" }),
