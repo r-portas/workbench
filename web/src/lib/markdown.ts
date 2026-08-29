@@ -1,5 +1,6 @@
 import { createHighlighter } from "@tanstack/highlight/core";
 import { json } from "@tanstack/highlight/languages/json";
+import { markdown } from "@tanstack/highlight/languages/markdown";
 import { shell } from "@tanstack/highlight/languages/shell";
 import { ts } from "@tanstack/highlight/languages/ts";
 import { tsx } from "@tanstack/highlight/languages/tsx";
@@ -10,7 +11,7 @@ import { oneDarkProTheme } from "@tanstack/highlight/themes/one-dark-pro";
 import type { CodeHighlighter } from "@tanstack/markdown";
 
 const highlighter = createHighlighter({
-  languages: [ts, tsx, shell, json, yaml],
+  languages: [ts, tsx, shell, json, yaml, markdown],
 });
 
 export const highlightMarkdownCode: CodeHighlighter =
