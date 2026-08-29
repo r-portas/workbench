@@ -3,15 +3,15 @@ import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Layout } from "@/components/layout";
 import { Providers } from "@/components/providers";
 import { APP_NAME } from "@/lib/app-config";
+import { listContentFn } from "@/lib/content-collection.functions";
 import { highlightCss } from "@/lib/markdown";
-import { listSearchIndexFn } from "@/lib/search.functions";
 
 import appCss from "@/styles.css?url";
 
 export const Route = createRootRoute({
   // Kick off the index without awaiting so the rest of the page can render.
   loader: () => ({
-    searchIndex: listSearchIndexFn(),
+    searchIndex: listContentFn({ data: {} }),
   }),
   head: () => ({
     meta: [

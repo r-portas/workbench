@@ -4,31 +4,18 @@ import { Search } from "lucide-react";
 import { useRef, useState } from "react";
 
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group";
-import type { SearchItem } from "@/lib/content-collection.types";
+import type { ItemSummary } from "@/lib/content-collection.types";
 
 const BROWSE_RESULT_LIMIT = 5;
 
-function itemToStringValue(item: SearchItem): string {
+function itemToStringValue(item: ItemSummary): string {
   return item.title;
-}
-
-const SEARCH_ITEM_TO: Record<
-  SearchItem["kind"],
-  "/guides/$" | "/conventions/$" | "/cheatsheets/$"
-> = {
-  guide: "/guides/$",
-  convention: "/conventions/$",
-  cheatsheet: "/cheatsheets/$",
-};
-
-function searchItemTo(kind: SearchItem["kind"]) {
-  return SEARCH_ITEM_TO[kind];
 }
 
 // #region WorkbenchSearch
 interface WorkbenchSearchProps {
   /** Deferred search index from the root loader. */
-  searchIndex: Promise<SearchItem[]>;
+  searchIndex: Promise<ItemSummary[]>;
 }
 
 /**
@@ -68,7 +55,7 @@ function SearchInputPlaceholder() {
 // #region SearchAutocomplete
 interface SearchAutocompleteProps {
   /** Full search index, already resolved. */
-  items: SearchItem[];
+  items: ItemSummary[];
 }
 
 function SearchAutocomplete({ items }: SearchAutocompleteProps) {
@@ -120,17 +107,11 @@ function SearchAutocomplete({ items }: SearchAutocompleteProps) {
               No results found.
             </Autocomplete.Empty>
             <Autocomplete.List>
-              {(item: SearchItem) => (
+              {(item: ItemSummary) => (
                 <Autocomplete.Item
-                  key={`${item.kind}:${item.slug}`}
+                  key={item.slug}
                   value={item}
-                  render={
-                    <Link
-                      to={searchItemTo(item.kind)}
-                      params={{ _splat: item.slug }}
-                      onClick={handleSelect}
-                    />
-                  }
+                  render={<Link to="/$" params={{ _splat: item.slug }} onClick={handleSelect} />}
                   className="block cursor-default rounded-md px-2.5 py-1.5 text-sm text-popover-foreground outline-none data-[highlighted]:bg-accent/50"
                 >
                   {item.title}

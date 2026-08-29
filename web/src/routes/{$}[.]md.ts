@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { rawMarkdownResponse } from "@/lib/content-collection.server";
 
-export const Route = createFileRoute("/guides/{$}.md")({
+export const Route = createFileRoute("/{$}.md")({
   server: {
     handlers: {
       GET: async ({ params }) => {
@@ -10,7 +10,7 @@ export const Route = createFileRoute("/guides/{$}.md")({
         if (!slug) {
           return new Response("Not found", { status: 404 });
         }
-        return rawMarkdownResponse("guides", slug);
+        return rawMarkdownResponse(slug);
       },
     },
   },

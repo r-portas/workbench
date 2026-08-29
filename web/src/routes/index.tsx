@@ -2,40 +2,34 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import CatalogSection from "@/components/home/catalog-section";
 import TemplatesSection from "@/components/home/templates-section";
+import { groupIntoSections } from "@/lib/content-collection";
 import { listContentFn } from "@/lib/content-collection.functions";
 import { listTemplatesFn } from "@/lib/templates.functions";
 
 export const Route = createFileRoute("/")({
   component: RouteComponent,
   loader: async () => {
-    const [guides, conventions, cheatsheets, templates] = await Promise.all([
-      listContentFn({ data: { collection: "guides" } }),
-      listContentFn({ data: { collection: "conventions" } }),
-      listContentFn({ data: { collection: "cheatsheets" } }),
+    const [content, templates] = await Promise.all([
+      listContentFn({ data: {} }),
       listTemplatesFn(),
     ]);
-    return { guides, conventions, cheatsheets, templates };
+    return { sections: groupIntoSections(content), templates };
   },
 });
 
 function RouteComponent() {
-  const { guides, conventions, cheatsheets, templates } = Route.useLoaderData();
+  const { sections, templates } = Route.useLoaderData();
   return (
     <>
       <TemplatesSection templates={templates} />
-      <CatalogSection label="Guides" items={guides} to="/guides/$" className="mt-10" />
-      <CatalogSection
-        label="Conventions"
-        items={conventions}
-        to="/conventions/$"
-        className="mt-10"
-      />
-      <CatalogSection
-        label="Cheatsheets"
-        items={cheatsheets}
-        to="/cheatsheets/$"
-        className="mt-10"
-      />
+      {sections.map((section) => (
+        <CatalogSection
+          key={section.slug}
+          label={section.label}
+          items={section.items}
+          className="mt-10"
+        />
+      ))}
     </>
   );
 }

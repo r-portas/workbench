@@ -5,11 +5,11 @@ import { ButtonLink } from "@/components/ui/button-link";
 import { WorkbenchIcon } from "@/components/workbench-icon";
 import { WorkbenchSearch } from "@/components/workbench-search";
 import { APP_NAME } from "@/lib/app-config";
-import type { SearchItem } from "@/lib/content-collection.types";
+import type { ItemSummary } from "@/lib/content-collection.types";
 
 interface NavbarProps {
   /** Deferred search index passed through to workbench search. */
-  searchIndex: Promise<SearchItem[]>;
+  searchIndex: Promise<ItemSummary[]>;
 }
 
 /**

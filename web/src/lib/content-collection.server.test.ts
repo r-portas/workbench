@@ -83,6 +83,26 @@ describe("ContentCollection", () => {
         "nested/thing",
       ]);
     });
+
+    test("returns only items under a matching filter prefix", async () => {
+      const items = await collection.list("nested/");
+      expect(items.map((item) => item.slug)).toEqual(["nested/other", "nested/thing"]);
+    });
+
+    test("still skips underscore-prefixed files within a filter prefix", async () => {
+      const items = await collection.list("nested/");
+      expect(items.map((item) => item.slug)).not.toContain("nested/_secret");
+    });
+
+    test("matches a partial filename, not just a directory prefix", async () => {
+      const items = await collection.list("code-");
+      expect(items.map((item) => item.slug)).toEqual(["code-style"]);
+    });
+
+    test("returns nothing for a non-matching filter", async () => {
+      const items = await collection.list("missing/");
+      expect(items).toEqual([]);
+    });
   });
 
   describe("getRaw", () => {
