@@ -1,14 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { CONTENT_COLLECTIONS } from "@/lib/content-collection.server";
+import { groupIntoSections } from "@/lib/content-collection";
+import { CONTENT } from "@/lib/content-collection.server";
 
 export const Route = createFileRoute("/llms.txt")({
   server: {
     handlers: {
       GET: async () => {
-        const guides = await CONTENT_COLLECTIONS.guides.list();
-        const conventions = await CONTENT_COLLECTIONS.conventions.list();
-        const cheatsheets = await CONTENT_COLLECTIONS.cheatsheets.list();
+        const sections = groupIntoSections(await CONTENT.list());
+        const catalog = sections
+          .map(
+            (section) =>
+              `## ${section.label}\n${section.items
+                .map((item) => `- [${item.slug}](/${item.slug}.md): ${item.title}`)
+                .join("\n")}`,
+          )
+          .join("\n\n");
+
         const content = `
 # Workbench
 > Personal engineering workspace: notes, conventions, project templates, setup guides, and cheatsheets.
@@ -16,14 +24,7 @@ export const Route = createFileRoute("/llms.txt")({
 Guides are zero-to-working setup instructions. Conventions are decisions and rules. Cheatsheets are command/reference lookups.
 Every HTML page has a markdown version at the same path with \`.md\` appended.    
 
-## Guides
-${guides.map((guide) => `- [${guide.slug}](/guides/${guide.slug}.md): ${guide.title}`).join("\n")}
-
-## Conventions
-${conventions.map((convention) => `- [${convention.slug}](/conventions/${convention.slug}.md): ${convention.title}`).join("\n")}
-
-## Cheatsheets
-${cheatsheets.map((cheatsheet) => `- [${cheatsheet.slug}](/cheatsheets/${cheatsheet.slug}.md): ${cheatsheet.title}`).join("\n")}
+${catalog}
         `;
 
         return new Response(content, {

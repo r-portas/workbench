@@ -2,7 +2,7 @@ import { readdir, readFile } from "fs/promises";
 
 import { parseMarkdown } from "@tanstack/markdown";
 
-import type { ContentCollectionName, ItemSummary } from "./content-collection.types";
+import type { ItemSummary } from "./content-collection.types";
 
 const TITLE_REGEX = /^#\s+(.+)$/m;
 const MARKDOWN_EXTENSION_REGEX = /\.md$/;
@@ -13,9 +13,9 @@ const MARKDOWN_EXTENSION_REGEX = /\.md$/;
  *
  * @example
  * ```ts
- * const guides = new ContentCollection("./content/guides/");
- * const items = await guides.list();
- * const guide = await guides.get(items[0].slug);
+ * const content = new ContentCollection("./content/");
+ * const guides = await content.list("guides/");
+ * const guide = await content.get(guides[0].slug);
  * ```
  */
 export class ContentCollection {
@@ -36,7 +36,7 @@ export class ContentCollection {
    * @param slug - The item's path relative to the collection, without the `.md` extension
    *
    * @remarks
-   * Nested files use `/`-separated slugs, e.g. `tanstack-start/thing`.
+   * Nested files use `/`-separated slugs, e.g. `guides/drizzle`.
    * Throws if the slug is unsafe or no matching markdown file exists.
    */
   public async getRaw(slug: string) {
@@ -50,7 +50,7 @@ export class ContentCollection {
    * @param slug - The item's path relative to the collection, without the `.md` extension
    *
    * @remarks
-   * Nested files use `/`-separated slugs, e.g. `tanstack-start/thing`.
+   * Nested files use `/`-separated slugs, e.g. `guides/drizzle`.
    * Throws if the slug is unsafe or no matching markdown file exists.
    */
   public async get(slug: string) {
@@ -61,15 +61,18 @@ export class ContentCollection {
   /**
    * Lists all content items in the collection, including nested directories.
    *
+   * @param filter - Optional partial path; only items whose slug starts with it are returned, e.g. `guides/`
+   *
    * @remarks
    * Skips files whose path has a `_`-prefixed segment, and files that don't end in `.md`.
    * Sorted by slug.
    */
-  public async list(): Promise<ItemSummary[]> {
+  public async list(filter?: string): Promise<ItemSummary[]> {
     const files = await readdir(this.path, { recursive: true });
+    // Prefix check runs first so non-matching paths skip the more expensive segment scan.
     const markdownFiles = files
       .map((file) => file.replaceAll("\\", "/"))
-      .filter(this.isMarkdownFile);
+      .filter((file) => (!filter || file.startsWith(filter)) && this.isMarkdownFile(file));
     const items = await Promise.all(
       markdownFiles.map(async (file) => {
         const slug = file.replace(MARKDOWN_EXTENSION_REGEX, "");
@@ -129,26 +132,11 @@ export class ContentCollection {
   }
 }
 
-/** Named content collections used by the workbench app. */
-export const CONTENT_COLLECTIONS: Record<ContentCollectionName, ContentCollection> = {
-  guides: new ContentCollection("../guides"),
-  conventions: new ContentCollection("../conventions"),
-  cheatsheets: new ContentCollection("../cheatsheets"),
-};
-
 /**
- * Returns a `text/markdown` response for a content item, or 404 if missing/unsafe.
+ * The repo's markdown content, rooted at the top-level `content/` directory.
  *
- * @param collection - Which content collection to read from
- * @param slug - The item's path relative to the collection, without the `.md` extension
+ * @remarks
+ * Slugs include the top-level folder, e.g. `guides/drizzle`, so callers filter
+ * with `list("guides/")` rather than reaching for a per-folder collection.
  */
-export async function rawMarkdownResponse(collection: ContentCollectionName, slug: string) {
-  try {
-    const text = await CONTENT_COLLECTIONS[collection].getRaw(slug);
-    return new Response(text, {
-      headers: { "Content-Type": "text/markdown; charset=utf-8" },
-    });
-  } catch {
-    return new Response("Not found", { status: 404 });
-  }
-}
+export const CONTENT = new ContentCollection("../content");

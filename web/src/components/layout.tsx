@@ -1,11 +1,11 @@
 import { Outlet } from "@tanstack/react-router";
 
 import { Navbar } from "@/components/navbar";
-import type { SearchItem } from "@/lib/content-collection.types";
+import type { ItemSummary } from "@/lib/content-collection.types";
 
 interface LayoutProps {
   /** Deferred search index from the root loader. */
-  searchIndex: Promise<SearchItem[]>;
+  searchIndex: Promise<ItemSummary[]>;
 }
 
 /**

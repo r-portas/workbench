@@ -10,17 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
-import { Route as CheatsheetsSplatRouteImport } from './routes/cheatsheets/$'
-import { Route as CheatsheetsChar123Char125DotmdRouteImport } from './routes/cheatsheets/{$}[.]md'
-import { Route as ConventionsSplatRouteImport } from './routes/conventions/$'
-import { Route as ConventionsChar123Char125DotmdRouteImport } from './routes/conventions/{$}[.]md'
-import { Route as GuidesSplatRouteImport } from './routes/guides/$'
-import { Route as GuidesChar123Char125DotmdRouteImport } from './routes/guides/{$}[.]md'
+import { Route as Char123Char125DotmdRouteImport } from './routes/{$}[.]md'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
@@ -28,113 +29,44 @@ const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
   path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheatsheetsSplatRoute = CheatsheetsSplatRouteImport.update({
-  id: '/cheatsheets/$',
-  path: '/cheatsheets/$',
+const Char123Char125DotmdRoute = Char123Char125DotmdRouteImport.update({
+  id: '/{$}.md',
+  path: '/{$}.md',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CheatsheetsChar123Char125DotmdRoute =
-  CheatsheetsChar123Char125DotmdRouteImport.update({
-    id: '/cheatsheets/{$}.md',
-    path: '/cheatsheets/{$}.md',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const ConventionsSplatRoute = ConventionsSplatRouteImport.update({
-  id: '/conventions/$',
-  path: '/conventions/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConventionsChar123Char125DotmdRoute =
-  ConventionsChar123Char125DotmdRouteImport.update({
-    id: '/conventions/{$}.md',
-    path: '/conventions/{$}.md',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const GuidesSplatRoute = GuidesSplatRouteImport.update({
-  id: '/guides/$',
-  path: '/guides/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GuidesChar123Char125DotmdRoute =
-  GuidesChar123Char125DotmdRouteImport.update({
-    id: '/guides/{$}.md',
-    path: '/guides/{$}.md',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/cheatsheets/$': typeof CheatsheetsSplatRoute
-  '/cheatsheets/{$}.md': typeof CheatsheetsChar123Char125DotmdRoute
-  '/conventions/$': typeof ConventionsSplatRoute
-  '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
-  '/guides/$': typeof GuidesSplatRoute
-  '/guides/{$}.md': typeof GuidesChar123Char125DotmdRoute
+  '/{$}.md': typeof Char123Char125DotmdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/cheatsheets/$': typeof CheatsheetsSplatRoute
-  '/cheatsheets/{$}.md': typeof CheatsheetsChar123Char125DotmdRoute
-  '/conventions/$': typeof ConventionsSplatRoute
-  '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
-  '/guides/$': typeof GuidesSplatRoute
-  '/guides/{$}.md': typeof GuidesChar123Char125DotmdRoute
+  '/{$}.md': typeof Char123Char125DotmdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
   '/llms.txt': typeof LlmsDottxtRoute
-  '/cheatsheets/$': typeof CheatsheetsSplatRoute
-  '/cheatsheets/{$}.md': typeof CheatsheetsChar123Char125DotmdRoute
-  '/conventions/$': typeof ConventionsSplatRoute
-  '/conventions/{$}.md': typeof ConventionsChar123Char125DotmdRoute
-  '/guides/$': typeof GuidesSplatRoute
-  '/guides/{$}.md': typeof GuidesChar123Char125DotmdRoute
+  '/{$}.md': typeof Char123Char125DotmdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/llms.txt'
-    | '/cheatsheets/$'
-    | '/cheatsheets/{$}.md'
-    | '/conventions/$'
-    | '/conventions/{$}.md'
-    | '/guides/$'
-    | '/guides/{$}.md'
+  fullPaths: '/' | '/$' | '/llms.txt' | '/{$}.md'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/llms.txt'
-    | '/cheatsheets/$'
-    | '/cheatsheets/{$}.md'
-    | '/conventions/$'
-    | '/conventions/{$}.md'
-    | '/guides/$'
-    | '/guides/{$}.md'
-  id:
-    | '__root__'
-    | '/'
-    | '/llms.txt'
-    | '/cheatsheets/$'
-    | '/cheatsheets/{$}.md'
-    | '/conventions/$'
-    | '/conventions/{$}.md'
-    | '/guides/$'
-    | '/guides/{$}.md'
+  to: '/' | '/$' | '/llms.txt' | '/{$}.md'
+  id: '__root__' | '/' | '/$' | '/llms.txt' | '/{$}.md'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
-  CheatsheetsSplatRoute: typeof CheatsheetsSplatRoute
-  CheatsheetsChar123Char125DotmdRoute: typeof CheatsheetsChar123Char125DotmdRoute
-  ConventionsSplatRoute: typeof ConventionsSplatRoute
-  ConventionsChar123Char125DotmdRoute: typeof ConventionsChar123Char125DotmdRoute
-  GuidesSplatRoute: typeof GuidesSplatRoute
-  GuidesChar123Char125DotmdRoute: typeof GuidesChar123Char125DotmdRoute
+  Char123Char125DotmdRoute: typeof Char123Char125DotmdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -146,6 +78,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/llms.txt': {
       id: '/llms.txt'
       path: '/llms.txt'
@@ -153,46 +92,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cheatsheets/$': {
-      id: '/cheatsheets/$'
-      path: '/cheatsheets/$'
-      fullPath: '/cheatsheets/$'
-      preLoaderRoute: typeof CheatsheetsSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cheatsheets/{$}.md': {
-      id: '/cheatsheets/{$}.md'
-      path: '/cheatsheets/{$}.md'
-      fullPath: '/cheatsheets/{$}.md'
-      preLoaderRoute: typeof CheatsheetsChar123Char125DotmdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/conventions/$': {
-      id: '/conventions/$'
-      path: '/conventions/$'
-      fullPath: '/conventions/$'
-      preLoaderRoute: typeof ConventionsSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/conventions/{$}.md': {
-      id: '/conventions/{$}.md'
-      path: '/conventions/{$}.md'
-      fullPath: '/conventions/{$}.md'
-      preLoaderRoute: typeof ConventionsChar123Char125DotmdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guides/$': {
-      id: '/guides/$'
-      path: '/guides/$'
-      fullPath: '/guides/$'
-      preLoaderRoute: typeof GuidesSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/guides/{$}.md': {
-      id: '/guides/{$}.md'
-      path: '/guides/{$}.md'
-      fullPath: '/guides/{$}.md'
-      preLoaderRoute: typeof GuidesChar123Char125DotmdRouteImport
+    '/{$}.md': {
+      id: '/{$}.md'
+      path: '/{$}.md'
+      fullPath: '/{$}.md'
+      preLoaderRoute: typeof Char123Char125DotmdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -200,13 +104,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
-  CheatsheetsSplatRoute: CheatsheetsSplatRoute,
-  CheatsheetsChar123Char125DotmdRoute: CheatsheetsChar123Char125DotmdRoute,
-  ConventionsSplatRoute: ConventionsSplatRoute,
-  ConventionsChar123Char125DotmdRoute: ConventionsChar123Char125DotmdRoute,
-  GuidesSplatRoute: GuidesSplatRoute,
-  GuidesChar123Char125DotmdRoute: GuidesChar123Char125DotmdRoute,
+  Char123Char125DotmdRoute: Char123Char125DotmdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

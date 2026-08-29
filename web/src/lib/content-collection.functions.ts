@@ -1,18 +1,18 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-import { CONTENT_COLLECTIONS } from "./content-collection.server";
+import { CONTENT } from "./content-collection.server";
 
-const collectionNameSchema = z.enum(["guides", "conventions", "cheatsheets"]);
-
+/** Lists content items, optionally narrowed to a partial path such as `guides/`. */
 export const listContentFn = createServerFn()
-  .validator(z.object({ collection: collectionNameSchema }))
+  .validator(z.object({ filter: z.string().optional() }))
   .handler(async ({ data }) => {
-    return CONTENT_COLLECTIONS[data.collection].list();
+    return CONTENT.list(data.filter);
   });
 
+/** Reads and parses a single content item by its full path, e.g. `guides/drizzle`. */
 export const getContentFn = createServerFn()
-  .validator(z.object({ collection: collectionNameSchema, slug: z.string() }))
+  .validator(z.object({ slug: z.string() }))
   .handler(async ({ data }) => {
-    return CONTENT_COLLECTIONS[data.collection].get(data.slug);
+    return CONTENT.get(data.slug);
   });

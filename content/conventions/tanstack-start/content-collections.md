@@ -5,13 +5,16 @@ can be copied into a `CLAUDE.md`/`AGENTS.md` file for agents to follow.
 
 ## Structure
 
-- A `ContentCollection` class wraps one directory of markdown files, one instance per content type
-  (e.g. `guides`, `posts`).
-- `get(slug)` reads and parses a single item by filename, where `slug` is the filename without the
-  `.md` extension. Throws if no matching file exists.
-- `list()` returns lightweight `{ slug, title }` summaries for every item, for building
-  index/listing pages without parsing full content. Skips files prefixed with `_` and any non-`.md`
-  files.
+- A `ContentCollection` class wraps a single root directory of markdown files, with content types as
+  subdirectories (e.g. `content/guides/`, `content/posts/`). Prefer one instance for the whole root
+  over one instance per type, so the type names don't get hardcoded across the app.
+- A slug is a file's path relative to the root, without the `.md` extension, e.g. `guides/drizzle`.
+  Because the slug carries its own type prefix, it doubles as the item's URL and callers don't need
+  to pass the type separately.
+- `get(slug)` reads and parses a single item. Throws if no matching file exists.
+- `list(filter?)` returns lightweight `{ slug, title }` summaries, for building index/listing pages
+  without parsing full content. Skips files prefixed with `_` and any non-`.md` files. The optional
+  `filter` is a partial path (e.g. `guides/`) that narrows results to one subtree.
 
 ## Implementation
 
@@ -40,9 +43,9 @@ const MARKDOWN_EXTENSION_REGEX = /\.md$/;
  *
  * @example
  * ```ts
- * const guides = new ContentCollection("./content/guides/");
- * const items = await guides.list();
- * const guide = await guides.get(items[0].slug);
+ * const content = new ContentCollection("./content/");
+ * const guides = await content.list("guides/");
+ * const guide = await content.get(guides[0].slug);
  * ```
  */
 export class ContentCollection {
@@ -73,12 +76,18 @@ export class ContentCollection {
   /**
    * Lists all content items in the collection.
    *
+   * @param filter - Optional partial path; only items whose slug starts with it are returned
+   *
    * @remarks
    * Skips files whose names start with `_`, and files that don't end in `.md`.
    */
-  public async list(): Promise<ItemSummary[]> {
-    const files = await readdir(this.path);
-    const markdownFiles = files.filter((file) => file.endsWith(".md") && !file.startsWith("_"));
+  public async list(filter?: string): Promise<ItemSummary[]> {
+    const files = await readdir(this.path, { recursive: true });
+    // Prefix check runs first so non-matching paths skip the more expensive extension checks.
+    const markdownFiles = files.filter(
+      (file) =>
+        (!filter || file.startsWith(filter)) && file.endsWith(".md") && !file.startsWith("_"),
+    );
     return Promise.all(
       markdownFiles.map(async (file) => {
         const slug = file.replace(MARKDOWN_EXTENSION_REGEX, "");
@@ -110,12 +119,17 @@ export class ContentCollection {
 ## Usage
 
 ```ts
-// src/lib/guides.server.ts
-export const guides = new ContentCollection("./content/guides/");
+// src/lib/content-collection.server.ts
+export const CONTENT = new ContentCollection("./content/");
 ```
 
 ```ts
-// route loader
-const items = await guides.list();
-const guide = await guides.get(params.slug);
+// route loader, for a listing page scoped to one type
+const guides = await CONTENT.list("guides/");
+```
+
+```ts
+// route loader for a catch-all splat route, e.g. src/routes/$.tsx
+// params._splat is already the slug, e.g. "guides/drizzle"
+const item = await CONTENT.get(params._splat);
 ```

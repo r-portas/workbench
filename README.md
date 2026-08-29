@@ -5,13 +5,14 @@ config all in one place.
 
 ## Layout
 
-| Folder         | Contents                                                                  |
-| -------------- | ------------------------------------------------------------------------- |
-| `cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)        |
-| `conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
-| `guides/`      | Step-by-step zero-to-working setup instructions, one per tool             |
-| `templates/`   | Scaffoldable project templates (e.g. `tss`)                               |
-| `web/`         | Website that hosts this repo's content, bootstrapped from `templates/tss` |
+| Folder                 | Contents                                                                  |
+| ---------------------- | ------------------------------------------------------------------------- |
+| `content/`             | All written notes, served by `web/`                                       |
+| `content/cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)        |
+| `content/conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
+| `content/guides/`      | Step-by-step zero-to-working setup instructions, one per tool             |
+| `templates/`           | Scaffoldable project templates (e.g. `tss`)                               |
+| `web/`                 | Website that hosts this repo's content, bootstrapped from `templates/tss` |
 
 ## Templates
 
@@ -51,5 +52,8 @@ bun update:all
 ## Repo Conventions
 
 - One topic per file, split rather than append a second topic to an existing note
-- Directories nest one level deep at most (`conventions/react/suspense.md`, not
-  `conventions/frontend/react/hooks/suspense.md`)
+- Notes live under `content/<kind>/`, and nest one level deeper at most
+  (`content/conventions/react/suspense.md`, not
+  `content/conventions/frontend/react/hooks/suspense.md`)
+- A note's URL is its path under `content/`, so `content/guides/drizzle.md` is served at
+  `/guides/drizzle`

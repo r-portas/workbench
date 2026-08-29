@@ -1,7 +1,7 @@
-import { afterEach, beforeEach, describe, expect, test } from "bun:test";
+import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { mkdir, mkdtemp, rm, writeFile } from "fs/promises";
 import { tmpdir } from "os";
-import { join } from "path";
+import { dirname, join } from "path";
 
 import { ContentCollection } from "./content-collection.server";
 
@@ -16,26 +16,24 @@ const FIXTURE_FILES: Record<string, string> = {
 };
 
 async function writeFixture(root: string) {
-  await mkdir(join(root, "nested"), { recursive: true });
-  await mkdir(join(root, "_hidden"), { recursive: true });
-  await Promise.all(
-    Object.entries(FIXTURE_FILES).map(([relativePath, contents]) =>
-      writeFile(join(root, relativePath), contents),
-    ),
-  );
+  const paths = Object.keys(FIXTURE_FILES);
+  const directories = new Set(paths.map((path) => dirname(path)).filter((dir) => dir !== "."));
+  await Promise.all([...directories].map((dir) => mkdir(join(root, dir), { recursive: true })));
+  await Promise.all(paths.map((path) => writeFile(join(root, path), FIXTURE_FILES[path]!)));
 }
 
+// The fixture is only ever read, so it's built once for the whole file.
 describe("ContentCollection", () => {
   let fixturePath: string;
   let collection: ContentCollection;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     fixturePath = await mkdtemp(join(tmpdir(), "content-collection-"));
     await writeFixture(fixturePath);
     collection = new ContentCollection(fixturePath);
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await rm(fixturePath, { recursive: true, force: true });
   });
 
@@ -75,13 +73,33 @@ describe("ContentCollection", () => {
       expect(items.map((item) => item.slug)).not.toContain("nested/notes");
     });
 
-    test("sorts items by slug", async () => {
+    test("returns exactly the visible markdown files, sorted by slug", async () => {
       const items = await collection.list();
       expect(items.map((item) => item.slug)).toEqual([
         "code-style",
         "nested/other",
         "nested/thing",
       ]);
+    });
+
+    test("returns only items under a matching filter prefix", async () => {
+      const items = await collection.list("nested/");
+      expect(items.map((item) => item.slug)).toEqual(["nested/other", "nested/thing"]);
+    });
+
+    test("still skips underscore-prefixed files within a filter prefix", async () => {
+      const items = await collection.list("nested/");
+      expect(items.map((item) => item.slug)).not.toContain("nested/_secret");
+    });
+
+    test("matches a partial filename, not just a directory prefix", async () => {
+      const items = await collection.list("code-");
+      expect(items.map((item) => item.slug)).toEqual(["code-style"]);
+    });
+
+    test("returns nothing for a non-matching filter", async () => {
+      const items = await collection.list("missing/");
+      expect(items).toEqual([]);
     });
   });
 
@@ -95,41 +113,48 @@ describe("ContentCollection", () => {
       const text = await collection.getRaw("code-style");
       expect(text).toBe("# Code Style\n");
     });
+  });
 
+  // `get` delegates to `getRaw`, so the guard is only exercised here.
+  describe("getRaw slug validation", () => {
     test("rejects a parent-directory segment", async () => {
       await expect(collection.getRaw("nested/../code-style")).rejects.toThrow("Invalid slug");
+    });
+
+    test("rejects a slug of ..", async () => {
+      await expect(collection.getRaw("..")).rejects.toThrow("Invalid slug");
+    });
+
+    test("rejects backslashes", async () => {
+      await expect(collection.getRaw("nested\\thing")).rejects.toThrow("Invalid slug");
+    });
+
+    test("rejects empty segments", async () => {
+      await expect(collection.getRaw("nested//thing")).rejects.toThrow("Invalid slug");
+    });
+
+    test("rejects a leading slash", async () => {
+      await expect(collection.getRaw("/code-style")).rejects.toThrow("Invalid slug");
     });
   });
 
   describe("get", () => {
-    test("reads a nested item by its slash-separated slug", async () => {
+    test("parses a nested item into markdown nodes", async () => {
       const item = await collection.get("nested/thing");
-      expect(item).toBeDefined();
+      expect(item.children[0]).toMatchObject({
+        type: "heading",
+        depth: 1,
+        children: [{ type: "text", value: "Nested Thing" }],
+      });
     });
 
-    test("reads a top-level item by its filename slug", async () => {
+    test("parses a top-level item into markdown nodes", async () => {
       const item = await collection.get("code-style");
-      expect(item).toBeDefined();
-    });
-
-    test("rejects a parent-directory segment", async () => {
-      await expect(collection.get("nested/../code-style")).rejects.toThrow("Invalid slug");
-    });
-
-    test("rejects a slug of ..", async () => {
-      await expect(collection.get("..")).rejects.toThrow("Invalid slug");
-    });
-
-    test("rejects backslashes", async () => {
-      await expect(collection.get("nested\\thing")).rejects.toThrow("Invalid slug");
-    });
-
-    test("rejects empty segments", async () => {
-      await expect(collection.get("nested//thing")).rejects.toThrow("Invalid slug");
-    });
-
-    test("rejects a leading slash", async () => {
-      await expect(collection.get("/code-style")).rejects.toThrow("Invalid slug");
+      expect(item.children[0]).toMatchObject({
+        type: "heading",
+        depth: 1,
+        children: [{ type: "text", value: "Code Style" }],
+      });
     });
   });
 });
