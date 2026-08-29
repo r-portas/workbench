@@ -140,19 +140,3 @@ export class ContentCollection {
  * with `list("guides/")` rather than reaching for a per-folder collection.
  */
 export const CONTENT = new ContentCollection("../content");
-
-/**
- * Returns a `text/markdown` response for a content item, or 404 if missing/unsafe.
- *
- * @param slug - The item's path relative to `content/`, without the `.md` extension
- */
-export async function rawMarkdownResponse(slug: string) {
-  try {
-    const text = await CONTENT.getRaw(slug);
-    return new Response(text, {
-      headers: { "Content-Type": "text/markdown; charset=utf-8" },
-    });
-  } catch {
-    return new Response("Not found", { status: 404 });
-  }
-}
