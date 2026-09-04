@@ -8,7 +8,7 @@
     "update:all": "for d in . web templates/*; do (cd \"$d\" && bun update --interactive --latest); done"
   },
   "devDependencies": {
-    "@types/bun": "^1.4.0",
-    "oxfmt": "^0.65.0"
+    "@types/bun": "^1.4.1",
+    "oxfmt": "^0.66.0"
   }
 }

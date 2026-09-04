@@ -9,7 +9,7 @@
     "update": "bun update --interactive --latest"
   },
   "dependencies": {
-    "@base-ui/react": "^1.7.0",
+    "@base-ui/react": "^1.8.0",
     "@fontsource-variable/geist": "^5.3.0",
     "@fontsource-variable/geist-mono": "^5.3.0",
     "@tanstack/highlight": "^0.0.10",
@@ -19,7 +19,7 @@
     "@tanstack/start-static-server-functions": "1.167.32",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^1.37.0",
+    "lucide-react": "^1.41.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwind-merge": "^3.6.0",
@@ -29,13 +29,13 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "@types/bun": "^1.4.0",
+    "@types/bun": "^1.4.1",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5",
+    "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
-    "oxfmt": "^0.65.0",
-    "oxlint": "^1.80.0",
-    "shadcn": "^4.19.0",
+    "oxfmt": "^0.66.0",
+    "oxlint": "^1.81.0",
+    "shadcn": "^4.21.0",
     "typescript": "^7.0.2",
     "vite": "^8.2.2"
   }
