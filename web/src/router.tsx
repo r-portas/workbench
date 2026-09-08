@@ -35,10 +35,7 @@ function DefaultNotFound() {
   );
 }
 
-function DefaultError({ error, reset }: ErrorComponentProps) {
-  // In production, don't leak internal details
-  const message = import.meta.env.DEV ? error.message : "An unexpected error occurred";
-
+function DefaultError({ reset }: ErrorComponentProps) {
   return (
     <Empty className="h-full">
       <EmptyHeader>
@@ -46,7 +43,6 @@ function DefaultError({ error, reset }: ErrorComponentProps) {
           <AlertTriangleIcon />
         </EmptyMedia>
         <EmptyTitle>Something went wrong</EmptyTitle>
-        <EmptyDescription>{message}</EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button size="sm" onClick={reset}>
