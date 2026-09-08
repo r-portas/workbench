@@ -4,11 +4,11 @@
   "scripts": {
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
-    "update": "bun update --interactive --latest",
-    "update:all": "for d in . web templates/*; do (cd \"$d\" && bun update --interactive --latest); done"
+    "update": "bun update --latest",
+    "update:all": "for d in . web templates/*; do (cd \"$d\" && bun run update); done"
   },
   "devDependencies": {
-    "@types/bun": "^1.4.1",
-    "oxfmt": "^0.66.0"
+    "@types/bun": "^1.4.2",
+    "oxfmt": "^0.67.0"
   }
 }
