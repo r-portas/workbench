@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 const COPIED_RESET_MS = 1500;
 
 // #region TemplatesSection
-interface TemplateItem {
+export interface TemplateItem {
   /** Directory name, shown as the row title. */
   name: string;
   /** Degit command copied by the row's copy button. */
