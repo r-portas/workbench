@@ -1,6 +1,6 @@
 import type { LinkProps } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
 import { ButtonLink } from "@/components/ui/button-link";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
@@ -14,12 +14,14 @@ export interface SidebarItem extends LinkProps {
 interface SidebarProps extends ComponentProps<"nav"> {
   items: SidebarItem[];
   appIcon: LucideIcon;
+  children?: ReactNode;
 }
 
 /**
  * A full-height, icon-only navigation rail that sits alongside page content.
  *
  * @param items - Icons to render, each paired with a `title` shown as a tooltip on hover.
+ * @param children - Rendered at the bottom of the nav, e.g. a user profile button.
  *
  * @remarks
  * Requires the app to be wrapped in `TooltipProvider` (see `@/components/ui/tooltip`),
@@ -29,12 +31,14 @@ interface SidebarProps extends ComponentProps<"nav"> {
  * @example
  * ```tsx
  * <div className="flex min-h-screen">
- *   <Sidebar appIcon={Blocks} items={[{ icon: Home, title: "Home", to: "/" }]} />
+ *   <Sidebar appIcon={Blocks} items={[{ icon: Home, title: "Home", to: "/" }]}>
+ *     <UserButton />
+ *   </Sidebar>
  *   <main className="flex-1">...</main>
  * </div>
  * ```
  */
-function Sidebar({ items, appIcon: AppIcon, className, ...props }: SidebarProps) {
+function Sidebar({ items, appIcon: AppIcon, className, children, ...props }: SidebarProps) {
   return (
     <nav
       className={cn(
@@ -64,6 +68,7 @@ function Sidebar({ items, appIcon: AppIcon, className, ...props }: SidebarProps)
           <TooltipContent side="right">{title}</TooltipContent>
         </Tooltip>
       ))}
+      <div className="mt-auto flex flex-col gap-1">{children}</div>
     </nav>
   );
 }
