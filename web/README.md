@@ -4,10 +4,9 @@ Website for workbench
 
 ## Quick Start
 
-```sh
-# Install dependencies
-bun install
+From the repo root, run `bun install` once. Then from this directory:
 
+```sh
 # Start the dev server, available on http://localhost:3000
 bun dev
 

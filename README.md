@@ -35,6 +35,10 @@ bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 ```sh
 gh repo clone r-portas/workbench ~/workbench
 cd ~/workbench
+
+# Install dependencies
+bun install
+
 # ./bootstrap.sh (future)
 ```
 
@@ -42,8 +46,8 @@ cd ~/workbench
 
 ### Updating packages
 
-Run `bun update:all` from the repo root to update dependencies to their latest versions across the
-root `package.json`, `web/`, and every template in `templates/`.
+Run `bun update:all` from the repo root to update dependencies to their latest versions across every
+workspace.
 
 ```sh
 bun update:all

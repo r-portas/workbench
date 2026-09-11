@@ -1,11 +1,14 @@
 {
   "name": "workbench",
   "private": true,
+  "workspaces": [
+    "web",
+    "templates/*"
+  ],
   "scripts": {
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
-    "update": "bun update --latest",
-    "update:all": "for d in . web templates/*; do (cd \"$d\" && bun run update); done"
+    "update:all": "bun update --latest --recursive"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",
