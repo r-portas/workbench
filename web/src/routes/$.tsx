@@ -1,6 +1,8 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { ArrowLeftIcon } from "lucide-react";
 
 import MarkdownArticle from "@/components/markdown-article";
+import { ButtonLink } from "@/components/ui/button-link";
 import ViewAsMarkdown from "@/components/view-as-markdown";
 import { getContentFn } from "@/lib/content-collection.functions";
 
@@ -22,7 +24,11 @@ function RouteComponent() {
   const { item, slug } = Route.useLoaderData();
   return (
     <>
-      <div className="flex justify-end">
+      <div className="flex items-center justify-between">
+        <ButtonLink to="/" variant="ghost" size="sm">
+          <ArrowLeftIcon data-icon="inline-start" />
+          Back
+        </ButtonLink>
         <ViewAsMarkdown slug={slug} />
       </div>
       <div className="mt-4">
