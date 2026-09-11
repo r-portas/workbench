@@ -2,10 +2,7 @@
 version: 2
 updates:
   - package-ecosystem: "bun"
-    directories:
-      - "/"
-      - "/web"
-      - "/templates/*"
+    directory: "/"
     schedule:
       interval: "weekly"
 
