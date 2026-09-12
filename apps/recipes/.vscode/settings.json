@@ -4,6 +4,7 @@
   "json.schemas": [
     {
       "fileMatch": ["content/*.json"],
+      // Can also use "http://localhost:3000/recipe.json" too
       "url": "./dist/client/recipe.json"
     }
   ],
