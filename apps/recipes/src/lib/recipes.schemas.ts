@@ -59,10 +59,13 @@ export type Step = z.infer<typeof stepSchema>;
 export type Recipe = z.infer<typeof recipeSchema>;
 
 /**
- * JSON Schema for {@link recipeSchema}. Dates are emitted as ISO date-time strings
- * because `z.coerce.date()` has no JSON Schema equivalent.
+ * JSON Schema for {@link recipeSchema} (input shape for authoring).
+ *
+ * - Dates -> ISO date-time strings (`z.coerce.date()` has no JSON Schema form)
+ * - `io: "input"` so defaults like `draft` / `tags` aren't required
  */
 export const recipeJsonSchema = z.toJSONSchema(recipeSchema, {
+  io: "input",
   unrepresentable: ({ zodSchema }) =>
     zodSchema._zod.def.type === "date" ? { type: "string", format: "date-time" } : "throw",
 });
