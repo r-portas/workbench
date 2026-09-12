@@ -44,7 +44,7 @@ function RecipeDetail() {
         <h2 className="font-heading text-lg font-medium">Ingredients</h2>
         <ul className="flex flex-col gap-2">
           {recipe.ingredients.map((ingredient) => (
-            <li key={`${ingredient.quantity}-${ingredient.item}`} className="flex gap-2">
+            <li key={ingredient.id} className="flex gap-2">
               <span className="w-24 shrink-0 text-muted-foreground">{ingredient.quantity}</span>
               <span>
                 {ingredient.item}
@@ -59,10 +59,28 @@ function RecipeDetail() {
 
       <section className="flex flex-col gap-3">
         <h2 className="font-heading text-lg font-medium">Steps</h2>
-        <ol className="flex list-decimal flex-col gap-3 pl-5">
-          {recipe.steps.map((step, index) => (
-            <li key={index}>{step.text}</li>
-          ))}
+        <ol className="flex list-decimal flex-col gap-4 pl-5">
+          {recipe.steps.map((step, index) => {
+            const stepIngredients = step.ingredientIds.map(
+              (id) => recipe.ingredients.find((ingredient) => ingredient.id === id)!,
+            );
+
+            return (
+              <li key={index} className="flex flex-col gap-2">
+                <span>{step.text}</span>
+                {stepIngredients.length > 0 && (
+                  <ul className="flex flex-col gap-1 text-sm text-muted-foreground">
+                    {stepIngredients.map((ingredient) => (
+                      <li key={ingredient.id}>
+                        {ingredient.quantity} {ingredient.item}
+                        {ingredient.notes && ` — ${ingredient.notes}`}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })}
         </ol>
       </section>
 
