@@ -1,0 +1,28 @@
+{
+  "id": "overnight-oats",
+  "name": "Overnight Oats",
+  "description": "No-cook breakfast you stir together the night before.",
+  "tags": ["breakfast", "make-ahead"],
+  "servings": 1,
+  "prepMinutes": 5,
+  "cookMinutes": 0,
+  "draft": true,
+  "ingredients": [
+    { "id": "rolled-oats", "quantity": "1/2 cup", "item": "rolled oats" },
+    { "id": "milk", "quantity": "1/2 cup", "item": "milk", "notes": "dairy or oat" },
+    { "id": "yogurt", "quantity": "1/4 cup", "item": "yogurt" },
+    { "id": "chia-seeds", "quantity": "1 tbsp", "item": "chia seeds" },
+    { "id": "maple-syrup", "quantity": "1 tbsp", "item": "maple syrup" },
+    { "id": "salt", "quantity": "a pinch", "item": "salt" }
+  ],
+  "steps": [
+    {
+      "text": "Stir everything together in a jar.",
+      "ingredientIds": ["rolled-oats", "milk", "yogurt", "chia-seeds", "maple-syrup", "salt"]
+    },
+    { "text": "Cover and refrigerate overnight, or at least 4 hours." },
+    { "text": "Eat cold, or warm briefly. Top with fruit or nuts if you like." }
+  ],
+  "createdAt": "2026-02-01T08:00:00.000Z",
+  "updatedAt": "2026-02-01T08:00:00.000Z"
+}

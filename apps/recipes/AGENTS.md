@@ -21,6 +21,8 @@ See @./README.md for the project overview
 
 ## Project Structure
 
+- `content/` stores recipe JSON files — one file per recipe, named `<id>.json` (e.g.
+  `content/overnight-oats.json`).
 - `src/lib` contains the project's library code, grouped by domain via this naming convention (e.g.
   for a `todos` domain):
   - `todos.server.ts` — server-only code, usually paired with `todos.server.test.ts` to unit test

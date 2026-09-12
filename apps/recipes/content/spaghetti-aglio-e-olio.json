@@ -1,0 +1,38 @@
+{
+  "id": "spaghetti-aglio-e-olio",
+  "name": "Spaghetti Aglio e Olio",
+  "description": "Pantry pasta with garlic, chili, and olive oil.",
+  "tags": ["pasta", "italian", "weeknight"],
+  "servings": 2,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "ingredients": [
+    { "id": "spaghetti", "quantity": "200g", "item": "spaghetti" },
+    { "id": "garlic", "quantity": "4 cloves", "item": "garlic", "notes": "thinly sliced" },
+    { "id": "red-chili-flakes", "quantity": "1/2 tsp", "item": "red chili flakes" },
+    { "id": "olive-oil", "quantity": "1/4 cup", "item": "olive oil" },
+    { "id": "salt", "quantity": "to taste", "item": "salt" },
+    { "id": "parsley", "quantity": "a handful", "item": "parsley", "notes": "chopped" }
+  ],
+  "steps": [
+    {
+      "text": "Boil salted water and cook spaghetti until al dente. Reserve 1/2 cup pasta water.",
+      "ingredientIds": ["salt", "spaghetti"]
+    },
+    {
+      "text": "Warm olive oil over medium-low heat. Add garlic and chili flakes; cook until fragrant, not brown.",
+      "ingredientIds": ["olive-oil", "garlic", "red-chili-flakes"]
+    },
+    {
+      "text": "Toss drained pasta in the oil with a splash of pasta water until glossy.",
+      "ingredientIds": ["spaghetti", "olive-oil"]
+    },
+    {
+      "text": "Finish with parsley and more salt if needed. Serve immediately.",
+      "ingredientIds": ["parsley", "salt"]
+    }
+  ],
+  "notes": "If the garlic browns, start the oil again — bitter garlic ruins the dish.",
+  "createdAt": "2026-01-10T10:00:00.000Z",
+  "updatedAt": "2026-01-10T10:00:00.000Z"
+}
