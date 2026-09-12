@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
+import { Badge } from "@/components/ui/badge";
 import { listRecipesFn } from "@/lib/recipes.functions";
 import type { Recipe } from "@/lib/recipes.schemas";
 
@@ -36,10 +37,23 @@ function RecipeList() {
               <span className="flex items-baseline gap-2">
                 <span className="font-medium">{recipe.name}</span>
                 {recipe.draft && (
-                  <span className="text-sm font-normal text-muted-foreground">Draft</span>
+                  <Badge variant="outline" className="text-xs">
+                    Draft
+                  </Badge>
                 )}
               </span>
               <RecipeListMeta recipe={recipe} />
+              {recipe.tags.length > 0 && (
+                <ul className="flex flex-wrap gap-1">
+                  {recipe.tags.slice(0, 3).map((tag) => (
+                    <li key={tag}>
+                      <Badge variant="secondary" className="text-xs">
+                        {tag}
+                      </Badge>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </Link>
           </li>
         ))}
@@ -55,7 +69,6 @@ function RecipeListMeta({ recipe }: { recipe: Recipe }) {
     const total = (recipe.prepMinutes ?? 0) + (recipe.cookMinutes ?? 0);
     parts.push(`${total} min`);
   }
-  if (recipe.tags.length > 0) parts.push(recipe.tags.slice(0, 3).join(" · "));
 
   if (parts.length === 0) return;
 
