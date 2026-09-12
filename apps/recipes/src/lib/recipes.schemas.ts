@@ -15,6 +15,7 @@ export const stepSchema = z.object({
 export const recipeSchema = z
   .object({
     id: z.string().min(1),
+    draft: z.boolean().default(false),
     name: z.string().min(1),
     description: z.string().optional(),
     tags: z.array(z.string().min(1)).default([]),
@@ -24,7 +25,6 @@ export const recipeSchema = z
     ingredients: z.array(ingredientSchema).min(1),
     steps: z.array(stepSchema).min(1),
     notes: z.string().optional(),
-    draft: z.boolean().default(false),
     createdAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
   })
