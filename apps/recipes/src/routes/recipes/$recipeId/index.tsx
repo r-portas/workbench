@@ -61,8 +61,9 @@ function RecipeDetail() {
         <h2 className="font-heading text-lg font-medium">Steps</h2>
         <ol className="flex list-decimal flex-col gap-4 pl-5">
           {recipe.steps.map((step, index) => {
-            const stepIngredients = step.ingredientIds.map(
-              (id) => recipe.ingredients.find((ingredient) => ingredient.id === id)!,
+            // Zod ensures all ingredient ids are valid, hence the !
+            const stepIngredients = step.ingredientIds.map((id) =>
+              recipe.ingredients.find((ingredient) => ingredient.id === id)!,
             );
 
             return (

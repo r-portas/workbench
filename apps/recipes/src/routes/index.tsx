@@ -33,7 +33,12 @@ function RecipeList() {
               params={{ recipeId: recipe.id }}
               className="flex flex-col gap-1 py-4 transition-colors hover:text-foreground"
             >
-              <span className="font-medium">{recipe.name}</span>
+              <span className="flex items-baseline gap-2">
+                <span className="font-medium">{recipe.name}</span>
+                {recipe.draft && (
+                  <span className="text-sm font-normal text-muted-foreground">Draft</span>
+                )}
+              </span>
               <RecipeListMeta recipe={recipe} />
             </Link>
           </li>

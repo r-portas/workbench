@@ -24,6 +24,7 @@ export const recipeSchema = z
     ingredients: z.array(ingredientSchema).min(1),
     steps: z.array(stepSchema).min(1),
     notes: z.string().optional(),
+    draft: z.boolean().default(false),
     createdAt: z.coerce.date(),
     updatedAt: z.coerce.date(),
   })

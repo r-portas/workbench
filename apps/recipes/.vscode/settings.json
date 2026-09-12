@@ -1,6 +1,12 @@
 {
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
+  "json.schemas": [
+    {
+      "fileMatch": ["content/*.json"],
+      "url": "./dist/client/recipe.json"
+    }
+  ],
   "files.associations": {
     "*.css": "tailwindcss"
   },
