@@ -16,6 +16,13 @@ function RecipeList() {
       <header className="flex flex-col gap-1">
         <h1 className="font-heading text-3xl font-medium tracking-tight">Recipes</h1>
         <p className="text-muted-foreground">A small collection to cook from.</p>
+        <Link
+          reloadDocument
+          to="/recipe.json"
+          className="w-fit text-sm text-muted-foreground underline-offset-4 hover:underline"
+        >
+          Recipe JSON Schema
+        </Link>
       </header>
 
       <ul className="divide-y divide-border border-y border-border">

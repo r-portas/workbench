@@ -38,4 +38,13 @@ export const recipeSchema = z.object({
 });
 
 export type Recipe = z.infer<typeof recipeSchema>;
+
+/**
+ * JSON Schema for {@link recipeSchema}. Dates are emitted as ISO date-time strings
+ * because `z.coerce.date()` has no JSON Schema equivalent.
+ */
+export const recipeJsonSchema = z.toJSONSchema(recipeSchema, {
+  unrepresentable: ({ zodSchema }) =>
+    zodSchema._zod.def.type === "date" ? { type: "string", format: "date-time" } : "throw",
+});
 // #endregion
