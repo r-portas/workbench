@@ -7,6 +7,7 @@ config all in one place.
 
 | Folder                 | Contents                                                                  |
 | ---------------------- | ------------------------------------------------------------------------- |
+| `apps/`                | Deployable apps, each bootstrapped from `templates/tss`                   |
 | `content/`             | All written notes, served by `web/`                                       |
 | `content/cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)        |
 | `content/conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
