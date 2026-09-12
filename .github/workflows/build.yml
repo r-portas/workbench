@@ -2,7 +2,7 @@
 name: build
 on: [push]
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -10,7 +10,8 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        # Only install the root workspace dependencies (oxfmt)
+        run: bun install --frozen-lockfile --filter workbench
       - name: Check formatting
         run: bun run fmt:check
 
