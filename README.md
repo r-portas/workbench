@@ -35,8 +35,8 @@ bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 
 Deployable apps living under `apps/`, each pulled in with the same `degit` command as templates:
 
-| App | Description | Command |
-| --- | ----------- | ------- |
+| App | Description |
+| --- | ----------- |
 
 ## Setup
 
