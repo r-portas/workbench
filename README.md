@@ -31,6 +31,13 @@ Append `#<branch>` to the `degit` command to pull from a branch:
 bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 ```
 
+## Apps
+
+Deployable apps living under `apps/`, each pulled in with the same `degit` command as templates:
+
+| App | Description | Command |
+| --- | ----------- | ------- |
+
 ## Setup
 
 ```sh
