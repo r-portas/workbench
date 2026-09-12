@@ -15,11 +15,11 @@ const getReadmeFn = createServerFn().handler(async () => {
 export const Route = createFileRoute("/readme")({
   component: RouteComponent,
   loader: async () => {
-    return { item: await getReadmeFn() };
+    return { content: await getReadmeFn() };
   },
 });
 
 function RouteComponent() {
-  const { item } = Route.useLoaderData();
-  return <MarkdownArticle>{item}</MarkdownArticle>;
+  const { content } = Route.useLoaderData();
+  return <MarkdownArticle>{content}</MarkdownArticle>;
 }
