@@ -11,6 +11,7 @@ export const CONTENT_SECTIONS = [
   { slug: "guides", label: "Guides" },
   { slug: "conventions", label: "Conventions" },
   { slug: "cheatsheets", label: "Cheatsheets" },
+  { slug: "other", label: "Other" },
 ] as const;
 
 /** A content section paired with the items found under it. */
