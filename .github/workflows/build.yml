@@ -24,7 +24,10 @@ jobs:
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
         run: bun install --frozen-lockfile --filter "./web"
-      - name: Build
+      - name: Run tests
+        working-directory: web
+        run: bun test --pass-with-no-tests
+      - name: Build project
         working-directory: web
         run: bun run build
 
@@ -41,7 +44,10 @@ jobs:
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
         run: bun install --frozen-lockfile --filter "./apps/${{ matrix.app }}"
-      - name: Build
+      - name: Run tests
+        working-directory: apps/${{ matrix.app }}
+        run: bun test --pass-with-no-tests
+      - name: Build project
         working-directory: apps/${{ matrix.app }}
         run: bun run build
 
@@ -59,6 +65,6 @@ jobs:
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
         run: bun install --frozen-lockfile --filter "./templates/${{ matrix.template }}"
-      - name: Build
+      - name: Build template
         working-directory: templates/${{ matrix.template }}
         run: bun run build
