@@ -7,6 +7,7 @@ config all in one place.
 
 | Folder                 | Contents                                                                  |
 | ---------------------- | ------------------------------------------------------------------------- |
+| `apps/`                | Deployable apps, each bootstrapped from `templates/tss`                   |
 | `content/`             | All written notes, served by `web/`                                       |
 | `content/cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)        |
 | `content/conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
@@ -29,6 +30,14 @@ Append `#<branch>` to the `degit` command to pull from a branch:
 ```sh
 bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 ```
+
+## Apps
+
+Deployable apps living under `apps/`, each pulled in with the same `degit` command as templates:
+
+| App       | Description          |
+| --------- | -------------------- |
+| `recipes` | A simple recipes app |
 
 ## Setup
 
