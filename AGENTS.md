@@ -4,7 +4,7 @@
 
 - When creating a new template under `templates/`:
   - Add a row to the Templates table in [README.md](README.md#templates)
-  - Add it to the `build-templates` matrix in
+  - Add a filter entry for it in the `changes` job in
     [`.github/workflows/build.yml`](.github/workflows/build.yml)
 
 ## Apps
@@ -14,7 +14,7 @@
   - When changing `templates/tss`, apply the same change to every app under `apps/`
 - When creating a new app:
   - Add a row to the Apps table in [README.md](README.md#apps)
-  - Add it to the `build-apps` matrix in
+  - Add a filter entry for it in the `changes` job in
     [`.github/workflows/build.yml`](.github/workflows/build.yml)
 
 ## Web

@@ -15,7 +15,49 @@ jobs:
       - name: Check formatting
         run: bun run fmt:check
 
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      web: ${{ steps.web.outputs.web }}
+      apps: ${{ steps.apps.outputs.changes }}
+      templates: ${{ steps.templates.outputs.changes }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+      - name: Filter web
+        uses: dorny/paths-filter@v3
+        id: web
+        with:
+          filters: |
+            web:
+              - bun.lock
+              - package.json
+              - web/**
+              - content/**
+      - name: Filter apps
+        # Add a filter key here for each new app under apps/
+        uses: dorny/paths-filter@v3
+        id: apps
+        with:
+          filters: |
+            recipes:
+              - bun.lock
+              - package.json
+              - apps/recipes/**
+      - name: Filter templates
+        # Add a filter key here for each new template under templates/
+        uses: dorny/paths-filter@v3
+        id: templates
+        with:
+          filters: |
+            tss:
+              - bun.lock
+              - package.json
+              - templates/tss/**
+
   build-web:
+    needs: changes
+    if: needs.changes.outputs.web == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -32,11 +74,12 @@ jobs:
         run: bun run build
 
   build-apps:
+    needs: changes
+    if: needs.changes.outputs.apps != '[]'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app:
-          - recipes
+        app: ${{ fromJson(needs.changes.outputs.apps) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -52,12 +95,12 @@ jobs:
         run: bun run build
 
   build-templates:
+    needs: changes
+    if: needs.changes.outputs.templates != '[]'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # Add new templates here to build them in CI
-        template:
-          - tss
+        template: ${{ fromJson(needs.changes.outputs.templates) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
