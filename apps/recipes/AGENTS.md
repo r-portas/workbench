@@ -39,6 +39,20 @@ See @./README.md for the project overview
   - `todos.ts` — isomorphic code that can run on either the client or server (e.g. date helpers),
     usually paired with `todos.test.ts` to unit test it.
 
+## Importing Recipes
+
+When asked to import a recipe from a URL:
+
+- Check whether the page has a schema.org `Recipe` JSON-LD block first and use it as the source of
+  truth when present.
+- Otherwise, parse the rendered page for ingredients, steps, and timing.
+- Map the extracted data onto `recipeSchema` (`src/lib/recipes.schemas.ts`):
+  - Each ingredient needs a unique `id`, `quantity`, and `item`.
+  - Steps are ordered `text`, with optional `ingredientIds` linking back to ingredients used in that
+    step.
+- Save the result as `content/<id>.json`, where `<id>` matches the recipe's `id` field.
+- Run `bun run build` to confirm the new recipe conforms to the schema.
+
 ## Testing
 
 - Always use Bun's test runner (`bun test`), see [the documentation](https://bun.com/docs/test.md)
