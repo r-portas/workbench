@@ -23,9 +23,8 @@ See @./README.md for the project overview
 
 - `content/` stores recipe JSON files — one file per recipe, named `<id>.json` (e.g.
   `content/overnight-oats.json`).
-  - Every recipe is validated against `recipeSchema` at load time, and prerendering (enabled in
-    `vite.config.ts`) visits every recipe route during the build, so `bun run build` is a quick way
-    to check that all recipe JSON files are valid without writing a one-off script.
+  - Run `bun run build` to check recipes conform to the schema — prerendering visits every recipe
+    route, which validates each JSON file against `recipeSchema`.
 - `src/lib` contains the project's library code, grouped by domain via this naming convention (e.g.
   for a `todos` domain):
   - `todos.server.ts` — server-only code, usually paired with `todos.server.test.ts` to unit test
