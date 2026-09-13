@@ -8,16 +8,16 @@
   "cookMinutes": 15,
   "ingredients": [
     { "id": "olive-oil", "quantity": "2 tsp", "item": "olive oil" },
-    { "id": "ground-chicken", "quantity": "1 lb", "item": "ground chicken" },
+    { "id": "ground-chicken", "quantity": "450g", "item": "ground chicken" },
     { "id": "salt", "quantity": "1/4 tsp", "item": "kosher salt" },
     { "id": "chicken-stock", "quantity": "1 1/2 cups", "item": "chicken stock" },
     {
       "id": "ramen-noodles",
-      "quantity": "2 (3 oz) packages",
+      "quantity": "2 (85g) packages",
       "item": "ramen noodles",
       "notes": "flavor packets discarded or saved for another use"
     },
-    { "id": "cabbage-slaw", "quantity": "9 oz (about 4 cups)", "item": "cabbage slaw mix" },
+    { "id": "cabbage-slaw", "quantity": "250g", "item": "cabbage slaw mix" },
     { "id": "carrots", "quantity": "1 cup", "item": "shredded carrots" },
     { "id": "garlic", "quantity": "3 cloves", "item": "garlic", "notes": "minced" },
     { "id": "tamari", "quantity": "1/4 cup", "item": "low-sodium tamari", "notes": "or soy sauce" },

@@ -8,7 +8,7 @@
   "cookMinutes": 25,
   "ingredients": [
     { "id": "corn", "quantity": "2 ears", "item": "corn", "notes": "grilled, roughly 1 cup" },
-    { "id": "spring-greens", "quantity": "12-16 oz", "item": "spring greens" },
+    { "id": "spring-greens", "quantity": "340-450g", "item": "spring greens" },
     {
       "id": "rotisserie-chicken",
       "quantity": "1",
@@ -17,7 +17,7 @@
     },
     { "id": "avocado", "quantity": "1", "item": "avocado", "notes": "thinly sliced" },
     { "id": "dates", "quantity": "6", "item": "medjool dates", "notes": "pitted and chopped" },
-    { "id": "goat-cheese", "quantity": "4 oz", "item": "goat cheese", "notes": "crumbled" },
+    { "id": "goat-cheese", "quantity": "115g", "item": "goat cheese", "notes": "crumbled" },
     { "id": "pickled-onions", "quantity": "1/4 cup", "item": "pickled onions" },
     {
       "id": "almonds",

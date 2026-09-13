@@ -10,7 +10,7 @@
     { "id": "zucchini", "quantity": "1 small", "item": "zucchini" },
     {
       "id": "ground-chicken",
-      "quantity": "1 lb",
+      "quantity": "450g",
       "item": "ground chicken",
       "notes": "or ground turkey"
     },
@@ -18,9 +18,8 @@
     { "id": "egg", "quantity": "1 large", "item": "egg" },
     {
       "id": "parmesan-meatballs",
-      "quantity": "1.5 oz",
-      "item": "grated parmesan cheese",
-      "notes": "about 1/3 cup"
+      "quantity": "40g",
+      "item": "grated parmesan cheese"
     },
     { "id": "garlic-powder", "quantity": "1 tsp", "item": "garlic powder" },
     { "id": "italian-seasoning", "quantity": "1 tsp", "item": "Italian seasoning" },
@@ -50,9 +49,8 @@
     { "id": "heavy-cream", "quantity": "3/4 cup", "item": "heavy cream" },
     {
       "id": "parmesan-sauce",
-      "quantity": "1-2 oz",
-      "item": "grated parmesan cheese",
-      "notes": "about 1/2 cup"
+      "quantity": "30-60g",
+      "item": "grated parmesan cheese"
     },
     { "id": "spinach", "quantity": "1-2 cups", "item": "spinach", "notes": "roughly chopped" },
     { "id": "lemon-zest", "quantity": "to taste", "item": "lemon zest" },
@@ -66,7 +64,7 @@
   ],
   "steps": [
     {
-      "text": "Preheat oven to 400°F and line a large baking sheet with parchment paper.",
+      "text": "Preheat oven to 200°C and line a large baking sheet with parchment paper.",
       "ingredientIds": []
     },
     {
@@ -74,7 +72,7 @@
       "ingredientIds": ["zucchini"]
     },
     {
-      "text": "Add the ground chicken, panko, egg, parmesan, garlic powder, Italian seasoning, salt, and pepper to the zucchini. Mix by hand until just combined and form into 20 golf-ball sized meatballs on the baking sheet, spaced at least 1 inch apart.",
+      "text": "Add the ground chicken, panko, egg, parmesan, garlic powder, Italian seasoning, salt, and pepper to the zucchini. Mix by hand until just combined and form into 20 golf-ball sized meatballs on the baking sheet, spaced at least 2.5cm apart.",
       "ingredientIds": [
         "ground-chicken",
         "panko",
@@ -87,7 +85,7 @@
       ]
     },
     {
-      "text": "Bake 15-18 minutes, until a meat thermometer reads 165°F.",
+      "text": "Bake 15-18 minutes, until a meat thermometer reads 74°C.",
       "ingredientIds": []
     },
     {

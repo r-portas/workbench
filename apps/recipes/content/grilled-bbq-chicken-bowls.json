@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "id": "black-beans",
-      "quantity": "1 (15 oz) can",
+      "quantity": "1 (400g) can",
       "item": "black beans",
       "notes": "drained and rinsed"
     },
@@ -42,7 +42,7 @@
       "item": "black pepper",
       "notes": "freshly ground"
     },
-    { "id": "chicken-thighs", "quantity": "2 lbs", "item": "boneless skinless chicken thighs" },
+    { "id": "chicken-thighs", "quantity": "900g", "item": "boneless skinless chicken thighs" },
     { "id": "avocado-oil-chicken", "quantity": "2 tbsp", "item": "avocado oil" },
     { "id": "kosher-salt-chicken", "quantity": "2 tsp", "item": "kosher salt" },
     { "id": "black-pepper-chicken", "quantity": "1 tsp", "item": "black pepper" },
@@ -87,7 +87,7 @@
       "ingredientIds": ["corn", "avocado-oil"]
     },
     {
-      "text": "Heat the grill to medium-high (350-400°F) and oil the grates.",
+      "text": "Heat the grill to medium-high (175-200°C) and oil the grates.",
       "ingredientIds": []
     },
     {

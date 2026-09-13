@@ -9,7 +9,7 @@
   "ingredients": [
     {
       "id": "chicken-breasts",
-      "quantity": "4 (about 6 oz each)",
+      "quantity": "4 (about 170g each)",
       "item": "boneless skinless chicken breasts"
     },
     { "id": "olive-oil", "quantity": "3 tbsp", "item": "olive oil", "notes": "divided" },
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "text": "Heat the remaining 1 tablespoon olive oil in a large skillet over medium-high heat. Sear the chicken 4-5 minutes per side until golden and it reaches 160°F.",
+      "text": "Heat the remaining 1 tablespoon olive oil in a large skillet over medium-high heat. Sear the chicken 4-5 minutes per side until golden and it reaches 71°C.",
       "ingredientIds": ["olive-oil", "chicken-breasts"]
     },
     { "text": "Rest the chicken a few minutes, then slice into strips." },

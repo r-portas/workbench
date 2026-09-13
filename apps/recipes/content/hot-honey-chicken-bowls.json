@@ -11,7 +11,7 @@
       "id": "sweet-potatoes",
       "quantity": "2 medium",
       "item": "sweet potatoes",
-      "notes": "cut into 1/2-inch cubes"
+      "notes": "cut into 1cm cubes"
     },
     { "id": "olive-oil-potatoes", "quantity": "1 tbsp", "item": "olive oil" },
     { "id": "salt-pepper", "quantity": "to taste", "item": "kosher salt and black pepper" },
@@ -24,9 +24,9 @@
     { "id": "red-pepper-flakes", "quantity": "1/4 tsp", "item": "crushed red pepper" },
     {
       "id": "chicken-breast",
-      "quantity": "2 lbs",
+      "quantity": "900g",
       "item": "boneless chicken breast",
-      "notes": "cut into 1-inch cubes"
+      "notes": "cut into 2.5cm cubes"
     },
     { "id": "olive-oil-chicken", "quantity": "2 tbsp", "item": "olive oil" },
     { "id": "arugula", "quantity": "4 cups", "item": "arugula" },
@@ -51,7 +51,7 @@
   ],
   "steps": [
     {
-      "text": "Preheat oven to 400°F. Toss sweet potato cubes with olive oil on a baking sheet, season with salt and pepper, and roast 25-30 minutes, flipping halfway, until tender.",
+      "text": "Preheat oven to 200°C. Toss sweet potato cubes with olive oil on a baking sheet, season with salt and pepper, and roast 25-30 minutes, flipping halfway, until tender.",
       "ingredientIds": ["sweet-potatoes", "olive-oil-potatoes", "salt-pepper"]
     },
     {
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "text": "Heat olive oil in a large skillet over medium-high heat and cook the chicken 5-6 minutes, until cooked through and reaching 165°F.",
+      "text": "Heat olive oil in a large skillet over medium-high heat and cook the chicken 5-6 minutes, until cooked through and reaching 74°C.",
       "ingredientIds": ["olive-oil-chicken", "chicken-breast"]
     },
     {
