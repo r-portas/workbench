@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "bunVersion": "1.4.x",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ../../bun.lock ../../package.json",
   "installCommand": "cd ../.. && bun install --frozen-lockfile --filter recipes",
   "buildCommand": "bun run build",
   "outputDirectory": "dist/client",
