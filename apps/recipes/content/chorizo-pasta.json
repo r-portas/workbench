@@ -1,0 +1,61 @@
+{
+  "id": "chorizo-pasta",
+  "name": "Chorizo Pasta",
+  "description": "One-pan pasta with browned sausage, capsicum, and onion in a herbed tomato sauce.",
+  "tags": ["quick", "dinner", "pasta"],
+  "servings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 30,
+  "ingredients": [
+    { "id": "sausage", "quantity": "1 packet", "item": "Italian sausage links" },
+    { "id": "oil", "quantity": "1 tbsp", "item": "cooking oil" },
+    { "id": "red-capsicum", "quantity": "1", "item": "red capsicum" },
+    { "id": "onion", "quantity": "1", "item": "onion" },
+    { "id": "pasta-sauce", "quantity": "1 jar", "item": "pasta sauce" },
+    { "id": "basil", "quantity": "1/2 tsp", "item": "dried basil" },
+    { "id": "oregano", "quantity": "1/2 tsp", "item": "dried oregano" },
+    { "id": "chili-powder", "quantity": "1/4 tsp", "item": "chili powder" },
+    { "id": "penne", "quantity": "to taste", "item": "penne pasta" },
+    {
+      "id": "feta",
+      "quantity": "to taste",
+      "item": "feta cheese",
+      "notes": "crumbled, optional"
+    },
+    {
+      "id": "parsley",
+      "quantity": "to taste",
+      "item": "chopped parsley",
+      "notes": "optional"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat a large skillet over medium. Add the cooking oil and sausage links and cook for a few minutes on each side, or until well browned (they do not need to be cooked through at this point).",
+      "ingredientIds": ["oil", "sausage"]
+    },
+    {
+      "text": "Remove the sausage to a clean cutting board and slice into medallions. Return the sausage to the skillet and continue to cook until cooked through and browned on the cut sides. Remove the sausage to a clean plate.",
+      "ingredientIds": ["sausage"]
+    },
+    {
+      "text": "Meanwhile, slice the capsicum and onion into thin strips. Add them to the skillet after removing the sausage. Stir and cook over medium heat just until they begin to soften slightly.",
+      "ingredientIds": ["red-capsicum", "onion"]
+    },
+    {
+      "text": "Add the sausage back to the skillet along with the pasta sauce, basil, oregano, and chili powder. Stir to combine and heat through.",
+      "ingredientIds": ["sausage", "pasta-sauce", "basil", "oregano", "chili-powder"]
+    },
+    {
+      "text": "Bring a large pot of water to a boil for the pasta. Once boiling, add the pasta and cook until tender (about 7 minutes). Drain, then add it to the skillet and stir to combine with the sauce.",
+      "ingredientIds": ["penne"]
+    },
+    {
+      "text": "Top with crumbled feta and chopped parsley if desired, then serve.",
+      "ingredientIds": ["feta", "parsley"]
+    }
+  ],
+  "notes": "Adapted from https://www.budgetbytes.com/pasta-with-sausage-and-peppers/",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}
