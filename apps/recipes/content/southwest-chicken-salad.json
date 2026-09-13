@@ -1,0 +1,99 @@
+{
+  "id": "southwest-chicken-salad",
+  "name": "Southwest Chicken Salad",
+  "description": "Cilantro-lime marinated chicken over romaine with corn, black beans, tomatoes, and a creamy avocado dressing.",
+  "tags": ["dinner", "salad", "chicken"],
+  "servings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 10,
+  "ingredients": [
+    {
+      "id": "chicken-breasts",
+      "quantity": "4 (about 170g each)",
+      "item": "boneless skinless chicken breasts"
+    },
+    { "id": "olive-oil", "quantity": "3 tbsp", "item": "olive oil", "notes": "divided" },
+    { "id": "limes", "quantity": "2", "item": "limes", "notes": "juiced and zested" },
+    {
+      "id": "cilantro-marinade",
+      "quantity": "1/4 cup",
+      "item": "cilantro leaves",
+      "notes": "chopped"
+    },
+    { "id": "garlic-marinade", "quantity": "3 cloves", "item": "garlic", "notes": "minced" },
+    { "id": "cumin", "quantity": "1 tsp", "item": "ground cumin" },
+    { "id": "chili-powder", "quantity": "1/2 tsp", "item": "chili powder" },
+    { "id": "salt", "quantity": "1/2 tsp", "item": "salt" },
+    { "id": "black-pepper", "quantity": "1/4 tsp", "item": "black pepper" },
+    { "id": "romaine", "quantity": "4 cups", "item": "romaine lettuce", "notes": "chopped" },
+    {
+      "id": "cherry-tomatoes",
+      "quantity": "1 1/2 cups",
+      "item": "cherry tomatoes",
+      "notes": "halved"
+    },
+    {
+      "id": "black-beans",
+      "quantity": "1 cup",
+      "item": "black beans",
+      "notes": "rinsed and drained"
+    },
+    { "id": "corn", "quantity": "1 cup", "item": "corn", "notes": "rinsed and drained" },
+    { "id": "red-onion", "quantity": "1/3 cup", "item": "red onion", "notes": "thinly sliced" },
+    { "id": "avocado", "quantity": "1/2 large", "item": "avocado" },
+    { "id": "dressing-oil", "quantity": "1/4 cup", "item": "olive oil" },
+    {
+      "id": "water",
+      "quantity": "1/4 cup",
+      "item": "water",
+      "notes": "more for a thinner consistency"
+    },
+    { "id": "herbs", "quantity": "1/4 cup", "item": "cilantro, basil, or parsley leaves" },
+    { "id": "lime-dressing", "quantity": "1", "item": "lime", "notes": "juiced" },
+    { "id": "garlic-dressing", "quantity": "2 cloves", "item": "garlic", "notes": "minced" },
+    { "id": "salt-pepper-dressing", "quantity": "to taste", "item": "salt and pepper" }
+  ],
+  "steps": [
+    {
+      "text": "Whisk together 2 tablespoons olive oil, lime juice and zest, cilantro, garlic, cumin, chili powder, salt, and pepper.",
+      "ingredientIds": [
+        "olive-oil",
+        "limes",
+        "cilantro-marinade",
+        "garlic-marinade",
+        "cumin",
+        "chili-powder",
+        "salt",
+        "black-pepper"
+      ]
+    },
+    {
+      "text": "Combine the marinade with the chicken and marinate 2-6 hours in the refrigerator.",
+      "ingredientIds": ["chicken-breasts"]
+    },
+    {
+      "text": "Blend the avocado, remaining olive oil, water, herbs, lime juice, garlic, salt, and pepper until creamy. Set the dressing aside.",
+      "ingredientIds": [
+        "avocado",
+        "dressing-oil",
+        "water",
+        "herbs",
+        "lime-dressing",
+        "garlic-dressing",
+        "salt-pepper-dressing"
+      ]
+    },
+    {
+      "text": "Heat the remaining 1 tablespoon olive oil in a large skillet over medium-high heat. Sear the chicken 4-5 minutes per side until golden and it reaches 71°C.",
+      "ingredientIds": ["olive-oil", "chicken-breasts"]
+    },
+    { "text": "Rest the chicken a few minutes, then slice into strips." },
+    {
+      "text": "Layer the lettuce with beans, corn, tomatoes, red onion, and chicken. Drizzle with the avocado dressing.",
+      "ingredientIds": ["romaine", "black-beans", "corn", "cherry-tomatoes", "red-onion"]
+    }
+  ],
+  "notes": "For meal prep, store chicken, lettuce, and dressing separately, with corn, beans, and onion combined together; keeps up to 5 days refrigerated.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

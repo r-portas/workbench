@@ -1,0 +1,100 @@
+{
+  "id": "ginger-scallion-chicken-bowls",
+  "name": "Ginger Scallion Chicken Bowls",
+  "description": "Rotisserie chicken and sautéed mushrooms tossed with cabbage slaw and a ginger-scallion sauce over rice.",
+  "tags": ["dinner", "bowl", "chicken"],
+  "servings": 6,
+  "prepMinutes": 15,
+  "cookMinutes": 10,
+  "ingredients": [
+    { "id": "napa-cabbage", "quantity": "1/2 head", "item": "napa cabbage", "notes": "shredded" },
+    {
+      "id": "purple-cabbage",
+      "quantity": "1/2 head",
+      "item": "purple cabbage",
+      "notes": "shredded"
+    },
+    {
+      "id": "yellow-bell-pepper",
+      "quantity": "1",
+      "item": "yellow bell pepper",
+      "notes": "cut into matchsticks"
+    },
+    {
+      "id": "red-bell-pepper",
+      "quantity": "1",
+      "item": "red bell pepper",
+      "notes": "cut into matchsticks"
+    },
+    {
+      "id": "shiitake-mushrooms",
+      "quantity": "170g",
+      "item": "shiitake mushrooms",
+      "notes": "sliced"
+    },
+    { "id": "avocado-oil-mushrooms", "quantity": "2 tbsp", "item": "avocado oil" },
+    { "id": "rotisserie-chicken", "quantity": "2 cups", "item": "shredded rotisserie chicken" },
+    {
+      "id": "scallions",
+      "quantity": "1 bunch (about 1 1/4 cup)",
+      "item": "scallions",
+      "notes": "thinly sliced"
+    },
+    {
+      "id": "ginger",
+      "quantity": "1 (7.5cm) piece",
+      "item": "ginger",
+      "notes": "peeled and finely minced"
+    },
+    { "id": "garlic", "quantity": "4 cloves", "item": "garlic", "notes": "minced" },
+    { "id": "sesame-oil", "quantity": "4 tsp", "item": "toasted sesame oil" },
+    { "id": "soy-sauce", "quantity": "8 tbsp", "item": "soy sauce" },
+    { "id": "rice-vinegar-sauce", "quantity": "4 tbsp", "item": "rice vinegar" },
+    { "id": "avocado-oil-sauce", "quantity": "1/3 cup", "item": "avocado oil" },
+    { "id": "red-pepper-flakes", "quantity": "1 tsp", "item": "red pepper flakes" },
+    { "id": "cucumber", "quantity": "1", "item": "English cucumber", "notes": "sliced" },
+    { "id": "rice", "quantity": "3 cups", "item": "cooked white rice" },
+    { "id": "rice-vinegar-rice", "quantity": "1-2 tbsp", "item": "rice wine vinegar" },
+    { "id": "avocado", "quantity": "2", "item": "avocados", "notes": "thinly sliced" },
+    {
+      "id": "romaine",
+      "quantity": "2-3 cups",
+      "item": "romaine lettuce",
+      "notes": "thinly shredded"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Combine the napa cabbage, purple cabbage, and bell peppers in a large bowl.",
+      "ingredientIds": ["napa-cabbage", "purple-cabbage", "yellow-bell-pepper", "red-bell-pepper"]
+    },
+    {
+      "text": "Sauté the mushrooms in avocado oil in a medium skillet until golden brown, 8-10 minutes. Add to the cabbage mixture along with the shredded chicken.",
+      "ingredientIds": ["shiitake-mushrooms", "avocado-oil-mushrooms", "rotisserie-chicken"]
+    },
+    {
+      "text": "Combine the scallions, ginger, garlic, sesame oil, soy sauce, rice vinegar, avocado oil, and red pepper flakes for the sauce. Reserve half for drizzling and toss the rest with the cabbage and chicken mixture.",
+      "ingredientIds": [
+        "scallions",
+        "ginger",
+        "garlic",
+        "sesame-oil",
+        "soy-sauce",
+        "rice-vinegar-sauce",
+        "avocado-oil-sauce",
+        "red-pepper-flakes"
+      ]
+    },
+    {
+      "text": "Slice the cucumber, toss the rice with rice wine vinegar, slice the avocado, and shred the romaine.",
+      "ingredientIds": ["cucumber", "rice", "rice-vinegar-rice", "avocado", "romaine"]
+    },
+    {
+      "text": "Assemble 6 bowls with rice, cucumber, avocado, romaine, and the cabbage-chicken mixture. Drizzle with the reserved sauce.",
+      "ingredientIds": []
+    }
+  ],
+  "notes": "Add the avocado right before eating if making ahead, to prevent browning.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

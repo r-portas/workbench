@@ -1,0 +1,52 @@
+{
+  "id": "chicken-ramen",
+  "name": "Ground Chicken Ramen",
+  "description": "One-pan ground chicken ramen with cabbage slaw and a quick peanut-tamari sauce, ready in 15 minutes.",
+  "tags": ["dinner", "chicken", "noodles", "weeknight"],
+  "servings": 4,
+  "prepMinutes": 0,
+  "cookMinutes": 15,
+  "ingredients": [
+    { "id": "olive-oil", "quantity": "2 tsp", "item": "olive oil" },
+    { "id": "ground-chicken", "quantity": "450g", "item": "ground chicken" },
+    { "id": "salt", "quantity": "1/4 tsp", "item": "kosher salt" },
+    { "id": "chicken-stock", "quantity": "1 1/2 cups", "item": "chicken stock" },
+    {
+      "id": "ramen-noodles",
+      "quantity": "2 (85g) packages",
+      "item": "ramen noodles",
+      "notes": "flavor packets discarded or saved for another use"
+    },
+    { "id": "cabbage-slaw", "quantity": "250g", "item": "cabbage slaw mix" },
+    { "id": "carrots", "quantity": "1 cup", "item": "shredded carrots" },
+    { "id": "garlic", "quantity": "3 cloves", "item": "garlic", "notes": "minced" },
+    { "id": "tamari", "quantity": "1/4 cup", "item": "low-sodium tamari", "notes": "or soy sauce" },
+    { "id": "brown-sugar", "quantity": "1 tbsp", "item": "brown sugar" },
+    { "id": "peanut-butter", "quantity": "2 tbsp", "item": "smooth peanut butter" }
+  ],
+  "steps": [
+    {
+      "text": "Heat the olive oil in a large, high-sided skillet over medium-high heat. Add the ground chicken, break into small chunks, and cook 3 minutes until it begins to brown. Add the salt and cook until no longer pink, 2-3 more minutes.",
+      "ingredientIds": ["olive-oil", "ground-chicken", "salt"]
+    },
+    {
+      "text": "While the chicken cooks, whisk together the garlic, tamari, brown sugar, and peanut butter until smooth.",
+      "ingredientIds": ["garlic", "tamari", "brown-sugar", "peanut-butter"]
+    },
+    {
+      "text": "Turn the heat to high, add the stock and half of the sauce, and bring to a strong simmer. Add the ramen noodles and cook 2-3 minutes until they begin to soften, flipping several times.",
+      "ingredientIds": ["chicken-stock", "ramen-noodles"]
+    },
+    {
+      "text": "Add the slaw, carrots, and remaining sauce and stir to combine. Cook 2-3 minutes more until the noodles are fully cooked and vegetables have softened.",
+      "ingredientIds": ["cabbage-slaw", "carrots"]
+    },
+    {
+      "text": "Serve immediately with desired toppings.",
+      "ingredientIds": []
+    }
+  ],
+  "notes": "Top with sliced green onions, sriracha, chili crisp, or chopped peanuts. Breaking the chicken into smaller pieces helps it brown faster and absorb more sauce.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

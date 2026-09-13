@@ -1,0 +1,109 @@
+{
+  "id": "grilled-bbq-chicken-bowls",
+  "name": "Grilled BBQ Chicken Bowls with Black Bean-Corn Salad",
+  "description": "BBQ-glazed grilled chicken thighs and grilled corn over rice with a fresh black bean-corn salad.",
+  "tags": ["dinner", "bowl", "chicken", "grill"],
+  "servings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 30,
+  "ingredients": [
+    {
+      "id": "black-beans",
+      "quantity": "1 (400g) can",
+      "item": "black beans",
+      "notes": "drained and rinsed"
+    },
+    {
+      "id": "cherry-tomatoes",
+      "quantity": "1 cup",
+      "item": "cherry tomatoes",
+      "notes": "quartered"
+    },
+    { "id": "red-onion", "quantity": "1/4 cup", "item": "red onion", "notes": "finely diced" },
+    { "id": "cilantro", "quantity": "1/4 cup", "item": "cilantro", "notes": "finely chopped" },
+    {
+      "id": "red-bell-pepper",
+      "quantity": "1/2 cup",
+      "item": "red bell pepper",
+      "notes": "finely diced"
+    },
+    { "id": "corn", "quantity": "2 ears", "item": "corn" },
+    {
+      "id": "avocado-oil",
+      "quantity": "4 tbsp",
+      "item": "avocado oil",
+      "notes": "divided, for the salad and corn"
+    },
+    { "id": "lime-juice", "quantity": "2 tbsp", "item": "lime juice", "notes": "freshly squeezed" },
+    { "id": "salt", "quantity": "1/2 tsp", "item": "kosher salt", "notes": "or more to taste" },
+    {
+      "id": "black-pepper",
+      "quantity": "1/2 tsp",
+      "item": "black pepper",
+      "notes": "freshly ground"
+    },
+    { "id": "chicken-thighs", "quantity": "900g", "item": "boneless skinless chicken thighs" },
+    { "id": "avocado-oil-chicken", "quantity": "2 tbsp", "item": "avocado oil" },
+    { "id": "kosher-salt-chicken", "quantity": "2 tsp", "item": "kosher salt" },
+    { "id": "black-pepper-chicken", "quantity": "1 tsp", "item": "black pepper" },
+    { "id": "bbq-sauce", "quantity": "3/4 cup", "item": "BBQ sauce" },
+    { "id": "brown-rice", "quantity": "1 cup", "item": "prepared brown rice" },
+    { "id": "jalapeno", "quantity": "1", "item": "jalapeño", "notes": "thinly sliced" },
+    {
+      "id": "cheese",
+      "quantity": "1/2 cup",
+      "item": "shredded smoked gouda or Monterey Jack cheese"
+    },
+    {
+      "id": "cilantro-garnish",
+      "quantity": "to taste",
+      "item": "fresh cilantro",
+      "notes": "for garnish"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Combine the black beans, tomatoes, onion, cilantro, and bell pepper in a large bowl. Set aside.",
+      "ingredientIds": [
+        "black-beans",
+        "cherry-tomatoes",
+        "red-onion",
+        "cilantro",
+        "red-bell-pepper"
+      ]
+    },
+    {
+      "text": "Place the chicken thighs in a shallow dish and toss with avocado oil, 1/4 cup BBQ sauce, salt, and pepper.",
+      "ingredientIds": [
+        "chicken-thighs",
+        "avocado-oil-chicken",
+        "bbq-sauce",
+        "kosher-salt-chicken",
+        "black-pepper-chicken"
+      ]
+    },
+    {
+      "text": "Brush the corn with 2 tablespoons avocado oil and wrap each ear in foil.",
+      "ingredientIds": ["corn", "avocado-oil"]
+    },
+    {
+      "text": "Heat the grill to medium-high (175-200°C) and oil the grates.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Grill the chicken 4 minutes per side, then brush with the remaining 1/2 cup BBQ sauce, reduce heat to medium-low, and cook 3-5 minutes more until cooked through. Grill the foil-wrapped corn 10-12 minutes, rotating every 3 minutes. Rest the chicken 5-8 minutes, then slice into strips.",
+      "ingredientIds": ["chicken-thighs", "bbq-sauce", "corn"]
+    },
+    {
+      "text": "Cut the corn kernels from the cob and stir into the bean salad along with the remaining avocado oil and lime juice.",
+      "ingredientIds": ["corn", "avocado-oil", "lime-juice"]
+    },
+    {
+      "text": "Spoon rice into bowls, top with sliced chicken and extra BBQ sauce, then the black bean-corn salad. Sprinkle with cheese, jalapeño, and cilantro.",
+      "ingredientIds": ["brown-rice", "bbq-sauce", "cheese", "jalapeno", "cilantro-garnish"]
+    }
+  ],
+  "notes": "The salad can be prepped ahead and the chicken marinated the morning before grilling. Bowl components keep separately for 2-3 days for meal prep.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

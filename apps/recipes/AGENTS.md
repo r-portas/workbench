@@ -23,6 +23,8 @@ See @./README.md for the project overview
 
 - `content/` stores recipe JSON files — one file per recipe, named `<id>.json` (e.g.
   `content/overnight-oats.json`).
+  - Run `bun run build` to check recipes conform to the schema — prerendering visits every recipe
+    route, which validates each JSON file against `recipeSchema`.
 - `src/lib` contains the project's library code, grouped by domain via this naming convention (e.g.
   for a `todos` domain):
   - `todos.server.ts` — server-only code, usually paired with `todos.server.test.ts` to unit test
@@ -36,6 +38,32 @@ See @./README.md for the project overview
   - `todo.types.ts` — TypeScript types for the domain, usually used if Zod schemas are not required.
   - `todos.ts` — isomorphic code that can run on either the client or server (e.g. date helpers),
     usually paired with `todos.test.ts` to unit test it.
+
+## Importing Recipes
+
+When asked to import a recipe from a URL:
+
+- Check whether the page has a schema.org `Recipe` JSON-LD block first and use it as the source of
+  truth when present.
+- Otherwise, parse the rendered page for ingredients, steps, and timing.
+- Map the extracted data onto `recipeSchema` (`src/lib/recipes.schemas.ts`):
+  - Each ingredient needs a unique `id`, `quantity`, and `item`.
+  - Steps are ordered `text`, with optional `ingredientIds` linking back to ingredients used in that
+    step.
+- Write quantities in Australian units (see below), converting from the source recipe as needed.
+- Save the result as `content/<id>.json`, where `<id>` matches the recipe's `id` field.
+- Run `bun run build` to confirm the new recipe conforms to the schema.
+
+### Units
+
+Recipes use Australian measurement conventions:
+
+- Keep cups, tablespoons, and teaspoons as written in the source recipe (e.g. a US recipe's "1 tbsp"
+  stays "1 tbsp") — don't rescale for the US tablespoon (15mL) vs. the Australian tablespoon (20mL)
+  difference.
+- Convert weight from oz/lb to g/kg (e.g. "1 lb" → "450g", "15 oz can" → "400g can").
+- Convert oven and cooking temperatures from °F to °C (e.g. "400°F" → "200°C").
+- Convert lengths from inches to cm (e.g. "1-inch cubes" → "2.5cm cubes").
 
 ## Testing
 

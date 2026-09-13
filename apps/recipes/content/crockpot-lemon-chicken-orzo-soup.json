@@ -1,0 +1,55 @@
+{
+  "id": "crockpot-lemon-chicken-orzo-soup",
+  "name": "Crockpot Lemon Chicken Orzo Soup",
+  "description": "Comforting slow-cooker soup with shredded chicken, vegetables, and orzo in a bright lemony broth.",
+  "tags": ["dinner", "soup", "chicken", "slow-cooker"],
+  "servings": 6,
+  "prepMinutes": 15,
+  "cookMinutes": 360,
+  "ingredients": [
+    { "id": "chicken-breasts", "quantity": "4 medium", "item": "chicken breasts" },
+    { "id": "carrots", "quantity": "2 large", "item": "carrots", "notes": "peeled and sliced" },
+    { "id": "celery", "quantity": "2 sticks", "item": "celery", "notes": "chopped finely" },
+    { "id": "chicken-broth", "quantity": "4 cups", "item": "chicken broth" },
+    { "id": "vegetable-broth", "quantity": "4 cups", "item": "vegetable broth" },
+    { "id": "garlic", "quantity": "4 cloves", "item": "garlic", "notes": "minced" },
+    { "id": "dried-basil", "quantity": "1/2 tsp", "item": "dried basil" },
+    { "id": "italian-seasoning", "quantity": "1/2 tsp", "item": "Italian seasoning" },
+    { "id": "bay-leaves", "quantity": "3", "item": "bay leaves" },
+    { "id": "lemon-juice", "quantity": "1", "item": "lemon", "notes": "juiced" },
+    { "id": "parsley", "quantity": "1 handful", "item": "fresh parsley", "notes": "chopped" },
+    { "id": "orzo", "quantity": "1 cup", "item": "orzo", "notes": "uncooked" },
+    { "id": "salt-pepper", "quantity": "to taste", "item": "salt and pepper" }
+  ],
+  "steps": [
+    {
+      "text": "Add the chicken, carrots, celery, chicken broth, vegetable broth, garlic, basil, Italian seasoning, and bay leaves to the slow cooker. Cook on low for 6-8 hours or high for 3-4 hours.",
+      "ingredientIds": [
+        "chicken-breasts",
+        "carrots",
+        "celery",
+        "chicken-broth",
+        "vegetable-broth",
+        "garlic",
+        "dried-basil",
+        "italian-seasoning",
+        "bay-leaves"
+      ]
+    },
+    {
+      "text": "About 30 minutes before serving, remove the bay leaves and transfer the chicken to a cutting board. Shred with two forks and return to the slow cooker.",
+      "ingredientIds": ["bay-leaves", "chicken-breasts"]
+    },
+    {
+      "text": "Add the lemon juice, parsley, and orzo. Increase heat to high and stir every 10 minutes to prevent sticking.",
+      "ingredientIds": ["lemon-juice", "parsley", "orzo"]
+    },
+    {
+      "text": "Once the orzo is tender, season with salt and pepper to taste and serve.",
+      "ingredientIds": ["salt-pepper"]
+    }
+  ],
+  "notes": "Boneless skinless chicken thighs work as a substitute. If freezing, cook the orzo separately and add it when serving to avoid a mushy texture. Leftovers keep 3-4 days refrigerated; add a splash of broth when reheating.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

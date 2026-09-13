@@ -1,0 +1,54 @@
+{
+  "id": "ground-chicken-tacos",
+  "name": "Ground Chicken Tacos",
+  "description": "Quick weeknight taco meat made with ground chicken and taco seasoning.",
+  "tags": ["dinner", "chicken", "weeknight", "tacos"],
+  "servings": 4,
+  "prepMinutes": 5,
+  "cookMinutes": 20,
+  "ingredients": [
+    { "id": "taco-seasoning", "quantity": "2-3 tbsp", "item": "taco seasoning" },
+    {
+      "id": "ground-chicken",
+      "quantity": "450g",
+      "item": "ground chicken",
+      "notes": "or ground turkey"
+    },
+    { "id": "olive-oil", "quantity": "1 tbsp", "item": "olive oil" },
+    { "id": "water", "quantity": "2 tbsp", "item": "water" },
+    { "id": "tortillas", "quantity": "to taste", "item": "tortillas", "notes": "for serving" },
+    { "id": "cheddar", "quantity": "to taste", "item": "freshly shredded cheddar cheese" },
+    {
+      "id": "monterey-jack",
+      "quantity": "to taste",
+      "item": "freshly shredded Monterey Jack cheese"
+    },
+    { "id": "salsa", "quantity": "to taste", "item": "salsa" },
+    { "id": "avocado", "quantity": "to taste", "item": "avocado" }
+  ],
+  "steps": [
+    {
+      "text": "Heat the olive oil in a large skillet over medium-high heat.",
+      "ingredientIds": ["olive-oil"]
+    },
+    {
+      "text": "Add the ground chicken and sauté 5 minutes, breaking it up with the back of a wooden spoon.",
+      "ingredientIds": ["ground-chicken"]
+    },
+    {
+      "text": "Add the taco seasoning and stir to combine, cooking until the meat is fully cooked with no pink remaining.",
+      "ingredientIds": ["taco-seasoning"]
+    },
+    {
+      "text": "Add the water and reduce to a simmer for 10 minutes.",
+      "ingredientIds": ["water"]
+    },
+    {
+      "text": "Serve as taco meat with tortillas, shredded cheese, salsa, avocado, and other favorite toppings.",
+      "ingredientIds": ["tortillas", "cheddar", "monterey-jack", "salsa", "avocado"]
+    }
+  ],
+  "notes": "Ground turkey or beef can substitute for chicken in equal amounts. The simmering step deglazes the pan and restores moisture to the meat.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}
