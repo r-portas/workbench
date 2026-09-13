@@ -1,0 +1,92 @@
+{
+  "id": "hot-honey-chicken-bowls",
+  "name": "Hot Honey Chicken Bowls",
+  "description": "Roasted sweet potatoes and hot honey chicken over arugula with cottage cheese, avocado, and jalapeño ranch.",
+  "tags": ["dinner", "bowl", "chicken"],
+  "servings": 6,
+  "prepMinutes": 15,
+  "cookMinutes": 35,
+  "ingredients": [
+    {
+      "id": "sweet-potatoes",
+      "quantity": "2 medium",
+      "item": "sweet potatoes",
+      "notes": "cut into 1/2-inch cubes"
+    },
+    { "id": "olive-oil-potatoes", "quantity": "1 tbsp", "item": "olive oil" },
+    { "id": "salt-pepper", "quantity": "to taste", "item": "kosher salt and black pepper" },
+    { "id": "hot-honey", "quantity": "2 tbsp", "item": "hot honey" },
+    { "id": "lemon-juice", "quantity": "1 tbsp", "item": "lemon juice" },
+    { "id": "smoked-paprika", "quantity": "1 tsp", "item": "smoked paprika" },
+    { "id": "garlic-powder", "quantity": "1 tsp", "item": "garlic powder" },
+    { "id": "cumin", "quantity": "1/2 tsp", "item": "ground cumin" },
+    { "id": "kosher-salt", "quantity": "1 tsp", "item": "kosher salt" },
+    { "id": "red-pepper-flakes", "quantity": "1/4 tsp", "item": "crushed red pepper" },
+    {
+      "id": "chicken-breast",
+      "quantity": "2 lbs",
+      "item": "boneless chicken breast",
+      "notes": "cut into 1-inch cubes"
+    },
+    { "id": "olive-oil-chicken", "quantity": "2 tbsp", "item": "olive oil" },
+    { "id": "arugula", "quantity": "4 cups", "item": "arugula" },
+    { "id": "cottage-cheese", "quantity": "2 cups", "item": "cottage cheese" },
+    { "id": "cucumber", "quantity": "1 cup", "item": "cucumber", "notes": "diced" },
+    { "id": "avocado", "quantity": "2", "item": "avocados", "notes": "sliced" },
+    { "id": "pickled-red-onions", "quantity": "to taste", "item": "pickled red onions" },
+    { "id": "corn-salsa", "quantity": "to taste", "item": "corn salsa", "notes": "optional" },
+    {
+      "id": "hot-honey-garnish",
+      "quantity": "to taste",
+      "item": "hot honey",
+      "notes": "for drizzling"
+    },
+    { "id": "cilantro", "quantity": "to taste", "item": "cilantro", "notes": "optional garnish" },
+    {
+      "id": "jalapeno-ranch",
+      "quantity": "to taste",
+      "item": "jalapeño ranch",
+      "notes": "optional, for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Preheat oven to 400°F. Toss sweet potato cubes with olive oil on a baking sheet, season with salt and pepper, and roast 25-30 minutes, flipping halfway, until tender.",
+      "ingredientIds": ["sweet-potatoes", "olive-oil-potatoes", "salt-pepper"]
+    },
+    {
+      "text": "Whisk together hot honey, lemon juice, smoked paprika, garlic powder, cumin, kosher salt, and crushed red pepper. Add chicken and toss to coat.",
+      "ingredientIds": [
+        "hot-honey",
+        "lemon-juice",
+        "smoked-paprika",
+        "garlic-powder",
+        "cumin",
+        "kosher-salt",
+        "red-pepper-flakes",
+        "chicken-breast"
+      ]
+    },
+    {
+      "text": "Heat olive oil in a large skillet over medium-high heat and cook the chicken 5-6 minutes, until cooked through and reaching 165°F.",
+      "ingredientIds": ["olive-oil-chicken", "chicken-breast"]
+    },
+    {
+      "text": "Divide arugula, chicken, sweet potatoes, cottage cheese, cucumber, avocado, and pickled red onions between bowls. Top with corn salsa, a drizzle of hot honey, and cilantro, and serve with jalapeño ranch.",
+      "ingredientIds": [
+        "arugula",
+        "cottage-cheese",
+        "cucumber",
+        "avocado",
+        "pickled-red-onions",
+        "corn-salsa",
+        "hot-honey-garnish",
+        "cilantro",
+        "jalapeno-ranch"
+      ]
+    }
+  ],
+  "notes": "Store components separately in airtight containers for up to 4 days; reheat chicken and sweet potatoes before assembling.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

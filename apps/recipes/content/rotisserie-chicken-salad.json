@@ -1,0 +1,78 @@
+{
+  "id": "rotisserie-chicken-salad",
+  "name": "Our Favorite Rotisserie Chicken Salad",
+  "description": "Spring greens with rotisserie chicken, grilled corn, dates, goat cheese, and pickled onions, drizzled with a hot bacon dressing.",
+  "tags": ["dinner", "salad", "chicken"],
+  "servings": 4,
+  "prepMinutes": 15,
+  "cookMinutes": 25,
+  "ingredients": [
+    { "id": "corn", "quantity": "2 ears", "item": "corn", "notes": "grilled, roughly 1 cup" },
+    { "id": "spring-greens", "quantity": "12-16 oz", "item": "spring greens" },
+    {
+      "id": "rotisserie-chicken",
+      "quantity": "1",
+      "item": "rotisserie chicken",
+      "notes": "meat pulled and chopped"
+    },
+    { "id": "avocado", "quantity": "1", "item": "avocado", "notes": "thinly sliced" },
+    { "id": "dates", "quantity": "6", "item": "medjool dates", "notes": "pitted and chopped" },
+    { "id": "goat-cheese", "quantity": "4 oz", "item": "goat cheese", "notes": "crumbled" },
+    { "id": "pickled-onions", "quantity": "1/4 cup", "item": "pickled onions" },
+    {
+      "id": "almonds",
+      "quantity": "1/4 cup",
+      "item": "sliced almonds",
+      "notes": "toasted, optional"
+    },
+    { "id": "bacon", "quantity": "3 slices", "item": "bacon" },
+    { "id": "bacon-fat", "quantity": "3 tbsp", "item": "bacon fat" },
+    { "id": "garlic", "quantity": "1 clove", "item": "garlic", "notes": "minced" },
+    { "id": "apple-cider-vinegar", "quantity": "3 tbsp", "item": "apple cider vinegar" },
+    { "id": "brown-sugar", "quantity": "2 tsp", "item": "brown sugar" },
+    { "id": "dijon-mustard", "quantity": "1 tsp", "item": "Dijon mustard" },
+    { "id": "pepper", "quantity": "1/4 tsp", "item": "pepper" },
+    { "id": "salt", "quantity": "1/8 tsp", "item": "salt" }
+  ],
+  "steps": [
+    {
+      "text": "Fry the bacon until browned and crispy; reserve the fat.",
+      "ingredientIds": ["bacon"]
+    },
+    {
+      "text": "Add the bacon fat, garlic, vinegar, sugar, and mustard to a saucepan over medium-low heat. Whisk constantly until the sugar dissolves and the dressing slightly emulsifies. Season with salt and pepper, then stir in the crumbled bacon. Keep warm over low heat.",
+      "ingredientIds": [
+        "bacon-fat",
+        "garlic",
+        "apple-cider-vinegar",
+        "brown-sugar",
+        "dijon-mustard",
+        "salt",
+        "pepper",
+        "bacon"
+      ]
+    },
+    {
+      "text": "Toss the spring greens with salt and pepper in a large bowl.",
+      "ingredientIds": ["spring-greens", "salt", "pepper"]
+    },
+    {
+      "text": "Add the chicken, corn, dates, goat cheese, pickled onions, and almonds.",
+      "ingredientIds": [
+        "rotisserie-chicken",
+        "corn",
+        "dates",
+        "goat-cheese",
+        "pickled-onions",
+        "almonds"
+      ]
+    },
+    {
+      "text": "Add the avocado right before serving and drizzle with the hot bacon dressing.",
+      "ingredientIds": ["avocado"]
+    }
+  ],
+  "notes": "Prepare pickled onions the night before or an hour ahead. Make the dressing first and keep it warm on the stovetop. Store dressing in the fridge and reheat in a saucepan; omit the avocado if making ahead.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}

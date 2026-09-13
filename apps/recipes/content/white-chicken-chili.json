@@ -1,0 +1,65 @@
+{
+  "id": "white-chicken-chili",
+  "name": "White Chicken Chili",
+  "description": "A quick, creamy Tex-Mex chili with shredded chicken, white beans, and green chiles.",
+  "tags": ["dinner", "soup", "chicken"],
+  "servings": 6,
+  "prepMinutes": 5,
+  "cookMinutes": 30,
+  "ingredients": [
+    { "id": "olive-oil", "quantity": "1 tbsp", "item": "olive oil" },
+    { "id": "onion", "quantity": "1 small", "item": "white onion", "notes": "diced" },
+    { "id": "jalapeno", "quantity": "1", "item": "jalapeño", "notes": "cored and chopped" },
+    { "id": "garlic", "quantity": "4 cloves", "item": "garlic", "notes": "minced" },
+    { "id": "flour", "quantity": "1/4 cup", "item": "all-purpose flour" },
+    { "id": "chicken-stock", "quantity": "3 cups", "item": "chicken stock" },
+    { "id": "chicken", "quantity": "3-4 cups", "item": "shredded cooked chicken" },
+    { "id": "green-chiles", "quantity": "2 (4 oz) cans", "item": "chopped green chiles" },
+    { "id": "white-beans", "quantity": "2 (15 oz) cans", "item": "Great Northern beans" },
+    { "id": "corn", "quantity": "1/2 cup", "item": "whole-kernel corn" },
+    { "id": "cumin", "quantity": "2 tsp", "item": "ground cumin" },
+    { "id": "oregano", "quantity": "1/2 tsp", "item": "dried oregano" },
+    { "id": "milk", "quantity": "2 cups", "item": "whole milk" },
+    {
+      "id": "salt-pepper",
+      "quantity": "to taste",
+      "item": "fine sea salt and freshly-ground black pepper"
+    },
+    {
+      "id": "garnishes",
+      "quantity": "to taste",
+      "item": "cilantro, tortilla chips, avocado, jalapeños, Monterey Jack cheese, sour cream",
+      "notes": "for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a large stockpot over medium-high heat. Add the onion and jalapeño and sauté 5 minutes until softened. Add the garlic and sauté 1-2 minutes until fragrant. Stir in the flour and sauté 1 minute.",
+      "ingredientIds": ["olive-oil", "onion", "jalapeno", "garlic", "flour"]
+    },
+    {
+      "text": "Gradually add the chicken stock while stirring. Stir in the chicken, green chiles, beans, corn, cumin, and oregano. Bring to a simmer, reduce heat to medium-low, and simmer 5 minutes. Add the milk and simmer 5 minutes more.",
+      "ingredientIds": [
+        "chicken-stock",
+        "chicken",
+        "green-chiles",
+        "white-beans",
+        "corn",
+        "cumin",
+        "oregano",
+        "milk"
+      ]
+    },
+    {
+      "text": "Season generously with salt and pepper to taste.",
+      "ingredientIds": ["salt-pepper"]
+    },
+    {
+      "text": "Serve warm topped with preferred garnishes.",
+      "ingredientIds": ["garnishes"]
+    }
+  ],
+  "notes": "Rotisserie chicken saves time. Milk keeps this creamy without heaviness; heavy cream may substitute for a richer texture.",
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}
