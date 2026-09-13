@@ -1,0 +1,59 @@
+{
+  "id": "chicken-fajita-tray-bake",
+  "name": "Chicken Fajita Tray Bake",
+  "description": "Quick grilled chicken fajitas with onion and capsicum, served with tortillas and avocado dip.",
+  "tags": ["quick", "dinner", "chicken"],
+  "prepMinutes": 5,
+  "cookMinutes": 10,
+  "ingredients": [
+    { "id": "oil", "quantity": "to taste", "item": "cooking oil", "notes": "for drizzling" },
+    { "id": "chicken", "quantity": "500g", "item": "stir-fry chicken strips" },
+    { "id": "fajita-spice", "quantity": "1 packet", "item": "fajita spice mix" },
+    { "id": "onion", "quantity": "1", "item": "onion" },
+    { "id": "red-capsicum", "quantity": "1", "item": "red capsicum" },
+    { "id": "yellow-capsicum", "quantity": "1", "item": "yellow capsicum" },
+    { "id": "tortillas", "quantity": "to taste", "item": "tortillas", "notes": "for serving" },
+    {
+      "id": "avocado-dip",
+      "quantity": "to taste",
+      "item": "avocado dip",
+      "notes": "for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Preheat the oven on the grill setting to 200°C.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Thickly slice the onion and capsicums.",
+      "ingredientIds": ["onion", "red-capsicum", "yellow-capsicum"]
+    },
+    {
+      "text": "Drizzle oil in the baking tray and place the chicken on it.",
+      "ingredientIds": ["oil", "chicken"]
+    },
+    {
+      "text": "Sprinkle the spice mix over the chicken and toss to coat.",
+      "ingredientIds": ["fajita-spice"]
+    },
+    {
+      "text": "Grill the chicken for 5 minutes.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Remove the tray and add the onion and capsicums.",
+      "ingredientIds": ["onion", "red-capsicum", "yellow-capsicum"]
+    },
+    {
+      "text": "Grill for another 5 minutes.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Serve the chicken and vegetables with tortillas and avocado dip.",
+      "ingredientIds": ["tortillas", "avocado-dip"]
+    }
+  ],
+  "createdAt": "2026-09-13T00:00:00.000Z",
+  "updatedAt": "2026-09-13T00:00:00.000Z"
+}
