@@ -18,15 +18,13 @@ jobs:
   changes:
     runs-on: ubuntu-latest
     outputs:
-      web: ${{ steps.web.outputs.web }}
-      apps: ${{ steps.apps.outputs.changes }}
-      templates: ${{ steps.templates.outputs.changes }}
+      packages: ${{ steps.filter.outputs.changes }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-      - name: Filter web
+      - name: Filter packages
         uses: dorny/paths-filter@v4
-        id: web
+        id: filter
         with:
           filters: |
             web:
@@ -35,80 +33,30 @@ jobs:
               - README.md
               - web/**
               - content/**
-      - name: Filter apps
-        # Add a filter key here for each new app under apps/
-        uses: dorny/paths-filter@v4
-        id: apps
-        with:
-          filters: |
             recipes:
               - bun.lock
               - package.json
               - apps/recipes/**
-      - name: Filter templates
-        # Add a filter key here for each new template under templates/
-        uses: dorny/paths-filter@v4
-        id: templates
-        with:
-          filters: |
             tss:
               - bun.lock
               - package.json
               - templates/tss/**
 
-  build-web:
+  build:
     needs: changes
-    if: needs.changes.outputs.web == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-      - name: Install dependencies
-        run: bun install --frozen-lockfile --filter "./web"
-      - name: Run tests
-        working-directory: web
-        run: bun test --pass-with-no-tests
-      - name: Build project
-        working-directory: web
-        run: bun run build
-
-  build-apps:
-    needs: changes
-    if: needs.changes.outputs.apps != '[]'
+    if: needs.changes.outputs.packages != '[]'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: ${{ fromJson(needs.changes.outputs.apps) }}
+        package: ${{ fromJson(needs.changes.outputs.packages) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run: bun install --frozen-lockfile --filter "./apps/${{ matrix.app }}"
+        run: bun install --frozen-lockfile --filter ${{ matrix.package }}
       - name: Run tests
-        working-directory: apps/${{ matrix.app }}
-        run: bun test --pass-with-no-tests
+        run: bun run --filter ${{ matrix.package }} test
       - name: Build project
-        working-directory: apps/${{ matrix.app }}
-        run: bun run build
-
-  build-templates:
-    needs: changes
-    if: needs.changes.outputs.templates != '[]'
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        template: ${{ fromJson(needs.changes.outputs.templates) }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v7
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-      - name: Install dependencies
-        run: bun install --frozen-lockfile --filter "./templates/${{ matrix.template }}"
-      - name: Build template
-        working-directory: templates/${{ matrix.template }}
-        run: bun run build
+        run: bun run --filter ${{ matrix.package }} build
