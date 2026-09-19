@@ -1,0 +1,45 @@
+{
+  "id": "the-only-cookie-recipe",
+  "name": "The Only Cookie Recipe You'll Ever Need",
+  "description": "A versatile base biscuit dough — the starting point for jam drops, choc chip, ginger, cornflake cookies, and more.",
+  "tags": ["snack", "dessert", "baking"],
+  "servings": 20,
+  "prepMinutes": 5,
+  "cookMinutes": 15,
+  "ingredients": [
+    { "id": "butter", "quantity": "125g", "item": "butter" },
+    { "id": "caster-sugar", "quantity": "1/2 cup", "item": "caster sugar" },
+    { "id": "egg", "quantity": "1", "item": "egg" },
+    { "id": "vanilla", "quantity": "1 tsp", "item": "vanilla extract" },
+    { "id": "self-raising-flour", "quantity": "1 3/4 cups", "item": "self-raising flour" }
+  ],
+  "steps": [
+    {
+      "text": "Preheat the oven to 180°C. Line baking trays with baking paper.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Cream together the butter and caster sugar until light and fluffy.",
+      "ingredientIds": ["butter", "caster-sugar"]
+    },
+    {
+      "text": "Add the egg and vanilla extract and beat well.",
+      "ingredientIds": ["egg", "vanilla"]
+    },
+    {
+      "text": "Gradually add the self-raising flour and mix until you have a stiff paste.",
+      "ingredientIds": ["self-raising-flour"]
+    },
+    {
+      "text": "Roll the dough into balls and place on the lined trays.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Bake until golden, about 15 minutes.",
+      "ingredientIds": []
+    }
+  ],
+  "notes": "Adapted from https://cookerandalooker.com/the-only-cookie-recipe-youll-ever-need/. Variations from the source: jam drops (hollow each ball and fill with jam before baking); chocolate cookies (add 1/2 cup brown sugar when creaming and 1/2 cup cocoa with the flour); smarties (press into tops before baking); coconut (add 2 tbsp desiccated coconut to the dough); chocolate chip (add 100g chocolate chips); cornflake (add 1/2 cup sultanas and 3/4 cup crushed cornflakes).",
+  "createdAt": "2026-09-19T00:00:00.000Z",
+  "updatedAt": "2026-09-19T00:00:00.000Z"
+}
