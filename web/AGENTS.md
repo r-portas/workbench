@@ -1,4 +1,4 @@
-# CLAUDE.md
+# AGENTS.md
 
 <!-- intent-skills:start -->
 

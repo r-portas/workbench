@@ -17,23 +17,21 @@ rebuilding/redeploying things that didn't change, since every workspace shares o
 ## CI: skip unaffected jobs
 
 `.github/workflows/build.yml` has a `changes` job that runs
-[`dorny/paths-filter`](https://github.com/dorny/paths-filter) once per dimension (`web`, `apps`,
-`templates`), then gates the corresponding build job on its output. `build-apps`/`build-templates`
-use a **dynamic matrix** built from whichever app/template dirs actually changed, instead of a
-hardcoded list:
+[`dorny/paths-filter`](https://github.com/dorny/paths-filter) once, with one filter key per
+workspace (`web`, `recipes`, `tss`, ...), and a single `build` job matrixed over whichever
+workspaces actually changed — a **dynamic matrix** instead of a hardcoded list:
 
 ```yaml
 changes:
   runs-on: ubuntu-latest
   outputs:
-    web: ${{ steps.web.outputs.web }}
-    apps: ${{ steps.apps.outputs.changes }}
-    templates: ${{ steps.templates.outputs.changes }}
+    packages: ${{ steps.filter.outputs.changes }}
   steps:
     - uses: actions/checkout@v7
-    - name: Filter web
+    - name: Filter packages
+      # Add a filter key here for each new app/template
       uses: dorny/paths-filter@v4
-      id: web
+      id: filter
       with:
         filters: |
           web:
@@ -42,29 +40,32 @@ changes:
             - README.md
             - web/**
             - content/**
-    - name: Filter apps
-      # Add a filter key here for each new app under apps/
-      uses: dorny/paths-filter@v4
-      id: apps
-      with:
-        filters: |
           recipes:
             - bun.lock
             - package.json
             - apps/recipes/**
+          tss:
+            - bun.lock
+            - package.json
+            - templates/tss/**
 
-build-apps:
+build:
   needs: changes
-  if: needs.changes.outputs.apps != '[]'
+  if: needs.changes.outputs.packages != '[]'
   strategy:
     matrix:
-      app: ${{ fromJson(needs.changes.outputs.apps) }}
+      package: ${{ fromJson(needs.changes.outputs.packages) }}
+  steps:
+    - run: bun install --frozen-lockfile --filter ${{ matrix.package }}
+    - run: bun run --filter ${{ matrix.package }} test
+    - run: bun run --filter ${{ matrix.package }} build
 ```
 
-- `web`'s filter is a plain boolean (`steps.web.outputs.web == 'true'`).
-- `apps`/`templates` use paths-filter's `changes` output directly — a JSON array of filter names
-  that matched (e.g. `["recipes"]` or `[]`) — fed straight into `fromJson()` for the matrix, no `jq`
-  needed.
+- `packages` is paths-filter's `changes` output — a single JSON array of whichever filter names
+  matched across all workspaces (e.g. `["web"]`, `["recipes","tss"]`, or `[]`) — fed straight into
+  `fromJson()` for the one `build` matrix, no `jq` needed and no per-dimension outputs.
+- Each filter key must match that workspace's `package.json` `name` field, since `build` runs
+  `bun run --filter <name>` directly against the matrix value.
 - Every filter includes `bun.lock` and root `package.json`, since a shared-lockfile bump can affect
   any workspace's install.
 - `lint` (root `fmt:check`) stays unconditional — it's cheap and repo-wide.
