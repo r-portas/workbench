@@ -34,8 +34,10 @@ See @./README.md for the project overview
     - Exported server functions should be named with the `Fn` suffix, e.g. `getTodosFn`,
       `createTodoFn`, etc.
       - This makes it clearer what is a server function and what isn't
-  - `todos.schemas.ts` — Zod schemas for the domain.
-  - `todo.types.ts` — TypeScript types for the domain, usually used if Zod schemas are not required.
+  - `todos.schemas.ts` — Zod schemas for data entering the domain from outside your code
+    - e.g. server function inputs, form validation, third-party data at the point it's fetched
+  - `todo.types.ts` — plain types for everything else
+    - e.g. component props, internal state, and function outputs your own code already trusts
   - `todos.ts` — isomorphic code that can run on either the client or server (e.g. date helpers),
     usually paired with `todos.test.ts` to unit test it.
 
