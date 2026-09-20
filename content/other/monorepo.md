@@ -52,10 +52,13 @@ changes:
 build:
   needs: changes
   if: needs.changes.outputs.packages != '[]'
+  runs-on: ubuntu-latest
   strategy:
     matrix:
       package: ${{ fromJson(needs.changes.outputs.packages) }}
   steps:
+    - uses: actions/checkout@v7
+    - uses: oven-sh/setup-bun@v2
     - run: bun install --frozen-lockfile --filter ${{ matrix.package }}
     - run: bun run --filter ${{ matrix.package }} test
     - run: bun run --filter ${{ matrix.package }} build
