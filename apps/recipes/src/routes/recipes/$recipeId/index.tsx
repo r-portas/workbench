@@ -190,7 +190,10 @@ function StepsCard({ recipe }: { recipe: Recipe }) {
                           key={ingredient.id}
                           className="rounded-md bg-muted px-2 py-1 text-xs leading-4 text-muted-foreground"
                         >
-                          <span className="font-mono">{ingredient.quantity}</span> {ingredient.item}
+                          {ingredient.quantity && (
+                            <span className="font-mono">{ingredient.quantity} </span>
+                          )}
+                          {ingredient.item}
                         </li>
                       ))}
                     </ul>

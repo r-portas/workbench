@@ -51,7 +51,8 @@ When asked to import a recipe from a URL:
   truth when present.
 - Otherwise, parse the rendered page for ingredients, steps, and timing.
 - Map the extracted data onto `recipeSchema` (`src/lib/recipes.schemas.ts`):
-  - Each ingredient needs a unique `id`, `quantity`, and `item`.
+  - Each ingredient needs a unique `id` and an `item`. Add a `quantity` unless the source gives none
+    (e.g. "oil for drizzling").
   - Steps are ordered `text`, with optional `ingredientIds` linking back to ingredients used in that
     step.
 - Write quantities in Australian units (see below), converting from the source recipe as needed.
