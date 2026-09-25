@@ -2,15 +2,30 @@
   "id": "apricot-chicken",
   "name": "Mum's Apricot Chicken",
   "description": "Oven-baked chicken coated in flour and pepper, simmered in apricot nectar and French onion soup.",
-  "tags": ["dinner", "chicken"],
   "servings": 6,
   "prepMinutes": 20,
   "cookMinutes": 90,
   "ingredients": [
-    { "id": "chicken", "quantity": "1kg", "item": "chicken" },
-    { "id": "flour", "quantity": "1 cup", "item": "plain flour" },
-    { "id": "pepper", "quantity": "2 tsp", "item": "pepper" },
-    { "id": "apricot-nectar", "quantity": "1 litre", "item": "Golden Circle apricot nectar" },
+    {
+      "id": "chicken",
+      "quantity": "1kg",
+      "item": "chicken"
+    },
+    {
+      "id": "flour",
+      "quantity": "1 cup",
+      "item": "plain flour"
+    },
+    {
+      "id": "pepper",
+      "quantity": "2 tsp",
+      "item": "pepper"
+    },
+    {
+      "id": "apricot-nectar",
+      "quantity": "1 litre",
+      "item": "Golden Circle apricot nectar"
+    },
     {
       "id": "french-onion-soup",
       "quantity": "2 packets",
@@ -38,7 +53,5 @@
       "text": "Bake for around 90 minutes, until the chicken is cooked through.",
       "ingredientIds": []
     }
-  ],
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  ]
 }

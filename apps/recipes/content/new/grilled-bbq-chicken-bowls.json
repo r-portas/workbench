@@ -2,7 +2,6 @@
   "id": "grilled-bbq-chicken-bowls",
   "name": "Grilled BBQ Chicken Bowls with Black Bean-Corn Salad",
   "description": "BBQ-glazed grilled chicken thighs and grilled corn over rice with a fresh black bean-corn salad.",
-  "tags": ["dinner", "bowl", "chicken", "grill"],
   "servings": 4,
   "prepMinutes": 15,
   "cookMinutes": 30,
@@ -19,36 +18,89 @@
       "item": "cherry tomatoes",
       "notes": "quartered"
     },
-    { "id": "red-onion", "quantity": "1/4 cup", "item": "red onion", "notes": "finely diced" },
-    { "id": "cilantro", "quantity": "1/4 cup", "item": "cilantro", "notes": "finely chopped" },
+    {
+      "id": "red-onion",
+      "quantity": "1/4 cup",
+      "item": "red onion",
+      "notes": "finely diced"
+    },
+    {
+      "id": "cilantro",
+      "quantity": "1/4 cup",
+      "item": "cilantro",
+      "notes": "finely chopped"
+    },
     {
       "id": "red-bell-pepper",
       "quantity": "1/2 cup",
       "item": "red bell pepper",
       "notes": "finely diced"
     },
-    { "id": "corn", "quantity": "2 ears", "item": "corn" },
+    {
+      "id": "corn",
+      "quantity": "2 ears",
+      "item": "corn"
+    },
     {
       "id": "avocado-oil",
       "quantity": "4 tbsp",
       "item": "avocado oil",
       "notes": "divided, for the salad and corn"
     },
-    { "id": "lime-juice", "quantity": "2 tbsp", "item": "lime juice", "notes": "freshly squeezed" },
-    { "id": "salt", "quantity": "1/2 tsp", "item": "kosher salt", "notes": "or more to taste" },
+    {
+      "id": "lime-juice",
+      "quantity": "2 tbsp",
+      "item": "lime juice",
+      "notes": "freshly squeezed"
+    },
+    {
+      "id": "salt",
+      "quantity": "1/2 tsp",
+      "item": "kosher salt",
+      "notes": "or more to taste"
+    },
     {
       "id": "black-pepper",
       "quantity": "1/2 tsp",
       "item": "black pepper",
       "notes": "freshly ground"
     },
-    { "id": "chicken-thighs", "quantity": "900g", "item": "boneless skinless chicken thighs" },
-    { "id": "avocado-oil-chicken", "quantity": "2 tbsp", "item": "avocado oil" },
-    { "id": "kosher-salt-chicken", "quantity": "2 tsp", "item": "kosher salt" },
-    { "id": "black-pepper-chicken", "quantity": "1 tsp", "item": "black pepper" },
-    { "id": "bbq-sauce", "quantity": "3/4 cup", "item": "BBQ sauce" },
-    { "id": "brown-rice", "quantity": "1 cup", "item": "prepared brown rice" },
-    { "id": "jalapeno", "quantity": "1", "item": "jalapeño", "notes": "thinly sliced" },
+    {
+      "id": "chicken-thighs",
+      "quantity": "900g",
+      "item": "boneless skinless chicken thighs"
+    },
+    {
+      "id": "avocado-oil-chicken",
+      "quantity": "2 tbsp",
+      "item": "avocado oil"
+    },
+    {
+      "id": "kosher-salt-chicken",
+      "quantity": "2 tsp",
+      "item": "kosher salt"
+    },
+    {
+      "id": "black-pepper-chicken",
+      "quantity": "1 tsp",
+      "item": "black pepper"
+    },
+    {
+      "id": "bbq-sauce",
+      "quantity": "3/4 cup",
+      "item": "BBQ sauce"
+    },
+    {
+      "id": "brown-rice",
+      "quantity": "1 cup",
+      "item": "prepared brown rice"
+    },
+    {
+      "id": "jalapeno",
+      "quantity": "1",
+      "item": "jalapeño",
+      "notes": "thinly sliced"
+    },
     {
       "id": "cheese",
       "quantity": "1/2 cup",
@@ -103,7 +155,5 @@
       "ingredientIds": ["brown-rice", "bbq-sauce", "cheese", "jalapeno", "cilantro-garnish"]
     }
   ],
-  "notes": "The salad can be prepped ahead and the chicken marinated the morning before grilling. Bowl components keep separately for 2-3 days for meal prep.",
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  "notes": "The salad can be prepped ahead and the chicken marinated the morning before grilling. Bowl components keep separately for 2-3 days for meal prep."
 }

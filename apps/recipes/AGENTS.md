@@ -21,8 +21,10 @@ See @./README.md for the project overview
 
 ## Project Structure
 
-- `content/` stores recipe JSON files — one file per recipe, named `<id>.json` (e.g.
-  `content/overnight-oats.json`).
+- `content/` stores recipe JSON files — one file per recipe, named `<category>/<id>.json` (e.g.
+  `content/dinner/overnight-oats.json`).
+  - The folder is the recipe's category. New folders show up on the home page automatically;
+    `compareCategories` in `src/lib/recipes.ts` sets their order.
   - Run `bun run build` to check recipes conform to the schema — prerendering visits every recipe
     route, which validates each JSON file against `recipeSchema`.
 - `src/lib` contains the project's library code, grouped by domain via this naming convention (e.g.
@@ -49,11 +51,12 @@ When asked to import a recipe from a URL:
   truth when present.
 - Otherwise, parse the rendered page for ingredients, steps, and timing.
 - Map the extracted data onto `recipeSchema` (`src/lib/recipes.schemas.ts`):
-  - Each ingredient needs a unique `id`, `quantity`, and `item`.
+  - Each ingredient needs a unique `id` and an `item`. Add a `quantity` unless the source gives none
+    (e.g. "oil for drizzling").
   - Steps are ordered `text`, with optional `ingredientIds` linking back to ingredients used in that
     step.
 - Write quantities in Australian units (see below), converting from the source recipe as needed.
-- Save the result as `content/<id>.json`, where `<id>` matches the recipe's `id` field.
+- Save the result as `content/new/<id>.json`, where `<id>` matches the recipe's `id` field.
 - Run `bun run build` to confirm the new recipe conforms to the schema.
 
 ### Units

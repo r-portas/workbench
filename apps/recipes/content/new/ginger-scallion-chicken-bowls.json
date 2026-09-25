@@ -2,12 +2,16 @@
   "id": "ginger-scallion-chicken-bowls",
   "name": "Ginger Scallion Chicken Bowls",
   "description": "Rotisserie chicken and sautéed mushrooms tossed with cabbage slaw and a ginger-scallion sauce over rice.",
-  "tags": ["dinner", "bowl", "chicken"],
   "servings": 6,
   "prepMinutes": 15,
   "cookMinutes": 10,
   "ingredients": [
-    { "id": "napa-cabbage", "quantity": "1/2 head", "item": "napa cabbage", "notes": "shredded" },
+    {
+      "id": "napa-cabbage",
+      "quantity": "1/2 head",
+      "item": "napa cabbage",
+      "notes": "shredded"
+    },
     {
       "id": "purple-cabbage",
       "quantity": "1/2 head",
@@ -32,8 +36,16 @@
       "item": "shiitake mushrooms",
       "notes": "sliced"
     },
-    { "id": "avocado-oil-mushrooms", "quantity": "2 tbsp", "item": "avocado oil" },
-    { "id": "rotisserie-chicken", "quantity": "2 cups", "item": "shredded rotisserie chicken" },
+    {
+      "id": "avocado-oil-mushrooms",
+      "quantity": "2 tbsp",
+      "item": "avocado oil"
+    },
+    {
+      "id": "rotisserie-chicken",
+      "quantity": "2 cups",
+      "item": "shredded rotisserie chicken"
+    },
     {
       "id": "scallions",
       "quantity": "1 bunch (about 1 1/4 cup)",
@@ -46,16 +58,59 @@
       "item": "ginger",
       "notes": "peeled and finely minced"
     },
-    { "id": "garlic", "quantity": "4 cloves", "item": "garlic", "notes": "minced" },
-    { "id": "sesame-oil", "quantity": "4 tsp", "item": "toasted sesame oil" },
-    { "id": "soy-sauce", "quantity": "8 tbsp", "item": "soy sauce" },
-    { "id": "rice-vinegar-sauce", "quantity": "4 tbsp", "item": "rice vinegar" },
-    { "id": "avocado-oil-sauce", "quantity": "1/3 cup", "item": "avocado oil" },
-    { "id": "red-pepper-flakes", "quantity": "1 tsp", "item": "red pepper flakes" },
-    { "id": "cucumber", "quantity": "1", "item": "English cucumber", "notes": "sliced" },
-    { "id": "rice", "quantity": "3 cups", "item": "cooked white rice" },
-    { "id": "rice-vinegar-rice", "quantity": "1-2 tbsp", "item": "rice wine vinegar" },
-    { "id": "avocado", "quantity": "2", "item": "avocados", "notes": "thinly sliced" },
+    {
+      "id": "garlic",
+      "quantity": "4 cloves",
+      "item": "garlic",
+      "notes": "minced"
+    },
+    {
+      "id": "sesame-oil",
+      "quantity": "4 tsp",
+      "item": "toasted sesame oil"
+    },
+    {
+      "id": "soy-sauce",
+      "quantity": "8 tbsp",
+      "item": "soy sauce"
+    },
+    {
+      "id": "rice-vinegar-sauce",
+      "quantity": "4 tbsp",
+      "item": "rice vinegar"
+    },
+    {
+      "id": "avocado-oil-sauce",
+      "quantity": "1/3 cup",
+      "item": "avocado oil"
+    },
+    {
+      "id": "red-pepper-flakes",
+      "quantity": "1 tsp",
+      "item": "red pepper flakes"
+    },
+    {
+      "id": "cucumber",
+      "quantity": "1",
+      "item": "English cucumber",
+      "notes": "sliced"
+    },
+    {
+      "id": "rice",
+      "quantity": "3 cups",
+      "item": "cooked white rice"
+    },
+    {
+      "id": "rice-vinegar-rice",
+      "quantity": "1-2 tbsp",
+      "item": "rice wine vinegar"
+    },
+    {
+      "id": "avocado",
+      "quantity": "2",
+      "item": "avocados",
+      "notes": "thinly sliced"
+    },
     {
       "id": "romaine",
       "quantity": "2-3 cups",
@@ -94,7 +149,5 @@
       "ingredientIds": []
     }
   ],
-  "notes": "Add the avocado right before eating if making ahead, to prevent browning.",
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  "notes": "Add the avocado right before eating if making ahead, to prevent browning."
 }

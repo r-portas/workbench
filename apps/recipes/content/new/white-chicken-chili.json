@@ -2,24 +2,78 @@
   "id": "white-chicken-chili",
   "name": "White Chicken Chili",
   "description": "A quick, creamy Tex-Mex chili with shredded chicken, white beans, and green chiles.",
-  "tags": ["dinner", "soup", "chicken"],
   "servings": 6,
   "prepMinutes": 5,
   "cookMinutes": 30,
   "ingredients": [
-    { "id": "olive-oil", "quantity": "1 tbsp", "item": "olive oil" },
-    { "id": "onion", "quantity": "1 small", "item": "white onion", "notes": "diced" },
-    { "id": "jalapeno", "quantity": "1", "item": "jalapeño", "notes": "cored and chopped" },
-    { "id": "garlic", "quantity": "4 cloves", "item": "garlic", "notes": "minced" },
-    { "id": "flour", "quantity": "1/4 cup", "item": "all-purpose flour" },
-    { "id": "chicken-stock", "quantity": "3 cups", "item": "chicken stock" },
-    { "id": "chicken", "quantity": "3-4 cups", "item": "shredded cooked chicken" },
-    { "id": "green-chiles", "quantity": "2 (115g) cans", "item": "chopped green chiles" },
-    { "id": "white-beans", "quantity": "2 (400g) cans", "item": "Great Northern beans" },
-    { "id": "corn", "quantity": "1/2 cup", "item": "whole-kernel corn" },
-    { "id": "cumin", "quantity": "2 tsp", "item": "ground cumin" },
-    { "id": "oregano", "quantity": "1/2 tsp", "item": "dried oregano" },
-    { "id": "milk", "quantity": "2 cups", "item": "whole milk" },
+    {
+      "id": "olive-oil",
+      "quantity": "1 tbsp",
+      "item": "olive oil"
+    },
+    {
+      "id": "onion",
+      "quantity": "1 small",
+      "item": "white onion",
+      "notes": "diced"
+    },
+    {
+      "id": "jalapeno",
+      "quantity": "1",
+      "item": "jalapeño",
+      "notes": "cored and chopped"
+    },
+    {
+      "id": "garlic",
+      "quantity": "4 cloves",
+      "item": "garlic",
+      "notes": "minced"
+    },
+    {
+      "id": "flour",
+      "quantity": "1/4 cup",
+      "item": "all-purpose flour"
+    },
+    {
+      "id": "chicken-stock",
+      "quantity": "3 cups",
+      "item": "chicken stock"
+    },
+    {
+      "id": "chicken",
+      "quantity": "3-4 cups",
+      "item": "shredded cooked chicken"
+    },
+    {
+      "id": "green-chiles",
+      "quantity": "2 (115g) cans",
+      "item": "chopped green chiles"
+    },
+    {
+      "id": "white-beans",
+      "quantity": "2 (400g) cans",
+      "item": "Great Northern beans"
+    },
+    {
+      "id": "corn",
+      "quantity": "1/2 cup",
+      "item": "whole-kernel corn"
+    },
+    {
+      "id": "cumin",
+      "quantity": "2 tsp",
+      "item": "ground cumin"
+    },
+    {
+      "id": "oregano",
+      "quantity": "1/2 tsp",
+      "item": "dried oregano"
+    },
+    {
+      "id": "milk",
+      "quantity": "2 cups",
+      "item": "whole milk"
+    },
     {
       "id": "salt-pepper",
       "quantity": "to taste",
@@ -59,7 +113,5 @@
       "ingredientIds": ["garnishes"]
     }
   ],
-  "notes": "Rotisserie chicken saves time. Milk keeps this creamy without heaviness; heavy cream may substitute for a richer texture.",
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  "notes": "Rotisserie chicken saves time. Milk keeps this creamy without heaviness; heavy cream may substitute for a richer texture."
 }

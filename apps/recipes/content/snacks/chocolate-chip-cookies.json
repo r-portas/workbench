@@ -2,7 +2,6 @@
   "id": "chocolate-chip-cookies",
   "name": "Chocolate Chip Cookies",
   "description": "Soft one-bowl chocolate chip cookies made with coconut oil and soy milk.",
-  "tags": ["snack", "dessert", "baking"],
   "prepMinutes": 10,
   "cookMinutes": 13,
   "ingredients": [
@@ -18,14 +17,46 @@
       "item": "brown sugar",
       "notes": "packed"
     },
-    { "id": "soy-milk", "quantity": "1/4 cup", "item": "unsweetened soy milk" },
-    { "id": "maple-syrup", "quantity": "3 tbsp", "item": "maple syrup" },
-    { "id": "vanilla", "quantity": "1 tbsp", "item": "pure vanilla extract" },
-    { "id": "baking-powder", "quantity": "1 tsp", "item": "baking powder" },
-    { "id": "baking-soda", "quantity": "3/4 tsp", "item": "baking soda" },
-    { "id": "salt", "quantity": "1/2 tsp", "item": "salt" },
-    { "id": "flour", "quantity": "2 cups", "item": "all-purpose flour" },
-    { "id": "chocolate-chips", "quantity": "150g", "item": "dark chocolate chips" }
+    {
+      "id": "soy-milk",
+      "quantity": "1/4 cup",
+      "item": "unsweetened soy milk"
+    },
+    {
+      "id": "maple-syrup",
+      "quantity": "3 tbsp",
+      "item": "maple syrup"
+    },
+    {
+      "id": "vanilla",
+      "quantity": "1 tbsp",
+      "item": "pure vanilla extract"
+    },
+    {
+      "id": "baking-powder",
+      "quantity": "1 tsp",
+      "item": "baking powder"
+    },
+    {
+      "id": "baking-soda",
+      "quantity": "3/4 tsp",
+      "item": "baking soda"
+    },
+    {
+      "id": "salt",
+      "quantity": "1/2 tsp",
+      "item": "salt"
+    },
+    {
+      "id": "flour",
+      "quantity": "2 cups",
+      "item": "all-purpose flour"
+    },
+    {
+      "id": "chocolate-chips",
+      "quantity": "150g",
+      "item": "dark chocolate chips"
+    }
   ],
   "steps": [
     {
@@ -67,8 +98,5 @@
       "text": "Bake on the centre rack for 12–13 minutes, or until lightly golden. Let them set on the baking tray for a minute before transferring to a cooling rack to cool completely.",
       "ingredientIds": []
     }
-  ],
-  "notes": "Adapted from https://www.pickuplimes.com/recipe/one-bowl-soft-vegan-chocolate-chip-cookies-197",
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  ]
 }

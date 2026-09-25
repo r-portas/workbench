@@ -2,7 +2,7 @@ import * as z from "zod";
 
 export const ingredientSchema = z.object({
   id: z.string().min(1),
-  quantity: z.string().min(1),
+  quantity: z.string().optional(),
   item: z.string().min(1),
   notes: z.string().optional(),
 });
@@ -18,17 +18,15 @@ export const recipeSchema = z
     draft: z.boolean().default(false),
     name: z.string().min(1),
     description: z.string().optional(),
-    tags: z.array(z.string().min(1)).default([]),
     servings: z.number().int().positive().optional(),
     prepMinutes: z.number().int().nonnegative().optional(),
     cookMinutes: z.number().int().nonnegative().optional(),
     ingredients: z.array(ingredientSchema).min(1),
     steps: z.array(stepSchema).min(1),
     notes: z.string().optional(),
-    createdAt: z.coerce.date(),
-    updatedAt: z.coerce.date(),
   })
   .superRefine((recipe, ctx) => {
+    // Ingredient ids must be unique so steps can reference them unambiguously.
     const seen = new Set<string>();
     for (const [index, ingredient] of recipe.ingredients.entries()) {
       if (seen.has(ingredient.id)) {
@@ -41,6 +39,7 @@ export const recipeSchema = z
       seen.add(ingredient.id);
     }
 
+    // Every step ingredientId must point at an ingredient defined above.
     for (const [stepIndex, step] of recipe.steps.entries()) {
       for (const [idIndex, ingredientId] of step.ingredientIds.entries()) {
         if (!seen.has(ingredientId)) {
@@ -61,11 +60,7 @@ export type Recipe = z.infer<typeof recipeSchema>;
 /**
  * JSON Schema for {@link recipeSchema} (input shape for authoring).
  *
- * - Dates -> ISO date-time strings (`z.coerce.date()` has no JSON Schema form)
- * - `io: "input"` so defaults like `draft` / `tags` aren't required
+ * @remarks
+ * Uses `io: "input"` so defaults like `draft` aren't required.
  */
-export const recipeJsonSchema = z.toJSONSchema(recipeSchema, {
-  io: "input",
-  unrepresentable: ({ zodSchema }) =>
-    zodSchema._zod.def.type === "date" ? { type: "string", format: "date-time" } : "throw",
-});
+export const recipeJsonSchema = z.toJSONSchema(recipeSchema, { io: "input" });

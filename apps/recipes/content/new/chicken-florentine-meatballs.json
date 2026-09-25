@@ -2,59 +2,118 @@
   "id": "chicken-florentine-meatballs",
   "name": "Chicken Florentine Meatballs",
   "description": "Ground chicken meatballs simmered in a creamy white wine sauce with sundried tomatoes and spinach.",
-  "tags": ["dinner", "chicken", "pasta"],
   "servings": 4,
   "prepMinutes": 15,
   "cookMinutes": 25,
   "ingredients": [
-    { "id": "zucchini", "quantity": "1 small", "item": "zucchini" },
+    {
+      "id": "zucchini",
+      "quantity": "1 small",
+      "item": "zucchini"
+    },
     {
       "id": "ground-chicken",
       "quantity": "450g",
       "item": "ground chicken",
       "notes": "or ground turkey"
     },
-    { "id": "panko", "quantity": "1/2 cup", "item": "panko breadcrumbs" },
-    { "id": "egg", "quantity": "1 large", "item": "egg" },
+    {
+      "id": "panko",
+      "quantity": "1/2 cup",
+      "item": "panko breadcrumbs"
+    },
+    {
+      "id": "egg",
+      "quantity": "1 large",
+      "item": "egg"
+    },
     {
       "id": "parmesan-meatballs",
       "quantity": "40g",
       "item": "grated parmesan cheese"
     },
-    { "id": "garlic-powder", "quantity": "1 tsp", "item": "garlic powder" },
-    { "id": "italian-seasoning", "quantity": "1 tsp", "item": "Italian seasoning" },
-    { "id": "salt", "quantity": "1 tsp", "item": "kosher salt" },
+    {
+      "id": "garlic-powder",
+      "quantity": "1 tsp",
+      "item": "garlic powder"
+    },
+    {
+      "id": "italian-seasoning",
+      "quantity": "1 tsp",
+      "item": "Italian seasoning"
+    },
+    {
+      "id": "salt",
+      "quantity": "1 tsp",
+      "item": "kosher salt"
+    },
     {
       "id": "black-pepper",
       "quantity": "to taste",
       "item": "black pepper",
       "notes": "freshly ground"
     },
-    { "id": "butter", "quantity": "2 tbsp", "item": "salted butter" },
-    { "id": "shallot", "quantity": "1", "item": "shallot", "notes": "minced" },
-    { "id": "garlic", "quantity": "3 cloves", "item": "garlic", "notes": "minced" },
+    {
+      "id": "butter",
+      "quantity": "2 tbsp",
+      "item": "salted butter"
+    },
+    {
+      "id": "shallot",
+      "quantity": "1",
+      "item": "shallot",
+      "notes": "minced"
+    },
+    {
+      "id": "garlic",
+      "quantity": "3 cloves",
+      "item": "garlic",
+      "notes": "minced"
+    },
     {
       "id": "sundried-tomatoes",
       "quantity": "3/4 cup",
       "item": "sundried tomatoes packed in oil",
       "notes": "drained and roughly chopped"
     },
-    { "id": "white-wine", "quantity": "1/2 cup", "item": "dry white wine" },
+    {
+      "id": "white-wine",
+      "quantity": "1/2 cup",
+      "item": "dry white wine"
+    },
     {
       "id": "chicken-broth",
       "quantity": "1/2 cup",
       "item": "low sodium chicken broth",
       "notes": "plus more as needed"
     },
-    { "id": "heavy-cream", "quantity": "3/4 cup", "item": "heavy cream" },
+    {
+      "id": "heavy-cream",
+      "quantity": "3/4 cup",
+      "item": "heavy cream"
+    },
     {
       "id": "parmesan-sauce",
       "quantity": "30-60g",
       "item": "grated parmesan cheese"
     },
-    { "id": "spinach", "quantity": "1-2 cups", "item": "spinach", "notes": "roughly chopped" },
-    { "id": "lemon-zest", "quantity": "to taste", "item": "lemon zest" },
-    { "id": "basil", "quantity": "to taste", "item": "fresh basil", "notes": "torn" },
+    {
+      "id": "spinach",
+      "quantity": "1-2 cups",
+      "item": "spinach",
+      "notes": "roughly chopped"
+    },
+    {
+      "id": "lemon-zest",
+      "quantity": "to taste",
+      "item": "lemon zest"
+    },
+    {
+      "id": "basil",
+      "quantity": "to taste",
+      "item": "fresh basil",
+      "notes": "torn"
+    },
     {
       "id": "pasta",
       "quantity": "to taste",
@@ -109,7 +168,5 @@
       "ingredientIds": ["lemon-zest", "basil", "pasta"]
     }
   ],
-  "notes": "Shape meatballs a day ahead and refrigerate, or bake 1-2 days ahead and make the sauce when ready to serve. Leftovers keep 3-4 days refrigerated; freeze cooked meatballs and sauce together, or freeze unbaked meatballs, for up to 3 months.",
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  "notes": "Shape meatballs a day ahead and refrigerate, or bake 1-2 days ahead and make the sauce when ready to serve. Leftovers keep 3-4 days refrigerated; freeze cooked meatballs and sauce together, or freeze unbaked meatballs, for up to 3 months."
 }
