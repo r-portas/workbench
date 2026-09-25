@@ -1,0 +1,72 @@
+{
+  "id": "beef-goulash",
+  "name": "Beef Goulash",
+  "description": "Hearty Maggi beef goulash with onion and potato, served with bread.",
+  "servings": 4,
+  "prepMinutes": 10,
+  "cookMinutes": 40,
+  "ingredients": [
+    {
+      "id": "oil",
+      "quantity": "2 tsp",
+      "item": "cooking oil"
+    },
+    {
+      "id": "beef",
+      "quantity": "500g",
+      "item": "lean rump steak",
+      "notes": "cubed"
+    },
+    {
+      "id": "onion",
+      "quantity": "1 medium (150g)",
+      "item": "onion",
+      "notes": "sliced"
+    },
+    {
+      "id": "potatoes",
+      "quantity": "2 medium (400g)",
+      "item": "potatoes",
+      "notes": "peeled and cubed"
+    },
+    {
+      "id": "tomato-paste",
+      "quantity": "2 tbsp",
+      "item": "tomato paste"
+    },
+    {
+      "id": "water",
+      "quantity": "1¼ cups (310mL)",
+      "item": "water"
+    },
+    {
+      "id": "maggi-base",
+      "quantity": "1 packet",
+      "item": "MAGGI Beef Goulash Recipe Base"
+    },
+    {
+      "id": "bread",
+      "item": "bread",
+      "notes": "for serving"
+    }
+  ],
+  "steps": [
+    {
+      "text": "Heat the oil in a pan and brown the beef. Add the onion and potato, then cook for 2 minutes.",
+      "ingredientIds": ["oil", "beef", "onion", "potatoes"]
+    },
+    {
+      "text": "Add the combined tomato paste, water, and MAGGI Recipe Base. Bring to the boil, stirring.",
+      "ingredientIds": ["tomato-paste", "water", "maggi-base"]
+    },
+    {
+      "text": "Cover and simmer for 30 minutes, or until the beef and potatoes are tender, stirring occasionally.",
+      "ingredientIds": []
+    },
+    {
+      "text": "Serve with bread.",
+      "ingredientIds": ["bread"]
+    }
+  ],
+  "notes": "No need to add extra salt."
+}
