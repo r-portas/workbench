@@ -1,34 +1,31 @@
 import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { basename, dirname, join } from "node:path";
 
-import { type Recipe, recipeSchema } from "./recipes.schemas";
+import { compareCategories } from "./recipes";
+import { recipeSchema } from "./recipes.schemas";
+import type { RecipeGroup, RecipeWithCategory } from "./recipes.types";
 
 /** Recipe JSON lives at `<app-root>/content/` (cwd is the app root in dev and build). */
 const CONTENT_DIR = join(process.cwd(), "content");
 
 /**
- * Loads and validates every `*.json` recipe under `content/`.
+ * Loads and validates every `<category>/<id>.json` recipe under `content/`.
  *
  * @remarks
- * Filename stem must match `recipe.id`. Invalid files throw with the path.
+ * The folder is the recipe's category. The filename stem must match `recipe.id`, and ids must be
+ * unique across categories. Invalid files throw with the path.
  */
-function loadRecipes(): Recipe[] {
-  const recipes: Recipe[] = [];
+function loadRecipes(): RecipeWithCategory[] {
+  const recipes: RecipeWithCategory[] = [];
 
-  for (const entry of new Bun.Glob("*.json").scanSync({ cwd: CONTENT_DIR })) {
+  for (const entry of new Bun.Glob("*/*.json").scanSync({ cwd: CONTENT_DIR })) {
     const path = join(CONTENT_DIR, entry);
-    const id = entry.replace(/\.json$/, "");
+    const category = dirname(entry);
+    const id = basename(entry, ".json");
 
-    let data: unknown;
+    let recipe: RecipeWithCategory;
     try {
-      data = JSON.parse(readFileSync(path, "utf8"));
-    } catch (error) {
-      throw new Error(`Failed to parse recipe JSON: ${path}`, { cause: error });
-    }
-
-    let recipe: Recipe;
-    try {
-      recipe = recipeSchema.parse(data);
+      recipe = { ...recipeSchema.parse(JSON.parse(readFileSync(path, "utf8"))), category };
     } catch (error) {
       throw new Error(`Invalid recipe: ${path}`, { cause: error });
     }
@@ -36,23 +33,32 @@ function loadRecipes(): Recipe[] {
     if (recipe.id !== id) {
       throw new Error(`Recipe id "${recipe.id}" does not match filename "${id}" (${path})`);
     }
+    // Recipe URLs don't include the category, so ids must be unique across folders.
+    if (recipes.some((existing) => existing.id === id)) {
+      throw new Error(`Duplicate recipe id "${id}" (${path})`);
+    }
 
     recipes.push(recipe);
   }
 
-  return recipes;
+  return recipes.toSorted((a, b) => a.name.localeCompare(b.name));
 }
 
 const RECIPES = loadRecipes();
 
 /**
- * Returns all recipes, newest updated first.
+ * Returns recipes grouped by category (ordered by {@link compareCategories}), each group sorted
+ * by name.
  *
  * @example
- * const recipes = listRecipes();
+ * const groups = listRecipes();
  */
-export function listRecipes(): Recipe[] {
-  return RECIPES.toSorted((a, b) => b.updatedAt.getTime() - a.updatedAt.getTime());
+export function listRecipes(): RecipeGroup[] {
+  const categories = new Set(RECIPES.map((recipe) => recipe.category));
+  return [...categories].toSorted(compareCategories).map((category) => ({
+    category,
+    recipes: RECIPES.filter((recipe) => recipe.category === category),
+  }));
 }
 
 /**
@@ -61,6 +67,6 @@ export function listRecipes(): Recipe[] {
  * @example
  * const recipe = getRecipe("overnight-oats");
  */
-export function getRecipe(id: string): Recipe | undefined {
+export function getRecipe(id: string): RecipeWithCategory | undefined {
   return RECIPES.find((recipe) => recipe.id === id);
 }

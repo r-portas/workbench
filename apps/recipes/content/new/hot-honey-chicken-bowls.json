@@ -2,7 +2,6 @@
   "id": "hot-honey-chicken-bowls",
   "name": "Hot Honey Chicken Bowls",
   "description": "Roasted sweet potatoes and hot honey chicken over arugula with cottage cheese, avocado, and jalapeño ranch.",
-  "tags": ["dinner", "bowl", "chicken"],
   "servings": 6,
   "prepMinutes": 15,
   "cookMinutes": 35,
@@ -13,35 +12,107 @@
       "item": "sweet potatoes",
       "notes": "cut into 1cm cubes"
     },
-    { "id": "olive-oil-potatoes", "quantity": "1 tbsp", "item": "olive oil" },
-    { "id": "salt-pepper", "quantity": "to taste", "item": "kosher salt and black pepper" },
-    { "id": "hot-honey", "quantity": "2 tbsp", "item": "hot honey" },
-    { "id": "lemon-juice", "quantity": "1 tbsp", "item": "lemon juice" },
-    { "id": "smoked-paprika", "quantity": "1 tsp", "item": "smoked paprika" },
-    { "id": "garlic-powder", "quantity": "1 tsp", "item": "garlic powder" },
-    { "id": "cumin", "quantity": "1/2 tsp", "item": "ground cumin" },
-    { "id": "kosher-salt", "quantity": "1 tsp", "item": "kosher salt" },
-    { "id": "red-pepper-flakes", "quantity": "1/4 tsp", "item": "crushed red pepper" },
+    {
+      "id": "olive-oil-potatoes",
+      "quantity": "1 tbsp",
+      "item": "olive oil"
+    },
+    {
+      "id": "salt-pepper",
+      "quantity": "to taste",
+      "item": "kosher salt and black pepper"
+    },
+    {
+      "id": "hot-honey",
+      "quantity": "2 tbsp",
+      "item": "hot honey"
+    },
+    {
+      "id": "lemon-juice",
+      "quantity": "1 tbsp",
+      "item": "lemon juice"
+    },
+    {
+      "id": "smoked-paprika",
+      "quantity": "1 tsp",
+      "item": "smoked paprika"
+    },
+    {
+      "id": "garlic-powder",
+      "quantity": "1 tsp",
+      "item": "garlic powder"
+    },
+    {
+      "id": "cumin",
+      "quantity": "1/2 tsp",
+      "item": "ground cumin"
+    },
+    {
+      "id": "kosher-salt",
+      "quantity": "1 tsp",
+      "item": "kosher salt"
+    },
+    {
+      "id": "red-pepper-flakes",
+      "quantity": "1/4 tsp",
+      "item": "crushed red pepper"
+    },
     {
       "id": "chicken-breast",
       "quantity": "900g",
       "item": "boneless chicken breast",
       "notes": "cut into 2.5cm cubes"
     },
-    { "id": "olive-oil-chicken", "quantity": "2 tbsp", "item": "olive oil" },
-    { "id": "arugula", "quantity": "4 cups", "item": "arugula" },
-    { "id": "cottage-cheese", "quantity": "2 cups", "item": "cottage cheese" },
-    { "id": "cucumber", "quantity": "1 cup", "item": "cucumber", "notes": "diced" },
-    { "id": "avocado", "quantity": "2", "item": "avocados", "notes": "sliced" },
-    { "id": "pickled-red-onions", "quantity": "to taste", "item": "pickled red onions" },
-    { "id": "corn-salsa", "quantity": "to taste", "item": "corn salsa", "notes": "optional" },
+    {
+      "id": "olive-oil-chicken",
+      "quantity": "2 tbsp",
+      "item": "olive oil"
+    },
+    {
+      "id": "arugula",
+      "quantity": "4 cups",
+      "item": "arugula"
+    },
+    {
+      "id": "cottage-cheese",
+      "quantity": "2 cups",
+      "item": "cottage cheese"
+    },
+    {
+      "id": "cucumber",
+      "quantity": "1 cup",
+      "item": "cucumber",
+      "notes": "diced"
+    },
+    {
+      "id": "avocado",
+      "quantity": "2",
+      "item": "avocados",
+      "notes": "sliced"
+    },
+    {
+      "id": "pickled-red-onions",
+      "quantity": "to taste",
+      "item": "pickled red onions"
+    },
+    {
+      "id": "corn-salsa",
+      "quantity": "to taste",
+      "item": "corn salsa",
+      "notes": "optional"
+    },
     {
       "id": "hot-honey-garnish",
       "quantity": "to taste",
       "item": "hot honey",
       "notes": "for drizzling"
     },
-    { "id": "cilantro", "quantity": "to taste", "item": "cilantro", "notes": "optional garnish" },
+    {
+      "id": "cilantro",
+      "quantity": "to taste",
+      "item": "cilantro",
+      "notes": "optional garnish"
+    },
     {
       "id": "jalapeno-ranch",
       "quantity": "to taste",
@@ -86,7 +157,5 @@
       ]
     }
   ],
-  "notes": "Store components separately in airtight containers for up to 4 days; reheat chicken and sweet potatoes before assembling.",
-  "createdAt": "2026-09-13T00:00:00.000Z",
-  "updatedAt": "2026-09-13T00:00:00.000Z"
+  "notes": "Store components separately in airtight containers for up to 4 days; reheat chicken and sweet potatoes before assembling."
 }
