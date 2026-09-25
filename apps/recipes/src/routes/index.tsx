@@ -15,7 +15,8 @@ function RecipeList() {
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
-      <header className="pt-2">
+      <header className="flex items-center gap-3 pt-2">
+        <img src="/favicon.svg" alt="" className="size-9 md:size-10" />
         <h1 className="font-heading text-3xl font-bold tracking-tight md:text-4xl">Recipes</h1>
       </header>
 

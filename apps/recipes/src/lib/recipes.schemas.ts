@@ -2,7 +2,7 @@ import * as z from "zod";
 
 export const ingredientSchema = z.object({
   id: z.string().min(1),
-  quantity: z.string().min(1),
+  quantity: z.string().optional(),
   item: z.string().min(1),
   notes: z.string().optional(),
 });

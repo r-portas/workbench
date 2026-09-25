@@ -2,6 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { ArrowLeftIcon, CheckIcon } from "lucide-react";
 import { useState } from "react";
 
+import { CookModeToggle } from "@/components/cook-mode-toggle";
 import { RecipePills } from "@/components/recipe-pills";
 import { ButtonLink } from "@/components/ui/button-link";
 import {
@@ -29,11 +30,12 @@ function RecipeDetail() {
 
   return (
     <article className="mx-auto flex w-full max-w-5xl flex-col gap-4 md:gap-6">
-      <div>
-        <ButtonLink to="/" variant="ghost" size="sm" className="-ml-2">
+      <div className="flex items-center justify-between gap-2">
+        <ButtonLink to="/" variant="ghost">
           <ArrowLeftIcon data-icon="inline-start" />
           All recipes
         </ButtonLink>
+        <CookModeToggle />
       </div>
 
       <RecipeHeader recipe={recipe} />
@@ -180,7 +182,7 @@ function StepsCard({ recipe }: { recipe: Recipe }) {
                   {index + 1}.
                 </span>
                 <div className="flex flex-col gap-2">
-                  <p className="text-base leading-7 md:text-[1.0625rem]">{step.text}</p>
+                  <p className="text-base leading-7">{step.text}</p>
                   {stepIngredients.length > 0 && (
                     <ul className="flex flex-wrap gap-1.5" aria-label="Ingredients for this step">
                       {stepIngredients.map((ingredient) => (

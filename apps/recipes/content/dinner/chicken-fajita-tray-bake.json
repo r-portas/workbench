@@ -7,7 +7,6 @@
   "ingredients": [
     {
       "id": "oil",
-      "quantity": "to taste",
       "item": "cooking oil",
       "notes": "for drizzling"
     },
@@ -38,13 +37,11 @@
     },
     {
       "id": "tortillas",
-      "quantity": "to taste",
       "item": "tortillas",
       "notes": "for serving"
     },
     {
       "id": "avocado-dip",
-      "quantity": "to taste",
       "item": "avocado dip",
       "notes": "for serving"
     }
