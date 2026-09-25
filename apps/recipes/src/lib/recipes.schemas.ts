@@ -29,6 +29,7 @@ export const recipeSchema = z
     updatedAt: z.coerce.date(),
   })
   .superRefine((recipe, ctx) => {
+    // Ingredient ids must be unique so steps can reference them unambiguously.
     const seen = new Set<string>();
     for (const [index, ingredient] of recipe.ingredients.entries()) {
       if (seen.has(ingredient.id)) {
@@ -41,6 +42,7 @@ export const recipeSchema = z
       seen.add(ingredient.id);
     }
 
+    // Every step ingredientId must point at an ingredient defined above.
     for (const [stepIndex, step] of recipe.steps.entries()) {
       for (const [idIndex, ingredientId] of step.ingredientIds.entries()) {
         if (!seen.has(ingredientId)) {
