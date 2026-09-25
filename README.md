@@ -59,7 +59,7 @@ Run `bun update:all` from the repo root to update dependencies to their latest v
 workspace.
 
 ```sh
-bun update:all
+bun run update:all
 ```
 
 ## Repo Conventions
