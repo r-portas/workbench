@@ -20,9 +20,9 @@ function AppLayout() {
                 to="/llms.txt"
                 reloadDocument
                 aria-label="llms.txt"
-                variant="ghost"
+                variant="sidebar"
                 size="icon"
-                className="text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground [&_svg]:size-5"
+                className="[&_svg]:size-5"
               >
                 <ScrollText />
               </ButtonLink>

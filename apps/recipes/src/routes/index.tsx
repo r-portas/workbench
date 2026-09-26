@@ -62,9 +62,9 @@ function RecipeCard({ recipe }: { recipe: Recipe }) {
       params={{ recipeId: recipe.id }}
       className="group flex flex-1 rounded-xl transition-transform hover:-translate-y-0.5 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none motion-reduce:hover:translate-y-0"
     >
-      <Card className="flex-1 gap-3 transition-shadow group-hover:ring-foreground/25">
+      <Card variant="interactive" className="flex-1 gap-3">
         <CardHeader className="gap-3">
-          <CardTitle className="text-lg font-bold text-balance">
+          <CardTitle className="text-lg text-balance">
             <h3>{recipe.name}</h3>
           </CardTitle>
           {recipe.description && (

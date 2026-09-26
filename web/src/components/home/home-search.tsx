@@ -43,7 +43,7 @@ export default function HomeSearch({ templates, sections }: HomeSearchProps) {
   return (
     <>
       <InputGroup className="h-10">
-        <InputGroupAddon className="pl-2.5 [&>svg]:size-5">
+        <InputGroupAddon className="ml-0.5 [&>svg]:size-5">
           <Search />
         </InputGroupAddon>
         <input
