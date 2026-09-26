@@ -77,25 +77,28 @@ function TemplateRow({ template, className }: TemplateRowProps) {
   return (
     <div className={cn("flex flex-col gap-2 px-3 py-2", className)}>
       <span className="truncate text-sm font-medium">{template.name}</span>
-      <InputGroup>
-        <InputGroupInput readOnly value={template.command} className="font-mono" />
-        <InputGroupAddon align="inline-end">
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <InputGroupButton
-                  size="icon-xs"
-                  aria-label={copied ? "Copied" : "Copy"}
-                  onClick={handleCopy}
-                />
-              }
-            >
-              {copied ? <CheckIcon /> : <CopyIcon />}
-            </TooltipTrigger>
-            <TooltipContent>{copied ? "Copied" : "Copy"}</TooltipContent>
-          </Tooltip>
-        </InputGroupAddon>
-      </InputGroup>
+      {/* Plain wrapper so the command inherits the mono font; InputGroupInput owns its typography */}
+      <div className="font-mono">
+        <InputGroup>
+          <InputGroupInput readOnly value={template.command} />
+          <InputGroupAddon align="inline-end">
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <InputGroupButton
+                    size="icon-xs"
+                    aria-label={copied ? "Copied" : "Copy"}
+                    onClick={handleCopy}
+                  />
+                }
+              >
+                {copied ? <CheckIcon /> : <CopyIcon />}
+              </TooltipTrigger>
+              <TooltipContent>{copied ? "Copied" : "Copy"}</TooltipContent>
+            </Tooltip>
+          </InputGroupAddon>
+        </InputGroup>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": ["@shadcn/lint"],
   "plugins": ["eslint", "typescript", "oxc", "jsdoc", "react", "react-perf", "unicorn"],
   "categories": {
     "correctness": "error",
@@ -14,7 +15,40 @@
     "react/react-in-jsx-scope": "off",
     // `_splat` is TanStack Router's fixed name for splat route params
     "eslint/no-underscore-dangle": ["error", { "allow": ["_splat"] }],
+    // shadcn/lint: keep pages on the design system's tokens and component variants
+    "shadcn/no-raw-colors": "error",
+    "shadcn/no-inline-styles": "error",
+    "shadcn/no-unknown-classes": "error",
+    "shadcn/require-static-classes": "error",
+    "shadcn/no-arbitrary-values": ["error", { "allow": ["layout"] }],
+    "shadcn/no-restyle": [
+      "error",
+      {
+        "allow": ["layout"],
+        "contracts": [
+          // Cards are containers, so callers own their inner spacing
+          { "pattern": "^Card(Header|Content|Footer)?$", "allow": ["layout", "spacing"] },
+          // Titles and descriptions can change size and leading, but not font family/weight
+          {
+            "pattern": "^Card(Title|Description)$",
+            "allow": ["layout", "typography"],
+            "deny": ["font-*"],
+          },
+        ],
+      },
+    ],
   },
+  "overrides": [
+    {
+      // Vendored shadcn components own their appearance, and compose each other
+      "files": ["src/components/ui/**"],
+      "rules": {
+        "shadcn/no-restyle": "off",
+        "shadcn/no-arbitrary-values": "off",
+        "shadcn/require-static-classes": "off",
+      },
+    },
+  ],
   "settings": {
     "jsdoc": {
       "tagNamePreference": {

@@ -48,7 +48,7 @@ function RecipeDetail() {
       {recipe.notes && (
         <Card className="gap-2">
           <CardHeader>
-            <CardTitle className="text-lg font-bold">
+            <CardTitle className="text-lg">
               <h2>Notes</h2>
             </CardTitle>
           </CardHeader>
@@ -71,7 +71,7 @@ function RecipeHeader({ recipe }: { recipe: Recipe }) {
   return (
     <Card className="gap-3">
       <CardHeader className="gap-3">
-        <CardTitle className="text-2xl leading-tight font-bold tracking-tight text-balance md:text-3xl">
+        <CardTitle className="text-2xl leading-tight tracking-tight text-balance md:text-3xl">
           <h1>{recipe.name}</h1>
         </CardTitle>
         {recipe.description && (
@@ -105,11 +105,13 @@ function IngredientsCard({ ingredients }: { ingredients: Ingredient[] }) {
   return (
     <Card className="gap-2 md:sticky md:top-6">
       <CardHeader>
-        <CardTitle className="text-lg font-bold">
+        <CardTitle className="text-lg">
           <h2>Ingredients</h2>
         </CardTitle>
-        <CardAction className="font-mono text-xs text-muted-foreground" aria-live="polite">
-          {checked.size}/{ingredients.length}
+        <CardAction aria-live="polite">
+          <span className="font-mono text-xs text-muted-foreground">
+            {checked.size}/{ingredients.length}
+          </span>
         </CardAction>
       </CardHeader>
 
@@ -163,7 +165,7 @@ function StepsCard({ recipe }: { recipe: Recipe }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg font-bold">
+        <CardTitle className="text-lg">
           <h2>Steps</h2>
         </CardTitle>
       </CardHeader>
