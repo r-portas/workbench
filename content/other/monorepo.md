@@ -11,8 +11,8 @@ rebuilding/redeploying things that didn't change, since every workspace shares o
   same file every other workspace's install reads from.
 - Each deployable workspace (`web`, `apps/recipes`) is its own Vercel project, with the Vercel
   **Root Directory** set to that workspace's folder. `installCommand` in its `vercel.json` does
-  `cd .. && bun install --filter <name>` (or `cd ../..` for `apps/*`) to install with deps hoisted
-  from the repo root.
+  `cd .. && bun install --frozen-lockfile --filter <name>` (or `cd ../..` for `apps/*`) to install
+  with deps hoisted from the repo root.
 
 ## CI: skip unaffected jobs
 
@@ -29,7 +29,6 @@ changes:
   steps:
     - uses: actions/checkout@v7
     - name: Filter packages
-      # Add a filter key here for each new app/template
       uses: dorny/paths-filter@v4
       id: filter
       with:
