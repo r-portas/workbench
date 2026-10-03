@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { RecipePills } from "@/components/recipe-pills";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { listRecipesFn } from "@/lib/recipes.functions";
 import type { Recipe } from "@/lib/recipes.schemas";
 
@@ -42,7 +43,8 @@ function RecipeList() {
         </section>
       ))}
 
-      <footer className="border-t border-border pt-4">
+      <footer className="flex flex-col gap-4">
+        <Separator />
         <Link
           reloadDocument
           to="/recipe.json"

@@ -1,7 +1,7 @@
 import { SunIcon, SunDimIcon } from "lucide-react";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Toggle } from "@/components/ui/toggle";
 import { useWakeLock, useWakeLockSupported } from "@/lib/wake-lock";
 
 /**
@@ -21,14 +21,10 @@ function CookModeToggle() {
   const Icon = enabled ? SunIcon : SunDimIcon;
 
   return (
-    <Button
-      variant={enabled ? "secondary" : "ghost"}
-      aria-pressed={enabled}
-      onClick={() => setEnabled((prev) => !prev)}
-    >
+    <Toggle pressed={enabled} onPressedChange={setEnabled}>
       Keep screen on
       <Icon data-icon="inline-end" />
-    </Button>
+    </Toggle>
   );
 }
 
