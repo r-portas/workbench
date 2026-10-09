@@ -39,6 +39,14 @@ Deployable apps living under `apps/`, each pulled in with the same `degit` comma
 | --------- | -------------------- |
 | `recipes` | A simple recipes app |
 
+## Scripts
+
+Helper scripts live in `scripts/` and are run from the repo root:
+
+| Script          | Description                                                         | Command                              |
+| --------------- | ------------------------------------------------------------------- | ------------------------------------ |
+| `create-app.ts` | Create a new app in `apps/<app-name>` from `templates/tss`, renamed | `./scripts/create-app.ts <app-name>` |
+
 ## Setup
 
 ```sh
