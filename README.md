@@ -37,6 +37,7 @@ Deployable apps living under `apps/`, each pulled in with the same `degit` comma
 
 | App       | Description          |
 | --------- | -------------------- |
+| `news`    | A simple news app    |
 | `recipes` | A simple recipes app |
 
 ## Scripts

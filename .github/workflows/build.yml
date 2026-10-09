@@ -33,6 +33,10 @@ jobs:
               - README.md
               - web/**
               - content/**
+            news:
+              - bun.lock
+              - package.json
+              - apps/news/**
             recipes:
               - bun.lock
               - package.json
