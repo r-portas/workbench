@@ -16,6 +16,8 @@ export const sourcesConfigSchema = z.object({
         limit: limit.default(1),
         // Monorepos publish a release per package, so this keeps only the listed packages' releases
         tagPrefix: z.array(z.string().min(1)).min(1).optional(),
+        // Stable releases only unless set, for repos that ship mostly betas/release candidates
+        includePrereleases: z.boolean().optional(),
       }),
     ),
   }),

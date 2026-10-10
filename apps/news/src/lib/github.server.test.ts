@@ -28,6 +28,15 @@ describe("toGithubItems", () => {
     expect(items.map((i) => i.version)).toEqual(["v2", "v1"]);
   });
 
+  test("keeps prereleases, but never drafts, when includePrereleases is set", () => {
+    const items = toGithubItems({ repo: "o/r", limit: 3, includePrereleases: true }, [
+      release(3, { prerelease: true }),
+      release(2, { draft: true, published_at: undefined }),
+      release(1),
+    ]);
+    expect(items.map((i) => i.version)).toEqual(["v3", "v1"]);
+  });
+
   test("filters by tag prefix", () => {
     const items = toGithubItems(
       { repo: "o/r", limit: 1 },

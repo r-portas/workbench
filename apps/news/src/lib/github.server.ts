@@ -5,8 +5,8 @@ import type { GithubItem, SectionResult } from "./news.types";
 import type { GithubRepoConfig } from "./sources.schemas";
 
 /**
- * Keeps a repo's newest stable releases, up to its limit, optionally only those whose tag starts
- * with `tagPrefix`.
+ * Keeps a repo's newest releases, up to its limit, optionally only those whose tag starts with
+ * `tagPrefix`. Prereleases are skipped unless the config sets `includePrereleases`; drafts always are.
  *
  * @remarks
  * Assumes `releases` is newest first, as GitHub returns them. Throws when the prefix matches no
@@ -25,7 +25,12 @@ export function toGithubItems(
   }
 
   return matching
-    .filter((release) => !release.draft && !release.prerelease && release.published_at)
+    .filter(
+      (release) =>
+        !release.draft &&
+        (config.includePrereleases || !release.prerelease) &&
+        release.published_at,
+    )
     .slice(0, config.limit)
     .map((release) => ({
       id: `gh-${release.id}`,
