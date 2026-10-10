@@ -13,13 +13,14 @@ export interface SidebarItem extends LinkProps {
 
 interface SidebarProps extends ComponentProps<"nav"> {
   items: SidebarItem[];
-  appIcon: LucideIcon;
+  appIcon: ReactNode;
   children?: ReactNode;
 }
 
 /**
  * A full-height, icon-only navigation rail that sits alongside page content.
  *
+ * @param appIcon - Rendered in an 8x8 slot at the top of the nav, e.g. the app logo.
  * @param items - Icons to render, each paired with a `title` shown as a tooltip on hover.
  * @param children - Rendered at the bottom of the nav, e.g. a user profile button.
  *
@@ -31,14 +32,14 @@ interface SidebarProps extends ComponentProps<"nav"> {
  * @example
  * ```tsx
  * <div className="flex min-h-screen">
- *   <Sidebar appIcon={Blocks} items={[{ icon: Home, title: "Home", to: "/" }]}>
+ *   <Sidebar appIcon={<img src="/favicon.svg" alt="" />} items={[{ icon: Home, title: "Home", to: "/" }]}>
  *     <UserButton />
  *   </Sidebar>
  *   <main className="flex-1">...</main>
  * </div>
  * ```
  */
-function Sidebar({ items, appIcon: AppIcon, className, children, ...props }: SidebarProps) {
+function Sidebar({ items, appIcon, className, children, ...props }: SidebarProps) {
   return (
     <nav
       className={cn(
@@ -47,9 +48,7 @@ function Sidebar({ items, appIcon: AppIcon, className, children, ...props }: Sid
       )}
       {...props}
     >
-      <div className="mb-2 flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-        <AppIcon className="size-5" />
-      </div>
+      <div className="mb-2 flex size-8 items-center justify-center [&>*]:size-full">{appIcon}</div>
       {items.map(({ icon: Icon, title, ...linkProps }) => (
         <Tooltip key={title}>
           <TooltipTrigger

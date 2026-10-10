@@ -4,7 +4,7 @@ import { ScrollText } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Sidebar } from "@/components/ui/sidebar";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { APP_ICON, SIDEBAR_ITEMS } from "@/lib/app-config";
+import { SIDEBAR_ITEMS } from "@/lib/app-config";
 
 /**
  * The app shell, a sidebar alongside the routed page content.
@@ -12,7 +12,7 @@ import { APP_ICON, SIDEBAR_ITEMS } from "@/lib/app-config";
 function AppLayout() {
   return (
     <div className="flex min-h-screen">
-      <Sidebar appIcon={APP_ICON} items={SIDEBAR_ITEMS}>
+      <Sidebar appIcon={<img src="/favicon.svg" alt="" />} items={SIDEBAR_ITEMS}>
         <Tooltip>
           <TooltipTrigger
             render={
