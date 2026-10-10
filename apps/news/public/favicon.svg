@@ -1,6 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <rect width="24" height="24" rx="6" fill="#1c1917" />
-  <rect x="5.5" y="6" width="13" height="3.5" rx="1" fill="#f97316" />
-  <rect x="5.5" y="12" width="13" height="2" rx="1" fill="#e7e5e4" />
-  <rect x="5.5" y="16" width="8.5" height="2" rx="1" fill="#a8a29e" />
+  <!-- No background tile: Safari/Chrome add a light backing behind dark favicons in dark mode -->
+  <rect
+    x="2.75"
+    y="3.75"
+    width="18.5"
+    height="16.5"
+    rx="2.5"
+    fill="#fafaf9"
+    stroke="#1c1917"
+    stroke-width="1.5"
+  />
+  <rect x="6" y="7.25" width="12" height="3.5" rx="1" fill="#f97316" />
+  <rect x="6" y="12.75" width="12" height="2" rx="1" fill="#57534e" />
+  <rect x="6" y="16.25" width="8" height="2" rx="1" fill="#a8a29e" />
 </svg>

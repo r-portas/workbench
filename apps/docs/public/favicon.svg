@@ -1,17 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-  <rect width="24" height="24" rx="6" fill="#0c0a09" />
+  <!-- No background tile: Safari/Chrome add a light backing behind dark favicons in dark mode -->
   <path
-    d="M 19.68 8.13 A 4.2 4.2 0 1 1 15.87 4.32 L 15.67 6.51 A 2.0 2.0 0 1 0 17.49 8.33 Z"
+    d="M6.5 2.75h8l5.25 5.25v12a1.25 1.25 0 0 1-1.25 1.25h-12a1.25 1.25 0 0 1-1.25-1.25v-16a1.25 1.25 0 0 1 1.25-1.25Z"
     fill="#fafaf9"
+    stroke="#1c1917"
+    stroke-width="1.5"
+    stroke-linejoin="round"
   />
-  <line
-    x1="12.53"
-    y1="11.47"
-    x2="6.6"
-    y2="18"
-    stroke="#fafaf9"
-    stroke-width="3.6"
-    stroke-linecap="round"
+  <path
+    d="M14.5 2.75v4.25a1 1 0 0 0 1 1h4.25"
+    fill="#d6d3d1"
+    stroke="#1c1917"
+    stroke-width="1.5"
+    stroke-linejoin="round"
   />
-  <circle cx="6.3" cy="18.3" r="2" fill="#fafaf9" />
+  <rect x="8" y="11" width="8" height="2.5" rx="1.25" fill="#0ea5e9" />
+  <rect x="8" y="15.5" width="5.5" height="2.5" rx="1.25" fill="#57534e" />
 </svg>
