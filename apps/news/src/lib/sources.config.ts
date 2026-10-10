@@ -23,8 +23,12 @@ export const sourcesConfig = parseSourcesConfig({
       { url: "https://www.itnews.com.au/RSS/rss.ashx", limit: 10, name: "iTnews" },
       { url: "https://www.theregister.com/headlines.rss", limit: 10, name: "The Register" },
       { url: "https://techcrunch.com/feed/", limit: 10, name: "TechCrunch" },
+      { url: "https://feeds.arstechnica.com/arstechnica/index", limit: 10, name: "Ars Technica" },
+      { url: "https://lobste.rs/rss", limit: 10, name: "Lobsters" },
       { url: "https://tanstack.com/rss.xml", limit: 5, name: "TanStack Blog" },
       { url: "https://ui.shadcn.com/rss.xml", limit: 5, name: "shadcn/ui" },
+      { url: "https://bun.com/rss.xml", limit: 5, name: "Bun Blog" },
+      { url: "https://vercel.com/atom", limit: 5, name: "Vercel" },
     ],
   },
 });
