@@ -1,4 +1,6 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { AppLayout } from "@/components/app-layout";
 import { APP_DESCRIPTION, APP_NAME } from "@/lib/app-config";
@@ -76,6 +78,8 @@ function RootDocument() {
       </head>
       <body>
         <AppLayout />
+        <Analytics />
+        <SpeedInsights />
         <Scripts />
       </body>
     </html>
