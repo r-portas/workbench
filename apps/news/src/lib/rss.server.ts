@@ -15,6 +15,9 @@ const parser = new XMLParser({
   isArray: (name) => name === "item" || name === "entry" || name === "link",
 });
 
+/** Items published longer ago than this are dropped, so the page stays about what's recent. */
+const MAX_AGE_MS = 5 * 24 * 60 * 60 * 1000;
+
 const NAMED_ENTITIES: Record<string, string> = {
   amp: "&",
   lt: "<",
@@ -76,6 +79,8 @@ function titleText(title: FeedEntry["title"]): string | undefined {
  *
  * @remarks
  * Items without a title, link or valid date are dropped, since they can't be shown or sorted.
+ * Items older than 5 days are dropped too, before the limit applies, so a quiet feed shows fewer
+ * items rather than stale ones.
  */
 export function parseFeed(xml: string, feed: RssFeedConfig): RssItem[] {
   const parsed = feedSchema.safeParse(parser.parse(xml));
@@ -83,12 +88,14 @@ export function parseFeed(xml: string, feed: RssFeedConfig): RssItem[] {
 
   const source = feed.name ?? plain(parsed.data.title) ?? new URL(feed.url).hostname;
 
+  const cutoff = Date.now() - MAX_AGE_MS;
+
   const items = parsed.data.entries
     .map((entry): RssItem | undefined => {
       const title = titleText(entry.title);
       const url = safeUrl(plain(entry.link), feed.url);
       const publishedAt = isoDate(plain(entry.date));
-      if (!title || !url || !publishedAt) return undefined;
+      if (!title || !url || !publishedAt || Date.parse(publishedAt) < cutoff) return undefined;
       // Guids are only unique within a feed, so the feed URL keeps ids unique once feeds are merged
       const id = `rss-${feed.url}-${plain(entry.id) ?? url}`;
       return { id, sourceType: "rss", title, url, source, publishedAt };
