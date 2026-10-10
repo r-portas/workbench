@@ -25,7 +25,7 @@ export function degitCommand(name: string): string {
  * Lists immediate child directories in a templates folder as degit targets.
  *
  * @example
- * const templates = await listTemplates("../templates");
+ * const templates = await listTemplates("../../templates");
  * // [{ name: "tss", command: "bunx --bun degit r-portas/workbench/templates/tss <destination>" }]
  *
  * @remarks

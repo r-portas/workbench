@@ -5,15 +5,14 @@ config all in one place.
 
 ## Layout
 
-| Folder                 | Contents                                                                  |
-| ---------------------- | ------------------------------------------------------------------------- |
-| `apps/`                | Deployable apps, each bootstrapped from `templates/tss`                   |
-| `content/`             | All written notes, served by `web/`                                       |
-| `content/cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)        |
-| `content/conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts)       |
-| `content/guides/`      | Step-by-step zero-to-working setup instructions, one per tool             |
-| `templates/`           | Scaffoldable project templates (e.g. `tss`)                               |
-| `web/`                 | Website that hosts this repo's content, bootstrapped from `templates/tss` |
+| Folder                 | Contents                                                            |
+| ---------------------- | ------------------------------------------------------------------- |
+| `apps/`                | Deployable apps, each bootstrapped from `templates/tss`             |
+| `content/`             | All written notes, served by `apps/docs`                            |
+| `content/cheatsheets/` | Command/reference lookups per tool (copy-paste recipes, not setup)  |
+| `content/conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts) |
+| `content/guides/`      | Step-by-step zero-to-working setup instructions, one per tool       |
+| `templates/`           | Scaffoldable project templates (e.g. `tss`)                         |
 
 ## Templates
 
@@ -35,10 +34,11 @@ bunx --bun degit r-portas/workbench/templates/tss#<branch> <destination>
 
 Deployable apps living under `apps/`, each pulled in with the same `degit` command as templates:
 
-| App       | Description                 |
-| --------- | --------------------------- |
-| `news`    | A personal news feed reader |
-| `recipes` | A simple recipes app        |
+| App       | Description                            |
+| --------- | -------------------------------------- |
+| `docs`    | Website that hosts this repo's content |
+| `news`    | A personal news feed reader            |
+| `recipes` | A simple recipes app                   |
 
 ## Scripts
 
