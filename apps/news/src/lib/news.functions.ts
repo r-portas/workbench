@@ -3,7 +3,6 @@ import { setResponseHeader } from "@tanstack/react-start/server";
 
 import { getGithubReleases } from "./github.server";
 import { getHackerNews } from "./hn.server";
-import { mergeSources } from "./news";
 import type { SectionResult } from "./news.types";
 import { getRssItems } from "./rss.server";
 import { sourcesConfig } from "./sources.config";
@@ -17,33 +16,26 @@ const CDN_CACHED = "max-age=600, stale-while-revalidate=3600";
 // re-hit on every open (keeping it rate-limited), short enough that it's retried soon
 const CDN_PARTIAL = "max-age=60";
 
-function setCacheHeaders(result: SectionResult) {
+function withCacheHeaders<T extends SectionResult>(result: T): T {
   // Browsers always go back to the CDN
   setResponseHeader("Cache-Control", "public, max-age=0, must-revalidate");
   setResponseHeader(
     "Vercel-CDN-Cache-Control",
     result.failed.length > 0 ? CDN_PARTIAL : CDN_CACHED,
   );
+  return result;
 }
 
 // These are GET with no arguments, so each has one stable URL for the CDN to cache
 
-export const getHackerNewsFn = createServerFn({ method: "GET" }).handler(async () => {
-  const result = await mergeSources([
-    { name: "Hacker News", items: getHackerNews(sourcesConfig.hackerNews.topN) },
-  ]);
-  setCacheHeaders(result);
-  return result;
-});
+export const getHackerNewsFn = createServerFn({ method: "GET" }).handler(async () =>
+  withCacheHeaders(await getHackerNews(sourcesConfig.hackerNews.topN)),
+);
 
-export const getGithubReleasesFn = createServerFn({ method: "GET" }).handler(async () => {
-  const result = await getGithubReleases(sourcesConfig.github.repos);
-  setCacheHeaders(result);
-  return result;
-});
+export const getGithubReleasesFn = createServerFn({ method: "GET" }).handler(async () =>
+  withCacheHeaders(await getGithubReleases(sourcesConfig.github.repos)),
+);
 
-export const getRssItemsFn = createServerFn({ method: "GET" }).handler(async () => {
-  const result = await getRssItems(sourcesConfig.rss.feeds);
-  setCacheHeaders(result);
-  return result;
-});
+export const getRssItemsFn = createServerFn({ method: "GET" }).handler(async () =>
+  withCacheHeaders(await getRssItems(sourcesConfig.rss.feeds)),
+);

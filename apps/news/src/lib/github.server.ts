@@ -1,5 +1,5 @@
 import { githubReleasesSchema, type GithubRelease } from "./github.schemas";
-import { mergeSources, sortNewestFirst } from "./news";
+import { mergeSources } from "./news";
 import { fetchUpstream } from "./news.server";
 import type { GithubItem, SectionResult } from "./news.types";
 import type { GithubRepoConfig } from "./sources.schemas";
@@ -17,27 +17,26 @@ export function toGithubItems(
   releases: GithubRelease[],
   tagPrefix?: string,
 ): GithubItem[] {
-  if (tagPrefix && !releases.some((release) => release.tag_name.startsWith(tagPrefix))) {
+  const matching = tagPrefix
+    ? releases.filter((release) => release.tag_name.startsWith(tagPrefix))
+    : releases;
+  if (tagPrefix && matching.length === 0) {
     throw new Error(`${config.repo}: no release tags start with ${tagPrefix}`);
   }
 
-  return releases
-    .flatMap((release): GithubItem[] => {
-      if (release.draft || release.prerelease || !release.published_at) return [];
-      if (tagPrefix && !release.tag_name.startsWith(tagPrefix)) return [];
-      return [
-        {
-          id: `gh-${release.id}`,
-          sourceType: "github",
-          title: release.name || release.tag_name,
-          url: release.html_url,
-          source: config.repo,
-          publishedAt: release.published_at,
-          version: release.tag_name,
-        },
-      ];
-    })
-    .slice(0, config.limit);
+  return matching
+    .filter((release) => !release.draft && !release.prerelease && release.published_at)
+    .slice(0, config.limit)
+    .map((release) => ({
+      id: `gh-${release.id}`,
+      sourceType: "github",
+      title: release.name || release.tag_name,
+      url: release.html_url,
+      source: config.repo,
+      // Non-null: the filter above drops releases without a publish date
+      publishedAt: release.published_at!,
+      version: release.tag_name,
+    }));
 }
 
 async function fetchReleases(config: GithubRepoConfig): Promise<GithubRelease[]> {
@@ -64,19 +63,17 @@ async function fetchReleases(config: GithubRepoConfig): Promise<GithubRelease[]>
  * page fails alone while the repo's other packages still show. Uses `GITHUB_TOKEN` when set, to
  * lift the unauthenticated limit of 60 requests an hour.
  */
-export async function getGithubReleases(
-  repos: GithubRepoConfig[],
-): Promise<SectionResult<GithubItem>> {
-  const sources = repos.flatMap((config) => {
+export function getGithubReleases(repos: GithubRepoConfig[]): Promise<SectionResult<GithubItem>> {
+  const sources: { name: string; items: Promise<GithubItem[]> }[] = [];
+  for (const config of repos) {
     const releases = fetchReleases(config);
-    const pick = async (tagPrefix?: string) => toGithubItems(config, await releases, tagPrefix);
-    if (!config.tagPrefix) return [{ name: config.repo, items: pick() }];
-    return config.tagPrefix.map((prefix) => ({
-      name: `${config.repo} (${prefix})`,
-      items: pick(prefix),
-    }));
-  });
+    for (const prefix of config.tagPrefix ?? [undefined]) {
+      sources.push({
+        name: prefix ? `${config.repo} (${prefix})` : config.repo,
+        items: releases.then((all) => toGithubItems(config, all, prefix)),
+      });
+    }
+  }
 
-  const result = await mergeSources(sources);
-  return { ...result, items: sortNewestFirst(result.items) };
+  return mergeSources(sources, { newestFirst: true });
 }

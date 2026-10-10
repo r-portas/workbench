@@ -39,4 +39,9 @@ export type NewsItem = HackerNewsItem | GithubItem | RssItem;
 export interface SectionResult<T extends NewsItem = NewsItem> {
   items: T[];
   failed: string[];
+  /**
+   * ISO timestamp of when the server fetched upstream. Frozen into the CDN's cached copy, so it
+   * shows how stale that copy is. Absent when the section's fetch itself failed.
+   */
+  fetchedAt?: string;
 }

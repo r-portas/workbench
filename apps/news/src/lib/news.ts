@@ -12,12 +12,14 @@ export function sortNewestFirst<T extends NewsItem>(items: T[]): T[] {
  * sources fail.
  *
  * @param sources - Each source's name and its in-flight fetch.
+ * @param options.newestFirst - Sort the merged items newest first.
  *
  * @remarks
- * Items keep their source order (HN's rank order matters), so sort afterwards if needed.
+ * Without `newestFirst`, items keep their source order (HN's rank order matters).
  */
 export async function mergeSources<T extends NewsItem>(
   sources: { name: string; items: Promise<T[]> }[],
+  { newestFirst = false } = {},
 ): Promise<SectionResult<T>> {
   const settled = await Promise.all(
     sources.map(async ({ name, items }) => {
@@ -29,9 +31,18 @@ export async function mergeSources<T extends NewsItem>(
       }
     }),
   );
+
+  const items: T[] = [];
+  const failed: string[] = [];
+  for (const source of settled) {
+    if (source.items) items.push(...source.items);
+    else failed.push(source.name);
+  }
+
   return {
-    items: settled.flatMap((source) => source.items ?? []),
-    failed: settled.filter((source) => !source.items).map((source) => source.name),
+    items: newestFirst ? sortNewestFirst(items) : items,
+    failed,
+    fetchedAt: new Date().toISOString(),
   };
 }
 

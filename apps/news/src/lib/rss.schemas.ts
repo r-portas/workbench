@@ -65,10 +65,10 @@ export const feedSchema = z.union([
   z
     .object({
       rss: z.object({
-        channel: z.object({ title: optionalText, item: z.array(rssItem).default([]) }),
+        channel: z.object({ title, item: z.array(rssItem).default([]) }),
       }),
     })
-    .transform(({ rss }) => ({ title: rss.channel.title, entries: rss.channel.item })),
+    .transform(({ rss }) => ({ title: rss.channel.title?.text, entries: rss.channel.item })),
   z
     .object({
       feed: z.object({ title, entry: z.array(atomEntry).default([]) }),

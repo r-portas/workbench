@@ -17,6 +17,23 @@ describe("mergeSources", () => {
     expect(result.items.map((i) => i.id)).toEqual(["old", "new"]);
     expect(result.failed).toEqual(["b"]);
   });
+
+  test("sorts newest first when asked", async () => {
+    const result = await mergeSources(
+      [
+        { name: "a", items: Promise.resolve([item("old", "2026-01-01T00:00:00Z")]) },
+        { name: "b", items: Promise.resolve([item("new", "2026-02-01T00:00:00Z")]) },
+      ],
+      { newestFirst: true },
+    );
+    expect(result.items.map((i) => i.id)).toEqual(["new", "old"]);
+  });
+
+  test("stamps when the sources were fetched", async () => {
+    const before = Date.now();
+    const result = await mergeSources([]);
+    expect(Date.parse(result.fetchedAt!)).toBeGreaterThanOrEqual(before);
+  });
 });
 
 describe("withFallback", () => {
