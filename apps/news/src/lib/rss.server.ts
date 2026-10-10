@@ -83,15 +83,17 @@ export function parseFeed(xml: string, feed: RssFeedConfig): RssItem[] {
 
   const source = feed.name ?? plain(parsed.data.title) ?? new URL(feed.url).hostname;
 
-  const items = parsed.data.entries.flatMap((entry): RssItem[] => {
-    const title = titleText(entry.title);
-    const url = safeUrl(plain(entry.link), feed.url);
-    const publishedAt = isoDate(plain(entry.date));
-    if (!title || !url || !publishedAt) return [];
-    // Guids are only unique within a feed, so the feed URL keeps ids unique once feeds are merged
-    const id = `rss-${feed.url}-${plain(entry.id) ?? url}`;
-    return [{ id, sourceType: "rss", title, url, source, publishedAt }];
-  });
+  const items = parsed.data.entries
+    .map((entry): RssItem | undefined => {
+      const title = titleText(entry.title);
+      const url = safeUrl(plain(entry.link), feed.url);
+      const publishedAt = isoDate(plain(entry.date));
+      if (!title || !url || !publishedAt) return undefined;
+      // Guids are only unique within a feed, so the feed URL keeps ids unique once feeds are merged
+      const id = `rss-${feed.url}-${plain(entry.id) ?? url}`;
+      return { id, sourceType: "rss", title, url, source, publishedAt };
+    })
+    .filter((item) => item !== undefined);
 
   // Feeds sometimes repeat an item; keep the first, so ids stay unique for React keys
   const seen = new Set<string>();
@@ -107,9 +109,9 @@ async function getFeedItems(feed: RssFeedConfig): Promise<RssItem[]> {
 /**
  * Fetches every configured feed, merged newest first.
  */
-export async function getRssItems(feeds: RssFeedConfig[]): Promise<SectionResult<RssItem>> {
-  const result = await mergeSources(
+export function getRssItems(feeds: RssFeedConfig[]): Promise<SectionResult<RssItem>> {
+  return mergeSources(
     feeds.map((feed) => ({ name: feed.name ?? feed.url, items: getFeedItems(feed) })),
+    { newestFirst: true },
   );
-  return { ...result, items: sortNewestFirst(result.items) };
 }
