@@ -1,24 +1,24 @@
 # Working in a monorepo
 
-Notes on how this repo (`web`, `apps/*`, `templates/*` as Bun workspaces) keeps CI and Vercel from
+Notes on how this repo (`apps/*`, `templates/*` as Bun workspaces) keeps CI and Vercel from
 rebuilding/redeploying things that didn't change, since every workspace shares one `bun.lock`.
 
 ## Workspace layout
 
-- Root `package.json` declares `workspaces: ["web", "apps/*", "templates/*"]` — no Turborepo/Nx,
-  just Bun's built-in workspace support.
+- Root `package.json` declares `workspaces: ["apps/*", "templates/*"]` — no Turborepo/Nx, just Bun's
+  built-in workspace support.
 - One lockfile (`bun.lock`) for the whole repo, so a dependency bump in any workspace touches the
   same file every other workspace's install reads from.
-- Each deployable workspace (`web`, `apps/recipes`) is its own Vercel project, with the Vercel
+- Each deployable workspace (`apps/docs`, `apps/recipes`) is its own Vercel project, with the Vercel
   **Root Directory** set to that workspace's folder. `installCommand` in its `vercel.json` does
-  `cd .. && bun install --frozen-lockfile --filter <name>` (or `cd ../..` for `apps/*`) to install
-  with deps hoisted from the repo root.
+  `cd ../.. && bun install --frozen-lockfile --filter <name>` to install with deps hoisted from the
+  repo root.
 
 ## CI: skip unaffected jobs
 
 `.github/workflows/build.yml` has a `changes` job that runs
 [`dorny/paths-filter`](https://github.com/dorny/paths-filter) once, with one filter key per
-workspace (`web`, `recipes`, `tss`, ...), and a single `build` job matrixed over whichever
+workspace (`docs`, `recipes`, `tss`, ...), and a single `build` job matrixed over whichever
 workspaces actually changed — a **dynamic matrix** instead of a hardcoded list:
 
 ```yaml
@@ -33,11 +33,11 @@ changes:
       id: filter
       with:
         filters: |
-          web:
+          docs:
             - bun.lock
             - package.json
             - README.md
-            - web/**
+            - apps/docs/**
             - content/**
           recipes:
             - bun.lock
@@ -64,7 +64,7 @@ build:
 ```
 
 - `packages` is paths-filter's `changes` output — a single JSON array of whichever filter names
-  matched across all workspaces (e.g. `["web"]`, `["recipes","tss"]`, or `[]`) — fed straight into
+  matched across all workspaces (e.g. `["docs"]`, `["recipes","tss"]`, or `[]`) — fed straight into
   `fromJson()` for the one `build` matrix, no `jq` needed and no per-dimension outputs.
 - Each filter key must match that workspace's `package.json` `name` field, since `build` runs
   `bun run --filter <name>` directly against the matrix value.
@@ -80,8 +80,8 @@ Each deployable project's `vercel.json` sets an `ignoreCommand`. Per Vercel's do
 (`git diff --quiet` exits `1` on a diff) lets it continue:
 
 ```jsonc
-// web/vercel.json (Root Directory: web)
-"ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ../content ../README.md ../bun.lock ../package.json",
+// apps/docs/vercel.json (Root Directory: apps/docs)
+"ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ../../content ../../README.md ../../bun.lock ../../package.json",
 ```
 
 ```jsonc
@@ -90,7 +90,7 @@ Each deployable project's `vercel.json` sets an `ignoreCommand`. Per Vercel's do
 ```
 
 Paths are relative to that Root Directory, not the repo root — `.` covers the project's own folder,
-and everything else (shared root files, or `content/` for `web`) is reached with `../`.
+and everything else (shared root files, or `content/` for `docs`) is reached with `../../`.
 
 ## Adding a new app/template
 

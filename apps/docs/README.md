@@ -1,4 +1,4 @@
-# web
+# docs
 
 Website for workbench
 

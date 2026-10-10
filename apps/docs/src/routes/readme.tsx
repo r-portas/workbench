@@ -8,7 +8,7 @@ import MarkdownArticle from "@/components/markdown-article";
 
 /** Reads and parses the repo root README.md. */
 const getReadmeFn = createServerFn().handler(async () => {
-  const text = await readFile("../README.md", "utf-8");
+  const text = await readFile("../../README.md", "utf-8");
   return parseMarkdown(text);
 });
 

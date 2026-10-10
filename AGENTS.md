@@ -16,8 +16,3 @@
   - Add a row to the Apps table in [README.md](README.md#apps)
   - Add a filter entry for it in the `changes` job in
     [`.github/workflows/build.yml`](.github/workflows/build.yml)
-
-## Web
-
-- `web` is bootstrapped from `templates/tss`.
-  - When changing `templates/tss`, apply the same change to `web`

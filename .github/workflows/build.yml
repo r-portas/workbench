@@ -27,11 +27,11 @@ jobs:
         id: filter
         with:
           filters: |
-            web:
+            docs:
               - bun.lock
               - package.json
               - README.md
-              - web/**
+              - apps/docs/**
               - content/**
             news:
               - bun.lock

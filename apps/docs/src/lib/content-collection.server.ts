@@ -139,4 +139,4 @@ export class ContentCollection {
  * Slugs include the top-level folder, e.g. `guides/drizzle`, so callers filter
  * with `list("guides/")` rather than reaching for a per-folder collection.
  */
-export const CONTENT = new ContentCollection("../content");
+export const CONTENT = new ContentCollection("../../content");
