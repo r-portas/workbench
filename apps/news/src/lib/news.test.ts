@@ -1,4 +1,4 @@
-import { describe, expect, test } from "bun:test";
+import { describe, expect, spyOn, test } from "bun:test";
 
 import { formatRelativeTime, mergeSources, pluralise, withFallback } from "./news";
 import type { RssItem } from "./news.types";
@@ -8,14 +8,21 @@ function item(id: string, publishedAt: string): RssItem {
 }
 
 describe("mergeSources", () => {
-  test("keeps source order and names the failures", async () => {
-    const result = await mergeSources([
-      { name: "a", items: Promise.resolve([item("old", "2026-01-01T00:00:00Z")]) },
-      { name: "b", items: Promise.reject(new Error("expected test failure")) },
-      { name: "c", items: Promise.resolve([item("new", "2026-02-01T00:00:00Z")]) },
-    ]);
-    expect(result.items.map((i) => i.id)).toEqual(["old", "new"]);
-    expect(result.failed).toEqual(["b"]);
+  test("keeps source order, and names and logs the failures", async () => {
+    const errorSpy = spyOn(console, "error").mockImplementation(() => {});
+    try {
+      const result = await mergeSources([
+        { name: "a", items: Promise.resolve([item("old", "2026-01-01T00:00:00Z")]) },
+        { name: "b", items: Promise.reject(new Error("expected test failure")) },
+        { name: "c", items: Promise.resolve([item("new", "2026-02-01T00:00:00Z")]) },
+      ]);
+      expect(result.items.map((i) => i.id)).toEqual(["old", "new"]);
+      expect(result.failed).toEqual(["b"]);
+      expect(errorSpy).toHaveBeenCalledTimes(1);
+      expect(errorSpy.mock.calls[0]?.[0]).toBe("b failed");
+    } finally {
+      errorSpy.mockRestore();
+    }
   });
 
   test("sorts newest first when asked", async () => {
@@ -37,9 +44,19 @@ describe("mergeSources", () => {
 });
 
 describe("withFallback", () => {
-  test("marks a rejected fetch as failed", async () => {
-    const result = await withFallback(Promise.reject(new Error("expected test failure")), "Feeds");
-    expect(result).toEqual({ items: [], failed: ["Feeds"] });
+  test("marks a rejected fetch as failed, and logs it", async () => {
+    const errorSpy = spyOn(console, "error").mockImplementation(() => {});
+    try {
+      const result = await withFallback(
+        Promise.reject(new Error("expected test failure")),
+        "Feeds",
+      );
+      expect(result).toEqual({ items: [], failed: ["Feeds"] });
+      expect(errorSpy).toHaveBeenCalledTimes(1);
+      expect(errorSpy.mock.calls[0]?.[0]).toBe("Feeds failed");
+    } finally {
+      errorSpy.mockRestore();
+    }
   });
 });
 

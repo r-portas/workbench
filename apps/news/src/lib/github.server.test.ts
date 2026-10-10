@@ -67,6 +67,8 @@ describe("getGithubReleases", () => {
         release(2, { tag_name: "react@2", published_at: "2026-10-02T00:00:00Z" }),
       ]),
     );
+    // Silences the expected failure log for the missing prefix
+    const errorSpy = spyOn(console, "error").mockImplementation(() => {});
 
     try {
       const result = await getGithubReleases([
@@ -76,8 +78,11 @@ describe("getGithubReleases", () => {
       expect(fetchSpy).toHaveBeenCalledTimes(1);
       expect(result.items.map((i) => i.version)).toEqual(["react@4", "start@3"]);
       expect(result.failed).toEqual(["o/r (gone@)"]);
+      expect(errorSpy).toHaveBeenCalledTimes(1);
+      expect(errorSpy.mock.calls[0]?.[0]).toBe("o/r (gone@) failed");
     } finally {
       fetchSpy.mockRestore();
+      errorSpy.mockRestore();
     }
   });
 });
