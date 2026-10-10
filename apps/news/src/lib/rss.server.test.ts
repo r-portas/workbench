@@ -1,4 +1,4 @@
-import { describe, expect, test } from "bun:test";
+import { afterAll, beforeAll, describe, expect, setSystemTime, test } from "bun:test";
 
 import { decodeEntities, parseFeed } from "./rss.server";
 
@@ -16,10 +16,24 @@ const ATOM = `<?xml version="1.0"?>
   <entry><title>Post</title><id>urn:1</id>
     <link rel="replies" href="https://example.com/post#comments"/>
     <link rel="alternate" href="https://example.com/post"/>
-    <published>2026-10-01T00:00:00Z</published></entry>
+    <published>2026-10-08T00:00:00Z</published></entry>
 </feed>`;
 
 describe("parseFeed", () => {
+  // The age cutoff is relative to now, so pin the clock next to the fixtures' dates
+  beforeAll(() => setSystemTime(new Date("2026-10-10T00:00:00Z")));
+  afterAll(() => setSystemTime());
+
+  test("drops items older than 5 days, before applying the limit", () => {
+    const xml = `<rss><channel><title>T</title>
+      <item><title>Fresh</title><link>https://a/1</link><pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate></item>
+      <item><title>Recent</title><link>https://a/2</link><pubDate>Mon, 5 Oct 2026 12:00:00 GMT</pubDate></item>
+      <item><title>Stale</title><link>https://a/3</link><pubDate>Sat, 3 Oct 2026 00:00:00 GMT</pubDate></item>
+    </channel></rss>`;
+    const items = parseFeed(xml, { url: "https://a/rss", limit: 5 });
+    expect(items.map((i) => i.title)).toEqual(["Fresh", "Recent"]);
+  });
+
   test("parses RSS newest first, dropping undated items", () => {
     const items = parseFeed(RSS, { url: "https://example.com/rss", limit: 5 });
     expect(items.map((i) => i.title)).toEqual(["Newer & better", "Older"]);
@@ -64,7 +78,7 @@ describe("parseFeed", () => {
 
   test("resolves relative Atom links against the feed URL", () => {
     const xml = `<feed xmlns="http://www.w3.org/2005/Atom"><title>A</title><entry><title>P</title>
-      <link href="/posts/foo"/><published>2026-10-01T00:00:00Z</published></entry></feed>`;
+      <link href="/posts/foo"/><published>2026-10-08T00:00:00Z</published></entry></feed>`;
     expect(parseFeed(xml, { url: "https://blog.example/feed.xml", limit: 1 })[0]?.url).toBe(
       "https://blog.example/posts/foo",
     );
@@ -94,7 +108,7 @@ describe("parseFeed", () => {
   test("strips tags from Atom HTML titles", () => {
     const xml = `<feed xmlns="http://www.w3.org/2005/Atom"><title>A</title><entry>
       <title type="html">&lt;b&gt;Bold&lt;/b&gt; move</title><link href="https://a/1"/>
-      <published>2026-10-01T00:00:00Z</published></entry></feed>`;
+      <published>2026-10-08T00:00:00Z</published></entry></feed>`;
     expect(parseFeed(xml, { url: "https://a/atom", limit: 1 })[0]?.title).toBe("Bold move");
   });
 
