@@ -99,19 +99,19 @@ Configures TypeScript 7 in a Bun project.
    ```
 
 4. Add scripts to `package.json`
-   - The bundler emits the JavaScript, so `tsc` only ever type-checks
+   - The bundler emits the JavaScript, so `bun check` only ever type-checks (no `tsc` needed)
 
    ```json
    {
      "scripts": {
-       "build": "bun --bun vite build && tsc --noEmit && oxlint ."
+       "build": "bun --bun vite build && bun check && oxlint ."
      }
    }
    ```
 
 ## Verification
 
-- [ ] `bunx tsc --noEmit` exits 0
+- [ ] `bun check` exits 0
 
 ## References
 
@@ -119,6 +119,8 @@ Configures TypeScript 7 in a Bun project.
   — native compiler, removed options, new defaults
 - [Announcing TypeScript 6.0](https://devblogs.microsoft.com/typescript/announcing-typescript-6-0/)
   — where the default changes and deprecations landed first
+- [Bun: `bun check`](https://bun.com/docs/runtime/check) — built-in type checker, same errors as
+  `tsc`
 - [Bun: TypeScript 6 and 7](https://bun.com/docs/typescript-6) — Bun's recommended `tsconfig.json`
 - [TSConfig reference](https://www.typescriptlang.org/tsconfig/) — every option
 - [Modules: choosing compiler options](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html)
