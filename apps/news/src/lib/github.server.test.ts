@@ -18,7 +18,7 @@ function release(id: number, overrides: Partial<GithubRelease> = {}): GithubRele
 
 describe("toGithubItems", () => {
   test("keeps the newest stable releases up to the limit", () => {
-    const items = toGithubItems({ repo: "o/r", limit: 2 }, [
+    const items = toGithubItems({ repo: "o/r", limit: 2, includePrereleases: false }, [
       release(4, { prerelease: true }),
       release(3, { draft: true, published_at: undefined }),
       release(2),
@@ -39,7 +39,7 @@ describe("toGithubItems", () => {
 
   test("filters by tag prefix", () => {
     const items = toGithubItems(
-      { repo: "o/r", limit: 1 },
+      { repo: "o/r", limit: 1, includePrereleases: false },
       [release(2, { tag_name: "vue@2" }), release(1, { tag_name: "react@1" })],
       "react@",
     );
@@ -48,13 +48,17 @@ describe("toGithubItems", () => {
 
   test("throws when no tag matches the prefix, rather than showing nothing", () => {
     expect(() =>
-      toGithubItems({ repo: "o/r", limit: 1 }, [release(1, { tag_name: "react@1" })], "reakt@"),
+      toGithubItems(
+        { repo: "o/r", limit: 1, includePrereleases: false },
+        [release(1, { tag_name: "react@1" })],
+        "reakt@",
+      ),
     ).toThrow("no release tags start with reakt@");
   });
 
   test("returns nothing, without throwing, when matching tags are all prereleases", () => {
     const items = toGithubItems(
-      { repo: "o/r", limit: 1 },
+      { repo: "o/r", limit: 1, includePrereleases: false },
       [release(1, { tag_name: "react@2-beta", prerelease: true })],
       "react@",
     );
@@ -62,7 +66,9 @@ describe("toGithubItems", () => {
   });
 
   test("falls back to the tag when a release has no name", () => {
-    const [item] = toGithubItems({ repo: "o/r", limit: 1 }, [release(1)]);
+    const [item] = toGithubItems({ repo: "o/r", limit: 1, includePrereleases: false }, [
+      release(1),
+    ]);
     expect(item).toMatchObject({ title: "v1", source: "o/r", url: release(1).html_url });
   });
 });
@@ -81,7 +87,12 @@ describe("getGithubReleases", () => {
 
     try {
       const result = await getGithubReleases([
-        { repo: "o/r", limit: 1, tagPrefix: ["react@", "start@", "gone@"] },
+        {
+          repo: "o/r",
+          limit: 1,
+          tagPrefix: ["react@", "start@", "gone@"],
+          includePrereleases: false,
+        },
       ]);
 
       expect(fetchSpy).toHaveBeenCalledTimes(1);

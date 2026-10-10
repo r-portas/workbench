@@ -6,7 +6,8 @@ import type { GithubRepoConfig } from "./sources.schemas";
 
 /**
  * Keeps a repo's newest releases, up to its limit, optionally only those whose tag starts with
- * `tagPrefix`. Prereleases are skipped unless the config sets `includePrereleases`; drafts always are.
+ * `tagPrefix`. Prereleases are skipped unless the config sets `includePrereleases`; drafts always
+ * are.
  *
  * @remarks
  * Assumes `releases` is newest first, as GitHub returns them. Throws when the prefix matches no
@@ -61,7 +62,8 @@ async function fetchReleases(config: GithubRepoConfig): Promise<GithubRelease[]>
 }
 
 /**
- * Fetches the latest stable releases for every configured repo, merged newest first.
+ * Fetches the latest releases for every configured repo, merged newest first. Stable only, unless a
+ * repo sets `includePrereleases`.
  *
  * @remarks
  * Each repo is fetched once, but each tag prefix is its own source, so a prefix missing from the
