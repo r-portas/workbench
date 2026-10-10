@@ -1,7 +1,6 @@
 import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import { AppLayout } from "@/components/app-layout";
-import { Providers } from "@/components/providers";
 import { APP_NAME } from "@/lib/app-config";
 
 import appCss from "@/styles.css?url";
@@ -37,9 +36,7 @@ function RootDocument() {
         <HeadContent />
       </head>
       <body>
-        <Providers>
-          <AppLayout />
-        </Providers>
+        <AppLayout />
         <Scripts />
       </body>
     </html>
