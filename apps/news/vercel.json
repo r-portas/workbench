@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "tanstack-start",
+  "bunVersion": "1.4.x",
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ../../bun.lock ../../package.json",
+  "installCommand": "cd ../.. && bun install --frozen-lockfile --filter news",
+  "buildCommand": "bun run build"
+}
