@@ -25,13 +25,14 @@ export function toGithubItems(
     throw new Error(`${config.repo}: no release tags start with ${tagPrefix}`);
   }
 
+  // A type guard so `published_at` is narrowed to a string below, without a non-null assertion
+  const isShown = (release: GithubRelease): release is GithubRelease & { published_at: string } =>
+    !release.draft &&
+    (config.includePrereleases || !release.prerelease) &&
+    Boolean(release.published_at);
+
   return matching
-    .filter(
-      (release) =>
-        !release.draft &&
-        (config.includePrereleases || !release.prerelease) &&
-        release.published_at,
-    )
+    .filter(isShown)
     .slice(0, config.limit)
     .map((release) => ({
       id: `gh-${release.id}`,
@@ -39,8 +40,7 @@ export function toGithubItems(
       title: release.name || release.tag_name,
       url: release.html_url,
       source: config.repo,
-      // Non-null: the filter above drops releases without a publish date
-      publishedAt: release.published_at!,
+      publishedAt: release.published_at,
       version: release.tag_name,
     }));
 }

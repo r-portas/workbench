@@ -65,6 +65,25 @@ describe("toGithubItems", () => {
     expect(items).toEqual([]);
   });
 
+  test("applies includePrereleases within a tag prefix", () => {
+    const releases = [
+      release(3, { tag_name: "react@3-beta", prerelease: true }),
+      release(2, { tag_name: "vue@2-beta", prerelease: true }),
+      release(1, { tag_name: "react@1" }),
+    ];
+    const config = { repo: "o/r", limit: 2, includePrereleases: true };
+
+    expect(toGithubItems(config, releases, "react@").map((i) => i.version)).toEqual([
+      "react@3-beta",
+      "react@1",
+    ]);
+    expect(
+      toGithubItems({ ...config, includePrereleases: false }, releases, "react@").map(
+        (i) => i.version,
+      ),
+    ).toEqual(["react@1"]);
+  });
+
   test("falls back to the tag when a release has no name", () => {
     const [item] = toGithubItems({ repo: "o/r", limit: 1, includePrereleases: false }, [
       release(1),
