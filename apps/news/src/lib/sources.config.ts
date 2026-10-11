@@ -16,6 +16,7 @@ export const sourcesConfig = parseSourcesConfig({
       },
       { repo: "oven-sh/bun" },
       { repo: "shadcn-ui/ui", tagPrefix: ["shadcn@"] },
+      { repo: "drizzle-team/drizzle-orm", limit: 3, includePrereleases: true },
     ],
   },
   rss: {
