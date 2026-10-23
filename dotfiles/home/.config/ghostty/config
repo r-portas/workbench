@@ -5,4 +5,6 @@
 # command = /opt/homebrew/bin/fish
 
 theme = Gruvbox Dark
-font-family = Berkley Mono
+
+font-family = Berkeley Mono
+font-size = 15
