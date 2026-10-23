@@ -119,8 +119,8 @@ Configures TypeScript 7 in a Bun project.
   — native compiler, removed options, new defaults
 - [Announcing TypeScript 6.0](https://devblogs.microsoft.com/typescript/announcing-typescript-6-0/)
   — where the default changes and deprecations landed first
-- [Bun: `bun check`](https://bun.com/docs/runtime/check) — built-in type checker, same errors as
-  `tsc`
+- [Bun: `bun check`](https://bun.com/docs/runtime/check) — built-in type checker, aims to report the
+  same errors as `tsc` from TypeScript 7
 - [Bun: TypeScript 6 and 7](https://bun.com/docs/typescript-6) — Bun's recommended `tsconfig.json`
 - [TSConfig reference](https://www.typescriptlang.org/tsconfig/) — every option
 - [Modules: choosing compiler options](https://www.typescriptlang.org/docs/handbook/modules/guides/choosing-compiler-options.html)
