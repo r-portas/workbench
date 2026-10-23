@@ -13,6 +13,7 @@ config all in one place.
 | `content/conventions/` | Decisions and rules per tool/pattern (naming, gotchas, do's/don'ts) |
 | `content/guides/`      | Step-by-step zero-to-working setup instructions, one per tool       |
 | `templates/`           | Scaffoldable project templates (e.g. `tss`)                         |
+| `dotfiles/`            | Machine setup (`setup.sh`), `Brewfile` and ghostty config           |
 
 ## Templates
 
@@ -47,6 +48,7 @@ Helper scripts live in `scripts/` and are run from the repo root:
 | Script          | Description                                                         | Command                              |
 | --------------- | ------------------------------------------------------------------- | ------------------------------------ |
 | `create-app.ts` | Create a new app in `apps/<app-name>` from `templates/tss`, renamed | `./scripts/create-app.ts <app-name>` |
+| `setup.sh`      | Configure macOS, install Brewfile and bun, link ghostty config      | `./dotfiles/setup.sh`                |
 
 ## Setup
 

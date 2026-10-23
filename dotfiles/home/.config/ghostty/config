@@ -1,0 +1,10 @@
+# Run `ghostty +show-config --default --docs` to see all available options
+# https://ghostty.org/docs/config
+
+# TODO: Future
+# command = /opt/homebrew/bin/fish
+
+theme = Gruvbox Dark
+
+font-family = Berkeley Mono
+font-size = 15

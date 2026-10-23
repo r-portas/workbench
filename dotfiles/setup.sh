@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Provision a macOS machine
+#
+# Usage: ./dotfiles/setup.sh
+set -euo pipefail
+
+# Run from the script's own directory so paths work from any caller location
+cd "$(dirname "$0")"
+
+# Print a bold cyan heading so each step stands out from the tools' own output
+section() {
+  printf '\n\033[1;36m==> %s\033[0m\n' "$1"
+}
+
+section "Configuring macOS settings"
+
+# Typing: disable auto-correct, smart quotes/dashes and the accent popup so
+# holding a key repeats it
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+# Key repeat: fastest the System Settings sliders allow (units of 15 ms)
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# Trackpad: tap to click (the -currentHost key also covers the login screen)
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+if ! command -v brew >/dev/null 2>&1; then
+  section "Installing Homebrew"
+  # Same command from https://brew.sh
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # Make brew available in this shell
+  # This only works on Apple Silicon
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  section "Homebrew already installed"
+fi
+
+section "Installing Brewfile"
+brew bundle --file Brewfile
+
+if ! command -v bun >/dev/null 2>&1; then
+  section "Installing bun"
+  curl -fsSL https://bun.com/install | bash
+else
+  section "bun already installed"
+fi
+
+section "Creating ~/.config directory"
+mkdir -p "$HOME/.config"
+
+section "Linking ghostty config"
+target="$HOME/.config/ghostty"
+if [ -e "$target" ] || [ -L "$target" ]; then
+  echo "Skipping, $target already exists"
+else
+  ln -s "$PWD/home/.config/ghostty" "$target"
+fi
+
+section "Done"
+echo "Log out and back in (or restart) for the macOS settings to take full effect."
