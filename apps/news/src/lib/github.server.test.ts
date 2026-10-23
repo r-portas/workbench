@@ -18,7 +18,7 @@ function release(id: number, overrides: Partial<GithubRelease> = {}): GithubRele
 
 describe("toGithubItems", () => {
   test("keeps the newest stable releases up to the limit", () => {
-    const items = toGithubItems({ repo: "o/r", limit: 2 }, [
+    const items = toGithubItems({ repo: "o/r", limit: 2, includePrereleases: false }, [
       release(4, { prerelease: true }),
       release(3, { draft: true, published_at: undefined }),
       release(2),
@@ -28,9 +28,18 @@ describe("toGithubItems", () => {
     expect(items.map((i) => i.version)).toEqual(["v2", "v1"]);
   });
 
+  test("keeps prereleases, but never drafts, when includePrereleases is set", () => {
+    const items = toGithubItems({ repo: "o/r", limit: 3, includePrereleases: true }, [
+      release(3, { prerelease: true }),
+      release(2, { draft: true, published_at: undefined }),
+      release(1),
+    ]);
+    expect(items.map((i) => i.version)).toEqual(["v3", "v1"]);
+  });
+
   test("filters by tag prefix", () => {
     const items = toGithubItems(
-      { repo: "o/r", limit: 1 },
+      { repo: "o/r", limit: 1, includePrereleases: false },
       [release(2, { tag_name: "vue@2" }), release(1, { tag_name: "react@1" })],
       "react@",
     );
@@ -39,21 +48,46 @@ describe("toGithubItems", () => {
 
   test("throws when no tag matches the prefix, rather than showing nothing", () => {
     expect(() =>
-      toGithubItems({ repo: "o/r", limit: 1 }, [release(1, { tag_name: "react@1" })], "reakt@"),
+      toGithubItems(
+        { repo: "o/r", limit: 1, includePrereleases: false },
+        [release(1, { tag_name: "react@1" })],
+        "reakt@",
+      ),
     ).toThrow("no release tags start with reakt@");
   });
 
   test("returns nothing, without throwing, when matching tags are all prereleases", () => {
     const items = toGithubItems(
-      { repo: "o/r", limit: 1 },
+      { repo: "o/r", limit: 1, includePrereleases: false },
       [release(1, { tag_name: "react@2-beta", prerelease: true })],
       "react@",
     );
     expect(items).toEqual([]);
   });
 
+  test("applies includePrereleases within a tag prefix", () => {
+    const releases = [
+      release(3, { tag_name: "react@3-beta", prerelease: true }),
+      release(2, { tag_name: "vue@2-beta", prerelease: true }),
+      release(1, { tag_name: "react@1" }),
+    ];
+    const config = { repo: "o/r", limit: 2, includePrereleases: true };
+
+    expect(toGithubItems(config, releases, "react@").map((i) => i.version)).toEqual([
+      "react@3-beta",
+      "react@1",
+    ]);
+    expect(
+      toGithubItems({ ...config, includePrereleases: false }, releases, "react@").map(
+        (i) => i.version,
+      ),
+    ).toEqual(["react@1"]);
+  });
+
   test("falls back to the tag when a release has no name", () => {
-    const [item] = toGithubItems({ repo: "o/r", limit: 1 }, [release(1)]);
+    const [item] = toGithubItems({ repo: "o/r", limit: 1, includePrereleases: false }, [
+      release(1),
+    ]);
     expect(item).toMatchObject({ title: "v1", source: "o/r", url: release(1).html_url });
   });
 });
@@ -72,7 +106,12 @@ describe("getGithubReleases", () => {
 
     try {
       const result = await getGithubReleases([
-        { repo: "o/r", limit: 1, tagPrefix: ["react@", "start@", "gone@"] },
+        {
+          repo: "o/r",
+          limit: 1,
+          tagPrefix: ["react@", "start@", "gone@"],
+          includePrereleases: false,
+        },
       ]);
 
       expect(fetchSpy).toHaveBeenCalledTimes(1);

@@ -5,8 +5,9 @@ import type { GithubItem, SectionResult } from "./news.types";
 import type { GithubRepoConfig } from "./sources.schemas";
 
 /**
- * Keeps a repo's newest stable releases, up to its limit, optionally only those whose tag starts
- * with `tagPrefix`.
+ * Keeps a repo's newest releases, up to its limit, optionally only those whose tag starts with
+ * `tagPrefix`. Prereleases are skipped unless the config sets `includePrereleases`; drafts always
+ * are.
  *
  * @remarks
  * Assumes `releases` is newest first, as GitHub returns them. Throws when the prefix matches no
@@ -24,8 +25,14 @@ export function toGithubItems(
     throw new Error(`${config.repo}: no release tags start with ${tagPrefix}`);
   }
 
+  // A type guard so `published_at` is narrowed to a string below, without a non-null assertion
+  const isShown = (release: GithubRelease): release is GithubRelease & { published_at: string } =>
+    !release.draft &&
+    (config.includePrereleases || !release.prerelease) &&
+    Boolean(release.published_at);
+
   return matching
-    .filter((release) => !release.draft && !release.prerelease && release.published_at)
+    .filter(isShown)
     .slice(0, config.limit)
     .map((release) => ({
       id: `gh-${release.id}`,
@@ -33,8 +40,7 @@ export function toGithubItems(
       title: release.name || release.tag_name,
       url: release.html_url,
       source: config.repo,
-      // Non-null: the filter above drops releases without a publish date
-      publishedAt: release.published_at!,
+      publishedAt: release.published_at,
       version: release.tag_name,
     }));
 }
@@ -56,7 +62,8 @@ async function fetchReleases(config: GithubRepoConfig): Promise<GithubRelease[]>
 }
 
 /**
- * Fetches the latest stable releases for every configured repo, merged newest first.
+ * Fetches the latest releases for every configured repo, merged newest first. Stable only, unless a
+ * repo sets `includePrereleases`.
  *
  * @remarks
  * Each repo is fetched once, but each tag prefix is its own source, so a prefix missing from the
