@@ -1,0 +1,24 @@
+# Installed by setup.sh. To run alone: `brew bundle --file dotfiles/Brewfile`
+# from the repo root, or `brew bundle --file Brewfile` from within dotfiles/
+
+# Shell
+brew "fish"
+
+# Terminal
+cask "ghostty"
+
+# Git
+brew "git"
+brew "gh"
+
+# Editor
+brew "vim"
+
+# Containers
+cask "orbstack"
+
+# Database client
+cask "dbeaver-community"
+
+# Utilities
+cask "vorssaint"
