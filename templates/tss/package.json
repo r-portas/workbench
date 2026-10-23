@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "bun --bun vite dev",
-    "build": "bun --bun vite build && tsc --noEmit && oxlint .",
+    "build": "bun --bun vite build && bun check && oxlint .",
     "test": "bun test --pass-with-no-tests",
     "fmt": "oxfmt .",
     "fmt:check": "oxfmt --check .",
