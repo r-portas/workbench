@@ -51,16 +51,40 @@ else
   section "bun already installed"
 fi
 
-section "Creating ~/.config directory"
-mkdir -p "$HOME/.config"
+section "Linking dotfiles"
 
-section "Linking ghostty config"
-target="$HOME/.config/ghostty"
-if [ -e "$target" ] || [ -L "$target" ]; then
-  echo "Skipping, $target already exists"
-else
-  ln -s "$PWD/home/.config/ghostty" "$target"
-fi
+# Link each file under home/ to the same path under $HOME. Only files are
+# linked, never directories, so apps can still write their own files alongside
+#
+# The loop reads paths from `find` (see the last line of the loop):
+#   - `-print0` separates paths with NUL bytes, and `read -d ''` splits on them,
+#     so filenames with spaces or newlines survive
+#   - `IFS=` stops `read` trimming leading/trailing whitespace, and `-r` stops
+#     it treating backslashes as escapes
+#   - `< <(...)` (process substitution) feeds the loop from the main shell
+#     rather than a pipe subshell, so variables set inside the loop persist
+while IFS= read -r -d '' repo_file; do
+  # ./home/.config/ghostty/config -> .config/ghostty/config
+  rel_path="${repo_file#./home/}"
+  link_path="$HOME/$rel_path"
+  # Absolute path the symlink should point at (we cd'd to dotfiles/ earlier)
+  link_dest="$PWD/home/$rel_path"
+
+  # Create parent dirs as real directories, since only files get linked
+  mkdir -p "$(dirname "$link_path")"
+
+  if [ -L "$link_path" ] && [ "$(readlink "$link_path")" = "$link_dest" ]; then
+    # Already points at the repo file, so re-running is a no-op
+    echo "Already linked, $link_path"
+  elif [ -e "$link_path" ] || [ -L "$link_path" ]; then
+    # A real file or a link elsewhere (-L also catches broken links, which -e
+    # misses). Never overwrite it
+    echo "Skipping, $link_path already exists"
+  else
+    ln -s "$link_dest" "$link_path"
+    echo "Linked $link_path"
+  fi
+done < <(find ./home -type f -print0)
 
 section "Done"
 echo "Log out and back in (or restart) for the macOS settings to take full effect."
