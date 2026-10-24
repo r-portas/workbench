@@ -41,6 +41,29 @@ Deployable apps living under `apps/`, each pulled in with the same `degit` comma
 | `news`    | A personal news feed reader            |
 | `recipes` | A simple recipes app                   |
 
+## Dotfiles
+
+Machine setup lives in `dotfiles/`. Run `./dotfiles/setup.sh` on a fresh macOS machine to provision
+it. It is safe to re-run, and does the following:
+
+1. Sets macOS defaults (typing, key repeat, trackpad)
+2. Installs Homebrew if missing, then everything in `Brewfile`
+3. Installs bun if missing
+4. Symlinks each file under `dotfiles/home/` to the same path under `$HOME`
+
+| Path                | Contents                                                      |
+| ------------------- | ------------------------------------------------------------- |
+| `dotfiles/setup.sh` | Provisioning script                                           |
+| `dotfiles/Brewfile` | Homebrew packages and casks                                   |
+| `dotfiles/home/`    | Dotfiles mirrored into `$HOME` (e.g. Ghostty and Zed configs) |
+
+To add a dotfile, place it in `dotfiles/home/` at its path relative to `$HOME` (for example
+`home/.config/ghostty/config`) and re-run `setup.sh`. Only files are linked, never directories, and
+existing files at the destination are skipped rather than overwritten. Move or delete the existing
+file first to replace it.
+
+To install only the Brewfile, run `brew bundle --file dotfiles/Brewfile` from the repo root.
+
 ## Scripts
 
 Helper scripts live in `scripts/` and are run from the repo root:
@@ -48,7 +71,6 @@ Helper scripts live in `scripts/` and are run from the repo root:
 | Script          | Description                                                         | Command                              |
 | --------------- | ------------------------------------------------------------------- | ------------------------------------ |
 | `create-app.ts` | Create a new app in `apps/<app-name>` from `templates/tss`, renamed | `./scripts/create-app.ts <app-name>` |
-| `setup.sh`      | Configure macOS, install Brewfile and bun, link dotfiles            | `./dotfiles/setup.sh`                |
 
 ## Setup
 
@@ -58,8 +80,6 @@ cd ~/workbench
 
 # Install dependencies
 bun install
-
-# ./bootstrap.sh (future)
 ```
 
 ## Common tasks
