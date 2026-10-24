@@ -36,6 +36,9 @@
   },
   "languages": {
     "CSS": {
+      // Use the Tailwind server for CSS so @theme, @apply and @layer aren't flagged as unknown at-rules
+      // https://zed.dev/docs/languages/tailwindcss#using-tailwind-css-mode-in-css-files
+      "language_servers": ["tailwindcss-intellisense-css", "!vscode-css-language-server", "..."],
       "format_on_save": "on",
       "prettier": {
         "allowed": false
