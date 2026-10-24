@@ -51,16 +51,28 @@ else
   section "bun already installed"
 fi
 
-section "Creating ~/.config directory"
-mkdir -p "$HOME/.config"
+section "Linking dotfiles"
 
-section "Linking ghostty config"
-target="$HOME/.config/ghostty"
-if [ -e "$target" ] || [ -L "$target" ]; then
-  echo "Skipping, $target already exists"
-else
-  ln -s "$PWD/home/.config/ghostty" "$target"
-fi
+# Link a file under home/ (e.g. .config/ghostty/config) to the same path under
+# $HOME. Only files are linked, never directories, so apps can still write their
+# own files alongside. Existing files are never overwritten
+link() {
+  local rel="$1"
+  local src="$PWD/home/$rel" dest="$HOME/$rel"
+  mkdir -p "$(dirname "$dest")"
+
+  if [ "$(readlink "$dest")" = "$src" ]; then
+    echo "Already linked, $dest"
+  elif [ -e "$dest" ] || [ -L "$dest" ]; then
+    # -L also catches broken links, which -e misses
+    echo "Skipping, $dest already exists"
+  else
+    ln -s "$src" "$dest"
+    echo "Linked $dest"
+  fi
+}
+
+find home -type f | while IFS= read -r file; do link "${file#home/}"; done
 
 section "Done"
 echo "Log out and back in (or restart) for the macOS settings to take full effect."

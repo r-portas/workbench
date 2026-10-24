@@ -1,0 +1,47 @@
+{
+  // General Settings
+  "format_on_save": "on",
+  "vim_mode": true,
+
+  // Extensions
+  "auto_install_extensions": {
+    "oxc": true
+  },
+
+  // Fonts and Themes
+  "theme": "Gruvbox Dark",
+  "ui_font_family": "Berkeley Mono",
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 16,
+
+  // Panels
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true
+  },
+  "collaboration_panel": {
+    "button": false // Disabled
+  },
+
+  // AI
+  "agent": {
+    "dock": "right",
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "terminal_init_command": "claude",
+    "expand_edit_card": false,
+    "expand_terminal_card": false
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  }
+}
