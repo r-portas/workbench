@@ -77,29 +77,35 @@ with near-instant runtimes.
    - Run `oxlint` as part of `build` (or CI) rather than a separate script, so a lint failure blocks
      the build the same way a type error would
 
-5. Wire into VS Code
-   - Install the oxc extension and set it as the default formatter
+5. Wire into Zed
+   - Install the `oxc` extension and route formatting through the `oxfmt` language server
 
    ```jsonc
-   // .vscode/extensions.json
+   // .zed/settings.json
    {
-     "recommendations": ["oxc.oxc-vscode"],
+     "lsp": {
+       "oxfmt": {
+         "initialization_options": { "settings": { "fmt.configPath": null, "run": "onSave" } },
+       },
+     },
+     "languages": {
+       "TypeScript": {
+         "format_on_save": "on",
+         "prettier": { "allowed": false },
+         "formatter": [{ "language_server": { "name": "oxfmt" } }],
+       },
+     },
    }
    ```
 
-   ```jsonc
-   // .vscode/settings.json
-   {
-     "editor.defaultFormatter": "oxc.oxc-vscode",
-     "editor.formatOnSave": true,
-   }
-   ```
+   - Repeat the `languages` entry for each language to format (TSX, JavaScript, CSS, JSON, Markdown,
+     YAML). See `templates/tss/.zed/settings.json` for the full config
 
 ## Verification
 
 - [ ] `bun fmt:check` exits 0 on a freshly formatted repo
 - [ ] `bun run build` fails when a `correctness`-category lint error is introduced
-- [ ] Saving a file in VS Code auto-formats it via the oxc extension
+- [ ] Saving a file in Zed auto-formats it via the oxc extension
 
 ## Gotchas
 
@@ -112,4 +118,4 @@ with near-instant runtimes.
 
 - [oxfmt docs](https://oxc.rs/docs/guide/usage/formatter.html)
 - [oxlint docs](https://oxc.rs/docs/guide/usage/linter.html)
-- [oxc VS Code extension](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode)
+- [oxc Zed extension](https://github.com/oxc-project/oxc-zed)

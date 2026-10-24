@@ -1,8 +1,0 @@
-{
-  "recommendations": [
-    "oxc.oxc-vscode",
-    "oven.bun-vscode",
-    "bradlc.vscode-tailwindcss",
-    "redhat.vscode-yaml"
-  ]
-}
