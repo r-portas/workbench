@@ -1,0 +1,51 @@
+{
+  "$schema": "zed://schemas/settings",
+
+  // General Settings
+  "format_on_save": "on",
+  "vim_mode": true,
+
+  // Extensions
+  "auto_install_extensions": {
+    "oxc": true
+  },
+
+  // Fonts and Themes
+  "theme": "Gruvbox Dark",
+  "ui_font_family": "Berkeley Mono",
+  "buffer_font_family": "Berkeley Mono",
+  "buffer_font_size": 16,
+
+  // Panels
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left",
+    "tree_view": true
+  },
+  "collaboration_panel": {
+    "button": false // Disabled
+  },
+
+  // AI
+  "agent": {
+    "dock": "right",
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "default_model": {
+      "provider": "anthropic",
+      "model": "sonnet"
+    },
+    "terminal_init_command": "claude"
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  }
+}
