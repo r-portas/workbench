@@ -1,13 +1,11 @@
 {
-  "$schema": "zed://schemas/settings",
-
   // General Settings
   "format_on_save": "on",
   "vim_mode": true,
 
   // Extensions
   "auto_install_extensions": {
-    "oxc": true,
+    "oxc": true
   },
 
   // Fonts and Themes
@@ -18,32 +16,32 @@
 
   // Panels
   "project_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "outline_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "git_panel": {
     "dock": "left",
-    "tree_view": true,
+    "tree_view": true
   },
   "collaboration_panel": {
-    "button": false, // Disabled
+    "button": false // Disabled
   },
 
   // AI
   "agent": {
     "dock": "right",
     "threads_sidebar": {
-      "position": "right",
+      "position": "right"
     },
     "terminal_init_command": "claude",
     "expand_edit_card": false,
-    "expand_terminal_card": false,
+    "expand_terminal_card": false
   },
   "agent_servers": {
     "claude-acp": {
-      "type": "registry",
-    },
-  },
+      "type": "registry"
+    }
+  }
 }

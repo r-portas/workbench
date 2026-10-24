@@ -1,6 +1,4 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "proseWrap": "always",
-  // Zed's format on save adds trailing commas to its JSONC settings
-  "ignorePatterns": ["dotfiles/home/.config/zed/settings.json"],
 }
