@@ -37,10 +37,6 @@
     "threads_sidebar": {
       "position": "right",
     },
-    "default_model": {
-      "provider": "anthropic",
-      "model": "sonnet",
-    },
     "terminal_init_command": "claude",
     "expand_edit_card": false,
     "expand_terminal_card": false,
