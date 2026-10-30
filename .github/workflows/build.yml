@@ -31,6 +31,7 @@ jobs:
               - bun.lock
               - package.json
               - README.md
+              - CHANGELOG.md
               - apps/docs/**
               - content/**
             news:
