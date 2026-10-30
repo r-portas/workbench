@@ -23,6 +23,7 @@
   recently
 - The agent maintains it: when a change includes something key, or ships as a PR, add an entry in
   the same change
+- Format it with oxfmt after editing (`bun fmt CHANGELOG.md` from the repo root)
 
 ### Format
 
