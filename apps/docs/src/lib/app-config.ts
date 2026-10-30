@@ -1,4 +1,4 @@
-import { BookOpen, Home } from "lucide-react";
+import { BookOpen, History, Home } from "lucide-react";
 
 import type { SidebarItem } from "@/components/ui/sidebar";
 
@@ -11,4 +11,5 @@ export const APP_NAME = "Workbench";
 export const SIDEBAR_ITEMS: SidebarItem[] = [
   { icon: Home, title: "Home", to: "/", activeOptions: { exact: true } },
   { icon: BookOpen, title: "README", to: "/readme" },
+  { icon: History, title: "Changelog", to: "/changelog" },
 ];

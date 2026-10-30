@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as ChangelogRouteImport } from './routes/changelog'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as ReadmeRouteImport } from './routes/readme'
 import { Route as Char123Char125DotmdRouteImport } from './routes/{$}[.]md'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const SplatRoute = SplatRouteImport.update({
   id: '/$',
   path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChangelogRoute = ChangelogRouteImport.update({
+  id: '/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
@@ -44,6 +50,7 @@ const Char123Char125DotmdRoute = Char123Char125DotmdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/changelog': typeof ChangelogRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/readme': typeof ReadmeRoute
   '/{$}.md': typeof Char123Char125DotmdRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/changelog': typeof ChangelogRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/readme': typeof ReadmeRoute
   '/{$}.md': typeof Char123Char125DotmdRoute
@@ -59,21 +67,24 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/changelog': typeof ChangelogRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/readme': typeof ReadmeRoute
   '/{$}.md': typeof Char123Char125DotmdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/llms.txt' | '/readme' | '/{$}.md'
+  fullPaths: '/' | '/$' | '/changelog' | '/llms.txt' | '/readme' | '/{$}.md'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/llms.txt' | '/readme' | '/{$}.md'
-  id: '__root__' | '/' | '/$' | '/llms.txt' | '/readme' | '/{$}.md'
+  to: '/' | '/$' | '/changelog' | '/llms.txt' | '/readme' | '/{$}.md'
+  id:
+    '__root__' | '/' | '/$' | '/changelog' | '/llms.txt' | '/readme' | '/{$}.md'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  ChangelogRoute: typeof ChangelogRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   ReadmeRoute: typeof ReadmeRoute
   Char123Char125DotmdRoute: typeof Char123Char125DotmdRoute
@@ -93,6 +104,13 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/changelog': {
+      id: '/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof ChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/llms.txt': {
@@ -122,6 +140,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  ChangelogRoute: ChangelogRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   ReadmeRoute: ReadmeRoute,
   Char123Char125DotmdRoute: Char123Char125DotmdRoute,
