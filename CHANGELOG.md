@@ -4,7 +4,7 @@
 
 ## 2026-10-31
 
-- `apps/docs`: Show the changelog on the website
+- `apps/docs`: Show the changelog on the website ([#39](https://github.com/r-portas/workbench/pull/39))
 
 ## 2026-10-24
 
