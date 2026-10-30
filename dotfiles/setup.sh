@@ -65,6 +65,15 @@ else
   section "bun already installed"
 fi
 
+# ---- Claude Code ----
+
+if ! command -v claude >/dev/null 2>&1; then
+  section "Installing Claude Code"
+  curl -fsSL https://claude.ai/install.sh | bash
+else
+  section "Claude Code already installed"
+fi
+
 # ---- Dotfiles ----
 
 section "Linking dotfiles"
@@ -94,4 +103,3 @@ find home -type f | while IFS= read -r file; do link "${file#home/}"; done
 
 section "Done"
 echo "Log out and back in (or restart) for the macOS settings to take full effect."
-

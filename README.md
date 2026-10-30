@@ -49,7 +49,8 @@ it. It is safe to re-run, and does the following:
 1. Sets macOS defaults (typing, key repeat, trackpad)
 2. Installs Homebrew if missing, then everything in `Brewfile`
 3. Installs bun if missing
-4. Symlinks each file under `dotfiles/home/` to the same path under `$HOME`
+4. Installs Claude Code if missing
+5. Symlinks each file under `dotfiles/home/` to the same path under `$HOME`
 
 | Path                | Contents                                                      |
 | ------------------- | ------------------------------------------------------------- |
