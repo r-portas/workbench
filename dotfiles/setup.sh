@@ -4,13 +4,23 @@
 # Usage: ./dotfiles/setup.sh
 set -euo pipefail
 
+# Everything below (defaults, Homebrew paths, Brewfile casks) is macOS-only
+if [ "$(uname -s)" != "Darwin" ]; then
+  echo "This script only supports macOS" >&2
+  exit 1
+fi
+
 # Run from the script's own directory so paths work from any caller location
 cd "$(dirname "$0")"
+
+# ---- Helpers ----
 
 # Print a bold cyan heading so each step stands out from the tools' own output
 section() {
   printf '\n\033[1;36m==> %s\033[0m\n' "$1"
 }
+
+# ---- macOS settings ----
 
 section "Configuring macOS settings"
 
@@ -29,6 +39,8 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# ---- Homebrew ----
+
 if ! command -v brew >/dev/null 2>&1; then
   section "Installing Homebrew"
   # Same command from https://brew.sh
@@ -44,12 +56,16 @@ fi
 section "Installing Brewfile"
 brew bundle --file Brewfile
 
+# ---- bun ----
+
 if ! command -v bun >/dev/null 2>&1; then
   section "Installing bun"
   curl -fsSL https://bun.com/install | bash
 else
   section "bun already installed"
 fi
+
+# ---- Dotfiles ----
 
 section "Linking dotfiles"
 
@@ -74,5 +90,8 @@ link() {
 
 find home -type f | while IFS= read -r file; do link "${file#home/}"; done
 
+# ---- Done ----
+
 section "Done"
 echo "Log out and back in (or restart) for the macOS settings to take full effect."
+
