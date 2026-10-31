@@ -1,3 +1,4 @@
+import { cn } from "cn";
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -8,7 +9,6 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 const COPIED_RESET_MS = 1500;
 

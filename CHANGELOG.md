@@ -4,6 +4,7 @@
 
 ## 2026-10-31
 
+- `repo`: Use the `cn` package directly in `templates/tss` and all apps, dropping `lib/utils.ts`
 - `apps/docs`: Show the changelog on the website
   ([#39](https://github.com/r-portas/workbench/pull/39))
 

@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import { cn } from "cn";
 import { FileTextIcon } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
 // #region ViewAsMarkdown
 interface ViewAsMarkdownProps {
