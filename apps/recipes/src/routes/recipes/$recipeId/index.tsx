@@ -1,4 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
+import { cn } from "cn";
 import { ArrowLeftIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -18,7 +19,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { getRecipeFn } from "@/lib/recipes.functions";
 import type { Ingredient, Recipe } from "@/lib/recipes.schemas";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/recipes/$recipeId/")({
   loader: async ({ params }) => {

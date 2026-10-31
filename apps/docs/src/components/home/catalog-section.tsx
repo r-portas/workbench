@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
+import { cn } from "cn";
 
 import { ViewAsMarkdownIcon } from "@/components/view-as-markdown";
 import { stripSection } from "@/lib/content-collection";
 import type { ItemSummary } from "@/lib/content-collection.types";
-import { cn } from "@/lib/utils";
 
 // #region CatalogSection
 interface CatalogSectionProps {

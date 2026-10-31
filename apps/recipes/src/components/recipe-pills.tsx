@@ -1,9 +1,9 @@
+import { cn } from "cn";
 import { ClockIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { formatMinutes, totalMinutes } from "@/lib/recipes";
 import type { Recipe } from "@/lib/recipes.schemas";
-import { cn } from "@/lib/utils";
 
 /**
  * Total time and draft status for a recipe, as a row of badges.
