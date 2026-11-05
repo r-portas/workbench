@@ -50,8 +50,6 @@ with near-instant runtimes.
        "suspicious": "error",
      },
      "rules": {
-       // Prefer undefined over null
-       "unicorn/no-null": "error",
        // Not needed for React 17+
        "react/react-in-jsx-scope": "off",
      },
