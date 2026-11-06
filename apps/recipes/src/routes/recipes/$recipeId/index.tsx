@@ -3,7 +3,6 @@ import { cn } from "cn";
 import { ArrowLeftIcon } from "lucide-react";
 import { useState } from "react";
 
-import { CookModeToggle } from "@/components/cook-mode-toggle";
 import { RecipePills } from "@/components/recipe-pills";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -39,7 +38,6 @@ function RecipeDetail() {
           <ArrowLeftIcon data-icon="inline-start" />
           All recipes
         </ButtonLink>
-        <CookModeToggle />
       </div>
 
       <RecipeHeader recipe={recipe} />
