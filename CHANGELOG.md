@@ -2,6 +2,10 @@
 
 > All notable changes are documented in this file
 
+## 2026-11-09
+
+- `dotfiles`: Track shell aliases, starting with an ssh→ghostty wrapper
+
 ## 2026-10-31
 
 - `repo`: Use the `cn` package directly in `templates/tss` and all apps, dropping `lib/utils.ts`
