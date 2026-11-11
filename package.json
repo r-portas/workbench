@@ -12,6 +12,6 @@
   },
   "devDependencies": {
     "@types/bun": "^1.4.4",
-    "oxfmt": "^0.76.0"
+    "oxfmt": "^0.78.0"
   }
 }
