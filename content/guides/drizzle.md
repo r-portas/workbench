@@ -8,16 +8,16 @@ validation and `src/lib` conventions.
 - Bun project (uses `drizzle-orm/bun-sqlite`, the Bun-native driver)
 - `src/lib/env.server.ts` env validation convention already in place
 
-> Drizzle 1.0 is currently at release candidate `rc5` — install `drizzle-orm@rc5` and
-> `drizzle-kit@rc5` exactly as shown below. Do not run `bun add drizzle-orm` without `@rc5`.
+> Drizzle 1.0 is currently at release candidate `rc6` — install `drizzle-orm@rc6` and
+> `drizzle-kit@rc6` exactly as shown below. Do not run `bun add drizzle-orm` without `@rc6`.
 
 ## Steps
 
 1. Install
 
    ```sh
-   bun add drizzle-orm@rc5
-   bun add -d drizzle-kit@rc5
+   bun add drizzle-orm@rc6
+   bun add -d drizzle-kit@rc6
    ```
 
    `drizzle-kit` is the CLI for schema pushes, migrations and Drizzle Studio — dev dependency only.
@@ -147,7 +147,7 @@ validation and `src/lib` conventions.
 
 ## Gotchas
 
-- Must install `drizzle-orm@rc5` / `drizzle-kit@rc5` — plain `bun add drizzle-orm` pulls a version
+- Must install `drizzle-orm@rc6` / `drizzle-kit@rc6` — plain `bun add drizzle-orm` pulls a version
   that doesn't match this setup
 
 ## References
